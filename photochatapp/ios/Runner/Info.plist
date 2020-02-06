@@ -41,5 +41,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need to load the photo for encoding/decoding.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need to take photo for encoding/decoding.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Need to take photo for encoding/decoding.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Need save output to gallery.</string>
 </dict>
 </plist>
