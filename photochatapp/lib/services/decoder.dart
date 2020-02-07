@@ -16,8 +16,8 @@ int assembleBits(Uint8List byte) {
     if (byte[i] != 1 && byte[i] != 0) {
       throw FlutterError('bit_not_0_or_1');
     }
-    assembled = assembled | byte[i];
     assembled = assembled << 1;
+    assembled = assembled | byte[i];
   }
   return assembled;
 }
@@ -29,7 +29,7 @@ Uint8List bits2bytes(Uint8List bits) {
   int byteCnt = bits.length ~/ 8;
   Uint8List byteMsg = Uint8List(byteCnt);
   for (int i = 0; i < byteCnt; ++i) {
-    Uint8List bitsOfByte = bits.getRange(i, i + 8);
+    Uint8List bitsOfByte = Uint8List.fromList(bits.getRange(i, i + 8).toList());
     int byte = assembleBits(bitsOfByte);
     byteMsg[i] = byte;
   }
@@ -38,9 +38,12 @@ Uint8List bits2bytes(Uint8List bits) {
 
 Uint8List padToBytes(Uint8List msg) {
   int padSize = 8 - msg.length % 8;
-  Uint8List padded = msg;
+  Uint8List padded = Uint8List(msg.length + padSize);
+  for (int i = 0; i < msg.length; ++i) {
+    padded[i] = msg[i];
+  }
   for (int i = 0; i < padSize; ++i) {
-    padded.add(0);
+    padded[msg.length + i] = 0;
   }
   return padded;
 }

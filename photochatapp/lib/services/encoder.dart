@@ -19,7 +19,7 @@ int encodeOnePixel(int pixel, int msg) {
   if (msg != 1 && msg != 0) {
     throw FlutterError('msg_encode_bit_more_than_1_bit');
   }
-  int lastBitMask = 8;
+  int lastBitMask = 254;
   int encoded = (pixel & lastBitMask) | msg;
   return encoded;
 }
