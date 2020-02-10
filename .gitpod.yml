@@ -7,4 +7,8 @@ tasks:
       tar -xvf ./flutter_linux_v1.12.13+hotfix.7-stable.tar.xz
       echo "export PATH=\"\$PATH:/workspace/development/flutter/bin\"" >> ~/.bashrc
       source ~/.bashrc
-      cd /workspace/photochat/photochatapp
+      cd /workspace/photochat
+
+vscode:
+  extensions:
+    - Dart-Code.flutter@3.8.1:cytqQi/+kpu802ZOaJwayw==
