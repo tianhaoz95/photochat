@@ -3,7 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:photochatapp/services/encoder.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
-import 'package:image/image.dart' as imglib;
+import 'package:photochatapp/services/responses/encode_response.dart';
 
 class EncodingResultScreen extends StatefulWidget {
   @override
@@ -33,11 +33,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   }
 
   Future<Image> encodeImage(EncodeRequest req) async {
-    Uint16List byteImage = Uint16List.fromList(req.original.getBytes().toList());
-    encodedByteImage = await encodeMessageIntoImage(byteImage, req.msg, '');
-    imglib.Image editableEncodedImage = imglib.Image.fromBytes(req.original.width, req.original.height, Uint8List.fromList(encodedByteImage.toList()));
-    Image encodedImage = Image.memory(imglib.encodePng(editableEncodedImage));
-    return encodedImage;
+    EncodeResponse response = await encodeMessageIntoImageAsync(req);
+    return response.displayableImage;
   }
 
   @override

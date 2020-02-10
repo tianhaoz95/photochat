@@ -1,10 +1,17 @@
+import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:photochatapp/services/decoder.dart';
 import 'package:photochatapp/services/encoder.dart';
+import 'package:photochatapp/services/requests/encode_request.dart';
+import 'package:photochatapp/services/responses/encode_response.dart';
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
+import 'package:image/image.dart' as imglib;
+
+import '../utilities/image_file_loader.dart';
 
 final List<String> testMessages = [
   'The most basic message',
@@ -15,27 +22,26 @@ final List<String> testMessages = [
 ];
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   test('encoder decoder should be invariant', () async {
-    int testCapacity = 1000;
-    Uint16List img = Uint16List(testCapacity);
-    for (int i = 0; i < testCapacity; ++i) {
-      img[i] = 8;
-    }
-    String msg = "my message";
-    Uint16List encoded = await encodeMessageIntoImage(img, msg, "my_token");
-    String decoded = await decodeMessageFromImage(encoded, "my_token");
+    File imageFile = loadFixtureImageFile('photo_placeholder.png');
+    imglib.Image original = imglib.decodeImage(imageFile.readAsBytesSync());
+    String msg = "basic message";
+    EncodeResponse response = await encodeMessageIntoImageAsync(
+        EncodeRequest(original, msg));
+    String decoded = await decodeMessageFromImage(
+        Uint16List.fromList(response.editableImage.getBytes().toList()), "my_token");
     expect(decoded, msg);
   });
 
   test('encoder decoder should be invariant across msg', () async {
-    int testCapacity = 1920 * 1080;
-    Uint16List img = Uint16List(testCapacity);
-    for (int i = 0; i < testCapacity; ++i) {
-      img[i] = 8;
-    }
+    File imageFile = loadFixtureImageFile('photo_placeholder.png');
+    imglib.Image original = imglib.decodeImage(imageFile.readAsBytesSync());
     for (String msg in testMessages) {
-      Uint16List encoded = await encodeMessageIntoImage(img, msg, "my_token");
-      String decoded = await decodeMessageFromImage(encoded, "my_token");
+      EncodeResponse response =
+          await encodeMessageIntoImageAsync(EncodeRequest(original, msg));
+      String decoded = await decodeMessageFromImage(
+          Uint16List.fromList(response.editableImage.getBytes().toList()), "my_token");
       expect(decoded, msg);
     }
   });
