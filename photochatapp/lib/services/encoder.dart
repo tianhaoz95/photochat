@@ -45,7 +45,8 @@ Uint8List expandMsg(Uint8List msg) {
   return expanded;
 }
 
-Future<Uint8List> encodeMessageIntoImage(Uint8List img, String msg, String token) async {
+Future<Uint8List> encodeMessageIntoImage(
+    Uint8List img, String msg, String token) async {
   Uint8List encodedImg = img;
   if (getEncoderCapacity(img) < getMsgSize(msg)) {
     throw FlutterError('image_capacity_not_enough');

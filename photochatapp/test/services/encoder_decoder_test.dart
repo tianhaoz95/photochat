@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:photochatapp/services/decoder.dart';
 import 'package:photochatapp/services/encoder.dart';
+import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
 
 void main() {
   test('encoder decoder should be invariant', () async {
@@ -44,5 +45,27 @@ void main() {
     expect(bytes[0], 254);
     expect(bytes[1], 32);
     expect(bytes[2], 8);
+  });
+
+  test("pad msg should work", () {
+    Uint8List beforePadded = Uint8List.fromList([1, 2, 3]);
+    Uint8List expectedPadded = Uint8List.fromList([1, 2, 3, 0, 0, 0, 0]);
+    expect(padMsg(7, beforePadded), expectedPadded);
+  });
+
+  test('pad to bytes should work', () {
+    Uint8List beforePadded = Uint8List.fromList([1, 2, 3]);
+    Uint8List expectedPadded = Uint8List.fromList([1, 2, 3, 0, 0, 0, 0, 0]);
+    expect(padToBytes(beforePadded), expectedPadded);
+  });
+
+  test('expand msg should work', () {
+    Uint8List compressed = Uint8List.fromList([5, 4, 1]);
+    List<int> expandedRaw = [];
+    expandedRaw += [0, 0, 0, 0, 0, 1, 1, 0];
+    expandedRaw += [0, 0, 0, 0, 0, 1, 0, 0];
+    expandedRaw += [0, 0, 0, 0, 0, 0, 0, 1];
+    Uint8List expanded = Uint8List.fromList(expandedRaw);
+    expect(expandMsg(compressed), expanded);
   });
 }

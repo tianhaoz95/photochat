@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
+import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
 
 int extractLastBit(int pixel) {
   int lastBit = pixel & 1;
@@ -29,23 +30,12 @@ Uint8List bits2bytes(Uint8List bits) {
   int byteCnt = bits.length ~/ 8;
   Uint8List byteMsg = Uint8List(byteCnt);
   for (int i = 0; i < byteCnt; ++i) {
-    Uint8List bitsOfByte = Uint8List.fromList(bits.getRange(i, i + 8).toList());
+    Uint8List bitsOfByte =
+        Uint8List.fromList(bits.getRange(i * 8, i * 8 + 8).toList());
     int byte = assembleBits(bitsOfByte);
     byteMsg[i] = byte;
   }
   return byteMsg;
-}
-
-Uint8List padToBytes(Uint8List msg) {
-  int padSize = 8 - msg.length % 8;
-  Uint8List padded = Uint8List(msg.length + padSize);
-  for (int i = 0; i < msg.length; ++i) {
-    padded[i] = msg[i];
-  }
-  for (int i = 0; i < padSize; ++i) {
-    padded[msg.length + i] = 0;
-  }
-  return padded;
 }
 
 Uint8List extractBitsFromImg(Uint8List img) {
