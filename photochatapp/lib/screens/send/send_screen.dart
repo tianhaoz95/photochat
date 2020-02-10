@@ -23,7 +23,8 @@ class _SendScreen extends State<SendScreen> {
   }
 
   Future<void> saveEncodedImage() async {
-    Uint16List imageBytes = Uint16List.fromList(_image.readAsBytesSync().toList());
+    Uint16List imageBytes =
+        Uint16List.fromList(_image.readAsBytesSync().toList());
     await ImageGallerySaver.saveImage(Uint8List.fromList(imageBytes.toList()));
   }
 

@@ -32,8 +32,8 @@ Uint16List bits2bytes(Uint16List bits) {
   int byteCnt = bits.length ~/ dataLength;
   Uint16List byteMsg = Uint16List(byteCnt);
   for (int i = 0; i < byteCnt; ++i) {
-    Uint16List bitsOfByte =
-        Uint16List.fromList(bits.getRange(i * dataLength, i * dataLength + dataLength).toList());
+    Uint16List bitsOfByte = Uint16List.fromList(
+        bits.getRange(i * dataLength, i * dataLength + dataLength).toList());
     int byte = assembleBits(bitsOfByte);
     byteMsg[i] = byte;
   }
@@ -53,7 +53,8 @@ Uint16List sanitizePaddingZeros(Uint16List msg) {
   while (msg[lastNonZeroIdx] == 0) {
     --lastNonZeroIdx;
   }
-  Uint16List sanitized = Uint16List.fromList(msg.getRange(0, lastNonZeroIdx + 1).toList());
+  Uint16List sanitized =
+      Uint16List.fromList(msg.getRange(0, lastNonZeroIdx + 1).toList());
   return sanitized;
 }
 
