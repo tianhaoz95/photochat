@@ -44,30 +44,30 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
         title: Text('Encoded Result'),
       ),
       body: FutureBuilder<Image>(
-        future: this.encodedImage,
+          future: this.encodedImage,
           builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
-        if (snapshot.hasData) {
-          print('has data');
-          return Container(
-            child: ListView(
-              children: <Widget>[
-                Container(
-                  child: snapshot.data,
+            if (snapshot.hasData) {
+              print('has data');
+              return Container(
+                child: ListView(
+                  children: <Widget>[
+                    Container(
+                      child: snapshot.data,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          );
-        } else if (snapshot.hasError) {
-          print('has error');
-          return Container();
-        } else {
-          print('loading');
-          return Container(
-              child: Center(
-            child: CircularProgressIndicator(),
-          ));
-        }
-      }),
+              );
+            } else if (snapshot.hasError) {
+              print('has error');
+              return Container();
+            } else {
+              print('loading');
+              return Container(
+                  child: Center(
+                child: CircularProgressIndicator(),
+              ));
+            }
+          }),
     );
   }
 }
