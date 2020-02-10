@@ -3,10 +3,10 @@ tasks:
     command: |
       mkdir -p /workspace/development
       cd /workspace/development
-      wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_v1.12.13+hotfix.7-stable.tar.xz
-      tar -xvf ./flutter_linux_v1.12.13+hotfix.7-stable.tar.xz
+      git clone -b master https://github.com/flutter/flutter.git
       echo "export PATH=\"\$PATH:/workspace/development/flutter/bin\"" >> ~/.bashrc
       source ~/.bashrc
+      flutter --version
       cd /workspace/photochat
 
 vscode:
