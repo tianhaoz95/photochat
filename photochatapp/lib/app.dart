@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photochatapp/screens/encoded/encoding_result_screen.dart';
 import 'package:photochatapp/screens/home/home_screen.dart';
 import 'package:photochatapp/screens/receive/receive_screen.dart';
 import 'package:photochatapp/screens/send/send_screen.dart';
@@ -15,6 +16,7 @@ class PhotoChatApp extends StatelessWidget {
         '/': (context) => HomeScreen(),
         '/send': (context) => SendScreen(),
         '/receive': (context) => ReceiveScreen(),
+        '/encoded': (context) => EncodingResultScreen(),
       },
     );
   }

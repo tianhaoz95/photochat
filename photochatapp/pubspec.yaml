@@ -27,6 +27,7 @@ dependencies:
   # third party packages
   image_picker: ^0.6.3+1
   image_gallery_saver: ^1.2.2
+  image: 
 
 dev_dependencies:
   flutter_test:
