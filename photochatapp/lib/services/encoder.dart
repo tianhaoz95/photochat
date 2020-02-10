@@ -1,18 +1,16 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:photochatapp/services/utilities/config.dart';
+import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 
-Uint8List msg2bytes(String msg) {
-  return Uint8List.fromList(msg.codeUnits);
-}
-
-int getEncoderCapacity(Uint8List img) {
+int getEncoderCapacity(Uint16List img) {
   return img.length;
 }
 
 int getMsgSize(String msg) {
-  Uint8List byteMsg = msg2bytes(msg);
-  return byteMsg.length * 8;
+  Uint16List byteMsg = msg2bytes(msg);
+  return byteMsg.length * dataLength;
 }
 
 int encodeOnePixel(int pixel, int msg) {
@@ -24,35 +22,35 @@ int encodeOnePixel(int pixel, int msg) {
   return encoded;
 }
 
-Uint8List padMsg(int capacity, Uint8List msg) {
-  Uint8List padded = Uint8List(capacity);
+Uint16List padMsg(int capacity, Uint16List msg) {
+  Uint16List padded = Uint16List(capacity);
   for (int i = 0; i < msg.length; ++i) {
     padded[i] = msg[i];
   }
   return padded;
 }
 
-Uint8List expandMsg(Uint8List msg) {
-  Uint8List expanded = Uint8List(msg.length * 8);
+Uint16List expandMsg(Uint16List msg) {
+  Uint16List expanded = Uint16List(msg.length * dataLength);
   for (int i = 0; i < msg.length; ++i) {
     int msgByte = msg[i];
-    for (int j = 0; j < 8; ++j) {
+    for (int j = 0; j < dataLength; ++j) {
       int lastBit = msgByte & 1;
-      expanded[i * 8 + (8 - j - 1)] = lastBit;
+      expanded[i * dataLength + (dataLength - j - 1)] = lastBit;
       msgByte = msgByte >> 1;
     }
   }
   return expanded;
 }
 
-Future<Uint8List> encodeMessageIntoImage(
-    Uint8List img, String msg, String token) async {
-  Uint8List encodedImg = img;
+Future<Uint16List> encodeMessageIntoImage(
+    Uint16List img, String msg, String token) async {
+  Uint16List encodedImg = img;
   if (getEncoderCapacity(img) < getMsgSize(msg)) {
     throw FlutterError('image_capacity_not_enough');
   }
-  Uint8List expandedMsg = expandMsg(msg2bytes(msg));
-  Uint8List paddedMsg = padMsg(getEncoderCapacity(img), expandedMsg);
+  Uint16List expandedMsg = expandMsg(msg2bytes(msg));
+  Uint16List paddedMsg = padMsg(getEncoderCapacity(img), expandedMsg);
   if (paddedMsg.length != getEncoderCapacity(img)) {
     throw FlutterError('msg_container_size_not_match');
   }

@@ -1,8 +1,10 @@
 import 'dart:typed_data';
 
-Uint8List padToBytes(Uint8List msg) {
-  int padSize = 8 - msg.length % 8;
-  Uint8List padded = Uint8List(msg.length + padSize);
+import 'package:photochatapp/services/utilities/config.dart';
+
+Uint16List padToBytes(Uint16List msg) {
+  int padSize = dataLength - msg.length % dataLength;
+  Uint16List padded = Uint16List(msg.length + padSize);
   for (int i = 0; i < msg.length; ++i) {
     padded[i] = msg[i];
   }

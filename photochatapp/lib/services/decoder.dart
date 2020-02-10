@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
+import 'package:photochatapp/services/utilities/config.dart';
+import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
 
 int extractLastBit(int pixel) {
@@ -8,12 +10,12 @@ int extractLastBit(int pixel) {
   return lastBit;
 }
 
-int assembleBits(Uint8List byte) {
-  if (byte.length != 8) {
+int assembleBits(Uint16List byte) {
+  if (byte.length != dataLength) {
     throw FlutterError('byte_incorrect_size');
   }
   int assembled = 0;
-  for (int i = 0; i < 8; ++i) {
+  for (int i = 0; i < dataLength; ++i) {
     if (byte[i] != 1 && byte[i] != 0) {
       throw FlutterError('bit_not_0_or_1');
     }
@@ -23,43 +25,43 @@ int assembleBits(Uint8List byte) {
   return assembled;
 }
 
-Uint8List bits2bytes(Uint8List bits) {
-  if ((bits.length % 8) != 0) {
+Uint16List bits2bytes(Uint16List bits) {
+  if ((bits.length % dataLength) != 0) {
     throw FlutterError('bits_contain_incomplete_byte');
   }
-  int byteCnt = bits.length ~/ 8;
-  Uint8List byteMsg = Uint8List(byteCnt);
+  int byteCnt = bits.length ~/ dataLength;
+  Uint16List byteMsg = Uint16List(byteCnt);
   for (int i = 0; i < byteCnt; ++i) {
-    Uint8List bitsOfByte =
-        Uint8List.fromList(bits.getRange(i * 8, i * 8 + 8).toList());
+    Uint16List bitsOfByte =
+        Uint16List.fromList(bits.getRange(i * dataLength, i * dataLength + dataLength).toList());
     int byte = assembleBits(bitsOfByte);
     byteMsg[i] = byte;
   }
   return byteMsg;
 }
 
-Uint8List extractBitsFromImg(Uint8List img) {
-  Uint8List extracted = Uint8List(img.length);
+Uint16List extractBitsFromImg(Uint16List img) {
+  Uint16List extracted = Uint16List(img.length);
   for (int i = 0; i < img.length; i++) {
     extracted[i] = extractLastBit(img[i]);
   }
   return extracted;
 }
 
-Uint8List sanitizePaddingZeros(Uint8List msg) {
+Uint16List sanitizePaddingZeros(Uint16List msg) {
   int lastNonZeroIdx = msg.length - 1;
   while (msg[lastNonZeroIdx] == 0) {
     --lastNonZeroIdx;
   }
-  Uint8List sanitized = Uint8List.fromList(msg.getRange(0, lastNonZeroIdx + 1).toList());
+  Uint16List sanitized = Uint16List.fromList(msg.getRange(0, lastNonZeroIdx + 1).toList());
   return sanitized;
 }
 
-Future<String> decodeMessageFromImage(Uint8List img, String token) async {
-  Uint8List extracted = extractBitsFromImg(img);
-  Uint8List padded = padToBytes(extracted);
-  Uint8List byteMsg = bits2bytes(padded);
-  Uint8List sanitized = sanitizePaddingZeros(byteMsg);
-  String msg = String.fromCharCodes(sanitized);
+Future<String> decodeMessageFromImage(Uint16List img, String token) async {
+  Uint16List extracted = extractBitsFromImg(img);
+  Uint16List padded = padToBytes(extracted);
+  Uint16List byteMsg = bits2bytes(padded);
+  Uint16List sanitized = sanitizePaddingZeros(byteMsg);
+  String msg = bytes2msg(sanitized);
   return msg;
 }
