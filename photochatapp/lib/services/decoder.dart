@@ -46,10 +46,20 @@ Uint8List extractBitsFromImg(Uint8List img) {
   return extracted;
 }
 
+Uint8List sanitizePaddingZeros(Uint8List msg) {
+  int lastNonZeroIdx = msg.length - 1;
+  while (msg[lastNonZeroIdx] == 0) {
+    --lastNonZeroIdx;
+  }
+  Uint8List sanitized = Uint8List.fromList(msg.getRange(0, lastNonZeroIdx + 1).toList());
+  return sanitized;
+}
+
 Future<String> decodeMessageFromImage(Uint8List img, String token) async {
   Uint8List extracted = extractBitsFromImg(img);
   Uint8List padded = padToBytes(extracted);
   Uint8List byteMsg = bits2bytes(padded);
-  String msg = String.fromCharCodes(byteMsg);
+  Uint8List sanitized = sanitizePaddingZeros(byteMsg);
+  String msg = String.fromCharCodes(sanitized);
   return msg;
 }
