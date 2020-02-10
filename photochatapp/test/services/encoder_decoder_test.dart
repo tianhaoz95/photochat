@@ -62,7 +62,7 @@ void main() {
   test('expand msg should work', () {
     Uint8List compressed = Uint8List.fromList([5, 4, 1]);
     List<int> expandedRaw = [];
-    expandedRaw += [0, 0, 0, 0, 0, 1, 1, 0];
+    expandedRaw += [0, 0, 0, 0, 0, 1, 0, 1];
     expandedRaw += [0, 0, 0, 0, 0, 1, 0, 0];
     expandedRaw += [0, 0, 0, 0, 0, 0, 0, 1];
     Uint8List expanded = Uint8List.fromList(expandedRaw);

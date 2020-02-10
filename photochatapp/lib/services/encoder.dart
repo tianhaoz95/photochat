@@ -38,7 +38,7 @@ Uint8List expandMsg(Uint8List msg) {
     int msgByte = msg[i];
     for (int j = 0; j < 8; ++j) {
       int lastBit = msgByte & 1;
-      expanded[i * 8 + j] = lastBit;
+      expanded[i * 8 + (8 - j - 1)] = lastBit;
       msgByte = msgByte >> 1;
     }
   }
