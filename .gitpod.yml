@@ -4,3 +4,13 @@ tasks:
       flutter --version
 image:
   file: .gitpod.Dockerfile
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: true
+    addBadge: true
+    addLabel: true
