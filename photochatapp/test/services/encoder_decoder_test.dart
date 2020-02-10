@@ -18,6 +18,24 @@ void main() {
     expect(decoded, msg);
   });
 
+  test('encoder decoder should be invariant across msg', () async {
+    int testCapacity = 1920 * 1080;
+    Uint8List img = Uint8List(testCapacity);
+    for (int i = 0; i < testCapacity; ++i) {
+      img[i] = 8;
+    }
+    List<String> msgs = [
+      'my messages',
+      'this is a longer message, let\'s see if it works',
+      'this is a message that end with a non-character!',
+    ];
+    for (String msg in msgs) {
+      Uint8List encoded = await encodeMessageIntoImage(img, msg, "my_token");
+      String decoded = await decodeMessageFromImage(encoded, "my_token");
+      expect(decoded, msg);
+    }
+  });
+
   test('last bit extractor should work', () {
     int lastBitZero = extractLastBit(8);
     int lastBitOne = extractLastBit(7);
