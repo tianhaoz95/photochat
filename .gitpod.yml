@@ -5,7 +5,6 @@ tasks:
 vscode:
   extensions:
     - Dart-Code.flutter@3.8.1:cytqQi/+kpu802ZOaJwayw==
-    - Dart-Code.dart-code@3.8.1:+5Rq24Mq46eJa5w39WY0bA==
 image:
   file: .gitpod.Dockerfile
 github:
