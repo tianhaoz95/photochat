@@ -7,9 +7,8 @@ import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
 
 final List<String> testMessages = [
-  'my messages',
-  'this is a longer message, let\'s see if it works',
-  'this is a message that end with a non-character!',
+  'The most basic message',
+  'This is a message that end with a non-character!',
   '中文的也应该可以',
   '中文以标点符号结束应该也可以！',
   '再試試繁體的行不行',
