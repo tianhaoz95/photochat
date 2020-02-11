@@ -27,10 +27,11 @@ void main() {
     File imageFile = loadFixtureImageFile('photo_placeholder.png');
     imglib.Image original = imglib.decodeImage(imageFile.readAsBytesSync());
     String msg = "basic message";
-    EncodeResponse response = await encodeMessageIntoImageAsync(
-        EncodeRequest(original, msg));
+    EncodeResponse response =
+        await encodeMessageIntoImageAsync(EncodeRequest(original, msg));
     String decoded = await decodeMessageFromImage(
-        Uint16List.fromList(response.editableImage.getBytes().toList()), "my_token");
+        Uint16List.fromList(response.editableImage.getBytes().toList()),
+        "my_token");
     expect(decoded, msg);
   });
 
@@ -41,7 +42,8 @@ void main() {
       EncodeResponse response =
           await encodeMessageIntoImageAsync(EncodeRequest(original, msg));
       String decoded = await decodeMessageFromImage(
-          Uint16List.fromList(response.editableImage.getBytes().toList()), "my_token");
+          Uint16List.fromList(response.editableImage.getBytes().toList()),
+          "my_token");
       expect(decoded, msg);
     }
   });

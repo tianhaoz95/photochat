@@ -1,15 +1,19 @@
 tasks:
   - init: download & install Flutter
     command: |
-      mkdir -p /workspace/development
-      cd /workspace/development
-      git clone -b master https://github.com/flutter/flutter.git
-      echo "export PATH=\"\$PATH:/workspace/development/flutter/bin\"" >> ~/.bashrc
-      source ~/.bashrc
       flutter --version
-      cd /workspace/photochat
-
 vscode:
   extensions:
     - Dart-Code.flutter@3.8.1:cytqQi/+kpu802ZOaJwayw==
-    - Dart-Code.dart-code@3.8.1:+5Rq24Mq46eJa5w39WY0bA==
+image:
+  file: .gitpod.Dockerfile
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: true
+    addBadge: true
+    addLabel: true

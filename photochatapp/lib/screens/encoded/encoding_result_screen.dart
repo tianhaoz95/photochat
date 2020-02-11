@@ -44,7 +44,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
         title: Text('Encoded Result'),
       ),
       body: FutureBuilder<Image>(
-        future: this.encodedImage,
+          future: this.encodedImage,
           builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
         if (snapshot.hasData) {
           print('has data');

@@ -63,11 +63,10 @@ EncodeResponse encodeMessageIntoImage(EncodeRequest req) {
   for (int i = 0; i < getEncoderCapacity(img); ++i) {
     encodedImg[i] = encodeOnePixel(img[i], paddedMsg[i]);
   }
-  imglib.Image editableImage =  imglib.Image.fromBytes(req.original.width, req.original.height, encodedImg.toList());
+  imglib.Image editableImage = imglib.Image.fromBytes(
+      req.original.width, req.original.height, encodedImg.toList());
   Image displayableImage = Image.memory(imglib.encodePng(editableImage));
-  EncodeResponse response = EncodeResponse(
-    editableImage, displayableImage
-  );
+  EncodeResponse response = EncodeResponse(editableImage, displayableImage);
   return response;
 }
 
