@@ -52,8 +52,11 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
             child: ListView(
               children: <Widget>[
                 Container(
+                margin: EdgeInsets.all(10.0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
                   child: snapshot.data,
-                ),
+                )),
               ],
             ),
           );
