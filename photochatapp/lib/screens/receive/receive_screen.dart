@@ -41,26 +41,33 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Receive'),
+        title: Text('Decode a Message'),
       ),
       body: Container(
+        padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         child: ListView(
           children: <Widget>[
+            SizedBox(
+              height: 15.0,
+            ),
             Container(
-                margin: EdgeInsets.all(10.0),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: this.image,
-                )),
+              borderRadius: BorderRadius.circular(8.0),
+              child: this.image,
+            )),
+            SizedBox(
+              height: 15.0,
+            ),
             Container(
-              padding: const EdgeInsets.all(10.0),
               child: RaisedButton(
                 onPressed: this.pickImage,
                 child: Icon(Icons.add_a_photo),
               ),
             ),
+            SizedBox(
+              height: 15.0,
+            ),
             Container(
-              padding: const EdgeInsets.all(10.0),
               child: TextField(
                 decoration: InputDecoration(
                     labelText: 'Secret Token',
@@ -69,8 +76,10 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                     )),
               ),
             ),
+            SizedBox(
+              height: 15.0,
+            ),
             Container(
-              padding: const EdgeInsets.all(10.0),
               child: RaisedButton(
                 onPressed: this.sendToDecode,
                 child: Text('Decode My Message'),

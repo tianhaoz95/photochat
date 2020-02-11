@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
 ThemeData theme = ThemeData(
-  primarySwatch: Colors.blue,
+  primarySwatch: Colors.amber,
+  buttonTheme: ButtonThemeData(
+    buttonColor: Colors.amber,
+    textTheme: ButtonTextTheme.primary
+  ),
 );
