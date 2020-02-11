@@ -66,7 +66,9 @@ EncodeResponse encodeMessageIntoImage(EncodeRequest req) {
   imglib.Image editableImage = imglib.Image.fromBytes(
       req.original.width, req.original.height, encodedImg.toList());
   Image displayableImage = Image.memory(imglib.encodePng(editableImage));
-  EncodeResponse response = EncodeResponse(editableImage, displayableImage);
+  Uint8List data = Uint8List.fromList(imglib.encodePng(editableImage));
+  EncodeResponse response =
+      EncodeResponse(editableImage, displayableImage, data);
   return response;
 }
 

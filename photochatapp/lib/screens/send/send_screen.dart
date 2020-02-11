@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-// import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:image/image.dart' as imglib;
@@ -17,39 +16,27 @@ class _SendScreen extends State<SendScreen> {
   File imageFile;
   imglib.Image editableImage;
   Image image;
-  bool selected;
-  bool sending;
+  TextEditingController msgCtrl;
 
   Future<void> pickImage() async {
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
+    Image displayableImage = Image.file(imageFile);
     setState(() {
-      image = Image.file(imageFile);
+      this.image = displayableImage;
     });
   }
 
   Future<void> sendToEncode() async {
-    // Uint16List imageBytes = Uint16List.fromList(image.readAsBytesSync().toList());
-    // await ImageGallerySaver.saveImage(Uint8List.fromList(imageBytes.toList()));
-    // Image.asset('assets/photo_placeholder.png')
-    setState(() {
-      this.sending = true;
-    });
-    print('start');
-    EncodeRequest req = EncodeRequest(this.editableImage, '');
+    EncodeRequest req = EncodeRequest(this.editableImage, msgCtrl.text);
     Navigator.pushNamed(context, '/encoded', arguments: req);
-    print('end');
-    setState(() {
-      this.sending = false;
-    });
   }
 
   @override
   void initState() {
     super.initState();
     this.image = Image.asset('assets/photo_placeholder.png');
-    this.selected = false;
-    this.sending = false;
+    this.msgCtrl = TextEditingController();
   }
 
   @override
@@ -77,6 +64,7 @@ class _SendScreen extends State<SendScreen> {
             Container(
               padding: const EdgeInsets.all(10.0),
               child: TextField(
+                controller: this.msgCtrl,
                 decoration: InputDecoration(
                     labelText: 'Message',
                     border: OutlineInputBorder(
@@ -98,8 +86,7 @@ class _SendScreen extends State<SendScreen> {
               padding: const EdgeInsets.all(10.0),
               child: RaisedButton(
                 onPressed: this.sendToEncode,
-                child:
-                    this.sending ? Text('Sending') : Text('Encode My Message'),
+                child: Text('Encode My Message'),
               ),
             ),
           ],

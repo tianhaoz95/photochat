@@ -1,6 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
+import 'package:photochatapp/services/requests/decode_request.dart';
+import 'package:photochatapp/services/responses/decode_response.dart';
 import 'package:photochatapp/services/utilities/config.dart';
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
@@ -58,11 +60,19 @@ Uint16List sanitizePaddingZeros(Uint16List msg) {
   return sanitized;
 }
 
-Future<String> decodeMessageFromImage(Uint16List img, String token) async {
+DecodeResponse decodeMessageFromImage(DecodeRequest req) {
+  Uint16List img = Uint16List.fromList(req.original.getBytes().toList());
+  // String token = req.token;
   Uint16List extracted = extractBitsFromImg(img);
   Uint16List padded = padToBytes(extracted);
   Uint16List byteMsg = bits2bytes(padded);
   Uint16List sanitized = sanitizePaddingZeros(byteMsg);
   String msg = bytes2msg(sanitized);
-  return msg;
+  DecodeResponse response = DecodeResponse(msg);
+  return response;
+}
+
+Future<DecodeResponse> decodeMessageFromImageAsync(DecodeRequest req) async {
+  final DecodeResponse res = await compute(decodeMessageFromImage, req);
+  return res;
 }

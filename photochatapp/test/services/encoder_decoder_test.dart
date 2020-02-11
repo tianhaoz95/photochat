@@ -5,7 +5,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:photochatapp/services/decoder.dart';
 import 'package:photochatapp/services/encoder.dart';
+import 'package:photochatapp/services/requests/decode_request.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
+import 'package:photochatapp/services/responses/decode_response.dart';
 import 'package:photochatapp/services/responses/encode_response.dart';
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
@@ -29,10 +31,10 @@ void main() {
     String msg = "basic message";
     EncodeResponse response =
         await encodeMessageIntoImageAsync(EncodeRequest(original, msg));
-    String decoded = await decodeMessageFromImage(
-        Uint16List.fromList(response.editableImage.getBytes().toList()),
-        "my_token");
-    expect(decoded, msg);
+    DecodeResponse decoded = await decodeMessageFromImageAsync(
+        DecodeRequest(response.editableImage));
+    String decodedMsg = decoded.decodedMsg;
+    expect(decodedMsg, msg);
   });
 
   test('encoder decoder should be invariant across msg', () async {
@@ -41,10 +43,10 @@ void main() {
     for (String msg in testMessages) {
       EncodeResponse response =
           await encodeMessageIntoImageAsync(EncodeRequest(original, msg));
-      String decoded = await decodeMessageFromImage(
-          Uint16List.fromList(response.editableImage.getBytes().toList()),
-          "my_token");
-      expect(decoded, msg);
+      DecodeResponse decoded = await decodeMessageFromImageAsync(
+          DecodeRequest(response.editableImage));
+      String decodedMsg = decoded.decodedMsg;
+      expect(decodedMsg, msg);
     }
   });
 

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:photochatapp/services/encoder.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:photochatapp/services/responses/encode_response.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
 
 class EncodingResultScreen extends StatefulWidget {
   @override
@@ -14,13 +15,12 @@ class EncodingResultScreen extends StatefulWidget {
 
 class _EncodingResultScreen extends State<EncodingResultScreen> {
   Future<Image> encodedImage;
-  Uint16List encodedByteImage;
+  Uint8List encodedByteImage;
 
   @override
   void initState() {
     super.initState();
-    encodedByteImage = Uint16List.fromList([]);
-    print('here at encode');
+    encodedByteImage = Uint8List.fromList([]);
   }
 
   @override
@@ -34,7 +34,13 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
 
   Future<Image> encodeImage(EncodeRequest req) async {
     EncodeResponse response = await encodeMessageIntoImageAsync(req);
+    encodedByteImage = response.data;
     return response.displayableImage;
+  }
+
+  Future<void> saveImage() async {
+    await ImageGallerySaver.saveImage(
+        Uint8List.fromList(encodedByteImage.toList()));
   }
 
   @override
@@ -46,31 +52,44 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
       body: FutureBuilder<Image>(
           future: this.encodedImage,
           builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
-        if (snapshot.hasData) {
-          print('has data');
-          return Container(
-            child: ListView(
-              children: <Widget>[
-                Container(
-                margin: EdgeInsets.all(10.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: snapshot.data,
-                )),
-              ],
-            ),
-          );
-        } else if (snapshot.hasError) {
-          print('has error');
-          return Container();
-        } else {
-          print('loading');
-          return Container(
-              child: Center(
-            child: CircularProgressIndicator(),
-          ));
-        }
-      }),
+            if (snapshot.hasData) {
+              print('has data');
+              return Container(
+                child: ListView(
+                  children: <Widget>[
+                    Container(
+                        margin: EdgeInsets.all(10.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: snapshot.data,
+                        )),
+                    Container(
+                      child: RaisedButton(
+                        onPressed: this.saveImage,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.save),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Text('Save'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            } else if (snapshot.hasError) {
+              return Container();
+            } else {
+              return Container(
+                  child: Center(
+                child: CircularProgressIndicator(),
+              ));
+            }
+          }),
     );
   }
 }
