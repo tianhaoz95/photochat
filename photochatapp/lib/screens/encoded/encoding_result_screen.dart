@@ -5,6 +5,7 @@ import 'package:photochatapp/services/encoder.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:photochatapp/services/responses/encode_response.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 
 class EncodingResultScreen extends StatefulWidget {
   @override
@@ -43,6 +44,12 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
         Uint8List.fromList(encodedByteImage.toList()));
   }
 
+  Future<void> shareImage() async {
+    await Share.file(
+        'encoded image', 'encoded.png', this.encodedByteImage, 'image/png',
+        text: 'This is the encoded image.');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +60,6 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
           future: this.encodedImage,
           builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
             if (snapshot.hasData) {
-              print('has data');
               return Container(
                 child: ListView(
                   children: <Widget>[
@@ -74,6 +80,21 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                               width: 20.0,
                             ),
                             Text('Save'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: RaisedButton(
+                        onPressed: this.shareImage,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Icon(Icons.share),
+                            SizedBox(
+                              width: 20.0,
+                            ),
+                            Text('Share'),
                           ],
                         ),
                       ),
