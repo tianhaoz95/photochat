@@ -9,7 +9,7 @@ on:
       - "fix/*"
       - "refactor/*"
     paths:
-      - "iwfpapp/**"
+      - "photochatapp/**"
       - ".github/workflows/heimdall.yml"
   pull_request:
     branches:
