@@ -41,41 +41,89 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Receive'),
+        title: Text('Decode a Message'),
       ),
       body: Container(
+        padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         child: ListView(
           children: <Widget>[
+            SizedBox(
+              height: 5.0,
+            ),
             Container(
-                margin: EdgeInsets.all(10.0),
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: this.image,
-                )),
+              borderRadius: BorderRadius.circular(8.0),
+              child: this.image,
+            )),
+            SizedBox(
+              height: 5.0,
+            ),
             Container(
-              padding: const EdgeInsets.all(10.0),
               child: RaisedButton(
                 onPressed: this.pickImage,
-                child: Icon(Icons.add_a_photo),
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.camera),
+                      SizedBox(
+                        width: 15.0,
+                      ),
+                      Text('Choose from Gallery'),
+                    ],
+                  ),
+                ),
               ),
             ),
+            SizedBox(
+              height: 5.0,
+            ),
             Container(
-              padding: const EdgeInsets.all(10.0),
+              child: RaisedButton(
+                onPressed: () {},
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.camera_alt),
+                      SizedBox(
+                        width: 15.0,
+                      ),
+                      Text('Take Picture with Camera'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            Container(
               child: TextField(
                 decoration: InputDecoration(
-                    labelText: 'Secret Token',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    )),
+                  labelText: 'Secret Token',
+                ),
               ),
+            ),
+            SizedBox(
+              height: 5.0,
             ),
             Container(
-              padding: const EdgeInsets.all(10.0),
-              child: RaisedButton(
-                onPressed: this.sendToDecode,
-                child: Text('Decode My Message'),
+                child: RaisedButton(
+              onPressed: this.sendToDecode,
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(Icons.drafts),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                    Text('Decode My Message'),
+                  ],
+                ),
               ),
-            ),
+            )),
           ],
         ),
       ),

@@ -12,6 +12,7 @@ class PhotoChatApp extends StatelessWidget {
     return MaterialApp(
       title: 'Photo Chat',
       theme: theme,
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
