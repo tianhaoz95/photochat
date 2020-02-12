@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:photochatapp/services/encoder.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:photochatapp/services/responses/encode_response.dart';
@@ -40,8 +42,25 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   }
 
   Future<void> saveImage() async {
-    await ImageGallerySaver.saveImage(
+    if (Platform.isAndroid) {
+      PermissionStatus permissionStorage = await PermissionHandler()
+          .checkPermissionStatus(PermissionGroup.storage);
+      if (permissionStorage != PermissionStatus.granted) {
+        Map<PermissionGroup, PermissionStatus> permissionStatus =
+            await PermissionHandler()
+                .requestPermissions([PermissionGroup.storage]);
+        permissionStorage = permissionStatus[PermissionGroup.storage] ??
+            PermissionStatus.unknown;
+
+        if (permissionStorage != PermissionStatus.granted) {
+          print('no storage permission to save image');
+          return;
+        }
+      }
+    }
+    dynamic response = await ImageGallerySaver.saveImage(
         Uint8List.fromList(encodedByteImage.toList()));
+    print(response);
   }
 
   Future<void> shareImage() async {
@@ -54,7 +73,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Encoded Result'),
+        title: Text('Hooray! Encoded!'),
       ),
       body: FutureBuilder<Image>(
           future: this.encodedImage,
@@ -123,9 +142,23 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
               return Container();
             } else {
               return Container(
-                  child: Center(
-                child: CircularProgressIndicator(),
-              ));
+                child: ListView(
+                  children: <Widget>[
+                    LinearProgressIndicator(),
+                    Container(
+                        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset('assets/loading_dunkey.gif'),
+                        )),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+                      child: Text(
+                          'Please be patient, mini dunkey is encoding your message...'),
+                    ),
+                  ],
+                ),
+              );
             }
           }),
     );

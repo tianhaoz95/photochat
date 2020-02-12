@@ -23,13 +23,15 @@ class _ReceiveScreen extends State<ReceiveScreen> {
     this.image = Image.asset('assets/photo_placeholder.png');
   }
 
-  Future<void> pickImage() async {
+  Future<void> pickImageFromGallery() async {
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
-    editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
-    Image displayableImage = Image.file(imageFile);
-    setState(() {
-      this.image = displayableImage;
-    });
+    if (imageFile != null) {
+      editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
+      Image displayableImage = Image.file(imageFile);
+      setState(() {
+        this.image = displayableImage;
+      });
+    }
   }
 
   void sendToDecode() {
@@ -60,7 +62,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
             ),
             Container(
               child: RaisedButton(
-                onPressed: this.pickImage,
+                onPressed: this.pickImageFromGallery,
                 child: Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -70,26 +72,6 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                         width: 15.0,
                       ),
                       Text('Choose from Gallery'),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-              child: RaisedButton(
-                onPressed: () {},
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Icon(Icons.camera_alt),
-                      SizedBox(
-                        width: 15.0,
-                      ),
-                      Text('Take Picture with Camera'),
                     ],
                   ),
                 ),
