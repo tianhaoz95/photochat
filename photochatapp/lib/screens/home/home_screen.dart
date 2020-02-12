@@ -36,11 +36,11 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(Icons.camera_alt),
+                    Icon(Icons.email),
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Take Picture with Camera'),
+                    Text('Encode a Message'),
                   ],
                 ),
               ),
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Decode My Message'),
+                    Text('Decode a Message'),
                   ],
                 ),
               ),
