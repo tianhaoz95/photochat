@@ -66,7 +66,9 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.camera),
-                      SizedBox(width: 15.0,),
+                      SizedBox(
+                        width: 15.0,
+                      ),
                       Text('Choose from Gallery'),
                     ],
                   ),
@@ -84,7 +86,9 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.camera_alt),
-                      SizedBox(width: 15.0,),
+                      SizedBox(
+                        width: 15.0,
+                      ),
                       Text('Take Picture with Camera'),
                     ],
                   ),
@@ -97,21 +101,29 @@ class _ReceiveScreen extends State<ReceiveScreen> {
             Container(
               child: TextField(
                 decoration: InputDecoration(
-                    labelText: 'Secret Token',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    )),
+                  labelText: 'Secret Token',
+                ),
               ),
             ),
             SizedBox(
               height: 5.0,
             ),
             Container(
-              child: RaisedButton(
-                onPressed: this.sendToDecode,
-                child: Text('Decode My Message'),
+                child: RaisedButton(
+              onPressed: this.sendToDecode,
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(Icons.drafts),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                    Text('Decode My Message'),
+                  ],
+                ),
               ),
-            ),
+            )),
           ],
         ),
       ),

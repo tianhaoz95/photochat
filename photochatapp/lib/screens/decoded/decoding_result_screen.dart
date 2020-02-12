@@ -39,8 +39,38 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
           builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
             if (snapshot.hasData) {
               return Container(
+                padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                 child: ListView(
-                  children: <Widget>[Text(snapshot.data)],
+                  children: <Widget>[
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                      child: Text(
+                        'Decoded Message: ',
+                        style: TextStyle(fontSize: 20.0),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                      child: Center(
+                        child: Text(
+                          snapshot.data,
+                          style: TextStyle(fontSize: 20.0),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    Container(
+                        child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset('assets/rabbits_clapping.gif'),
+                    )),
+                  ],
                 ),
               );
             } else if (snapshot.hasError) {

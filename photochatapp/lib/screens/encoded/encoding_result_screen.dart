@@ -61,14 +61,20 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
           builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
             if (snapshot.hasData) {
               return Container(
+                padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                 child: ListView(
                   children: <Widget>[
+                    SizedBox(
+                      height: 5.0,
+                    ),
                     Container(
-                        margin: EdgeInsets.all(10.0),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: snapshot.data,
-                        )),
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: snapshot.data,
+                    )),
+                    SizedBox(
+                      height: 5.0,
+                    ),
                     Container(
                       child: RaisedButton(
                         onPressed: this.saveImage,
@@ -83,6 +89,9 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                           ],
                         ),
                       ),
+                    ),
+                    SizedBox(
+                      height: 5.0,
                     ),
                     Container(
                       child: RaisedButton(
@@ -99,6 +108,14 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    Container(
+                        child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset('assets/rabbits_clapping.gif'),
+                    )),
                   ],
                 ),
               );

@@ -68,7 +68,9 @@ class _SendScreen extends State<SendScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.camera),
-                      SizedBox(width: 15.0,),
+                      SizedBox(
+                        width: 15.0,
+                      ),
                       Text('Choose from Gallery'),
                     ],
                   ),
@@ -86,7 +88,9 @@ class _SendScreen extends State<SendScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.camera_alt),
-                      SizedBox(width: 15.0,),
+                      SizedBox(
+                        width: 15.0,
+                      ),
                       Text('Take Picture with Camera'),
                     ],
                   ),
@@ -100,10 +104,8 @@ class _SendScreen extends State<SendScreen> {
               child: TextField(
                 controller: this.msgCtrl,
                 decoration: InputDecoration(
-                    labelText: 'Message',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    )),
+                  labelText: 'Message',
+                ),
               ),
             ),
             SizedBox(
@@ -112,10 +114,8 @@ class _SendScreen extends State<SendScreen> {
             Container(
               child: TextField(
                 decoration: InputDecoration(
-                    labelText: 'Secret Token',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                    )),
+                  labelText: 'Secret Token',
+                ),
               ),
             ),
             SizedBox(
@@ -129,7 +129,9 @@ class _SendScreen extends State<SendScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Icon(Icons.email),
-                      SizedBox(width: 15.0,),
+                      SizedBox(
+                        width: 15.0,
+                      ),
                       Text('Encode My Message'),
                     ],
                   ),
