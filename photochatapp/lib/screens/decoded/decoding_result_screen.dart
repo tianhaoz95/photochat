@@ -77,8 +77,26 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
               return Container();
             } else {
               return Container(
-                child: Center(
-                  child: Image.asset('assets/loading_dunkey.gif'),
+                padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                child: ListView(
+                  children: <Widget>[
+                    LinearProgressIndicator(),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                        child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset('assets/loading_dunkey.gif'),
+                    )),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                      child: Text(
+                          'Please be patient, mini dunkey is decoding your message...'),
+                    ),
+                  ],
                 ),
               );
             }
