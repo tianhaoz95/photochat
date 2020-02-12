@@ -27,6 +27,9 @@ class _SendScreen extends State<SendScreen> {
   LoadingState uploadingImage;
 
   Future<void> pickImageFromGallery() async {
+    setState(() {
+      this.uploadingImage = LoadingState.LOADING;
+    });
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
       editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
@@ -35,6 +38,9 @@ class _SendScreen extends State<SendScreen> {
         this.image = displayableImage;
       });
     }
+    setState(() {
+      this.uploadingImage = LoadingState.SUCCESS;
+    });
   }
 
   Future<void> pickImageFromCamera() async {
@@ -120,7 +126,8 @@ class _SendScreen extends State<SendScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.camera_alt),
+                      ButtonLogoWithLoadingAndError(
+                          this.uploadingImage, Icons.camera_alt),
                       SizedBox(
                         width: 15.0,
                       ),
