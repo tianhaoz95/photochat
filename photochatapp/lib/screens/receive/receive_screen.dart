@@ -3,7 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as imglib;
+import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
+import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
+import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
+import 'package:photochatapp/services/states/loading_states.dart';
 
 class ReceiveScreen extends StatefulWidget {
   @override
@@ -16,6 +21,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   Image image;
   imglib.Image editableImage;
   File imageFile;
+  LoadingState uploadingImage;
 
   @override
   void initState() {
@@ -24,14 +30,22 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   }
 
   Future<void> pickImageFromGallery() async {
+    setState(() {
+      uploadingImage = LoadingState.LOADING;
+    });
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
-      editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
-      Image displayableImage = Image.file(imageFile);
+      UploadedImageConversionResponse response =
+          await convertUploadedImageToDataaAsync(
+              UploadedImageConversionRequest(imageFile));
+      editableImage = response.editableImage;
       setState(() {
-        this.image = displayableImage;
+        this.image = response.displayableImage;
       });
     }
+    setState(() {
+      uploadingImage = LoadingState.SUCCESS;
+    });
   }
 
   void sendToDecode() {
@@ -67,7 +81,8 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.camera),
+                      ButtonLogoWithLoadingAndError(
+                          this.uploadingImage, Icons.camera),
                       SizedBox(
                         width: 15.0,
                       ),
