@@ -48,7 +48,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
         child: ListView(
           children: <Widget>[
             SizedBox(
-              height: 15.0,
+              height: 5.0,
             ),
             Container(
                 child: ClipRRect(
@@ -56,16 +56,43 @@ class _ReceiveScreen extends State<ReceiveScreen> {
               child: this.image,
             )),
             SizedBox(
-              height: 15.0,
+              height: 5.0,
             ),
             Container(
               child: RaisedButton(
                 onPressed: this.pickImage,
-                child: Icon(Icons.add_a_photo),
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.camera),
+                      SizedBox(width: 15.0,),
+                      Text('Choose from Gallery'),
+                    ],
+                  ),
+                ),
               ),
             ),
             SizedBox(
-              height: 15.0,
+              height: 5.0,
+            ),
+            Container(
+              child: RaisedButton(
+                onPressed: () {},
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Icon(Icons.camera_alt),
+                      SizedBox(width: 15.0,),
+                      Text('Take Picture with Camera'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
             ),
             Container(
               child: TextField(
@@ -77,7 +104,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
               ),
             ),
             SizedBox(
-              height: 15.0,
+              height: 5.0,
             ),
             Container(
               child: RaisedButton(

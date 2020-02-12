@@ -5,20 +5,18 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Photo Chat'),
+        title: Text('Welcome!'),
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         child: ListView(
           children: <Widget>[
             SizedBox(
-              height: 5.0,
+              height: 10.0,
             ),
             Container(
-                child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset('assets/message_in_crop.gif'),
-            )),
+              child: Image.asset('assets/message_logo.png'),
+            ),
             SizedBox(
               height: 5.0,
             ),
@@ -28,14 +26,6 @@ class HomeScreen extends StatelessWidget {
               },
               child: Text('Compose a Message'),
             ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-                child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset('assets/message_out_crop.gif'),
-            )),
             SizedBox(
               height: 5.0,
             ),
