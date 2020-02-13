@@ -17,7 +17,7 @@ class HomeScreen extends StatelessWidget {
             Container(
                 child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset('assets/loading_dunkey.gif'),
+              child: Image.asset('assets/loading_donkey.gif'),
             )),
             SizedBox(
               height: 10.0,

@@ -201,12 +201,12 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset('assets/loading_dunkey.gif'),
+                          child: Image.asset('assets/loading_donkey.gif'),
                         )),
                     Container(
                       padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
                       child: Text(
-                          'Please be patient, mini dunkey is encoding your message...'),
+                          'Please be patient, mini donkey is encoding your message...'),
                     ),
                   ],
                 ),

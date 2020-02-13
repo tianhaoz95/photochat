@@ -118,7 +118,7 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
                         padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset('assets/loading_dunkey.gif'),
+                          child: Image.asset('assets/loading_donkey.gif'),
                         )),
                     SizedBox(
                       height: 5.0,
@@ -126,7 +126,7 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
                     Container(
                       padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 0.0),
                       child: Text(
-                          'Please be patient, mini dunkey is decoding your message...'),
+                          'Please be patient, mini donkey is decoding your message...'),
                     ),
                   ],
                 ),
