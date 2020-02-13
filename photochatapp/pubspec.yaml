@@ -45,7 +45,7 @@ flutter:
   assets:
     - "assets/photo_placeholder.png"
     - "assets/loading_deer.gif"
-    - "assets/loading_dunkey.gif"
+    - "assets/loading_donkey.gif"
     - "assets/loading_husky.gif"
     - "assets/message_logo.png"
     - "assets/rabbits_clapping.gif"
