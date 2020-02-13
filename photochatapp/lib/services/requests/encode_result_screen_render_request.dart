@@ -7,5 +7,6 @@ class DecodeResultScreenRenderRequest {
   Image encodedImage;
   Uint8List encodedByteImage;
   DecodeResultState state;
-  DecodeResultScreenRenderRequest(this.state, this.encodedByteImage, this.encodedImage);
+  DecodeResultScreenRenderRequest(
+      this.state, this.encodedByteImage, this.encodedImage);
 }

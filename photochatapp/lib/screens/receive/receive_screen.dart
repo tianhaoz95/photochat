@@ -54,7 +54,8 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   }
 
   void sendToDecode() {
-    DecodeRequest req = DecodeRequest(this.editableImage, token: this.tokenCtrl.text);
+    DecodeRequest req =
+        DecodeRequest(this.editableImage, token: this.tokenCtrl.text);
     Navigator.pushNamed(context, '/decoded', arguments: req);
   }
 
