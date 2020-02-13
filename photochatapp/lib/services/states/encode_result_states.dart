@@ -1,0 +1,4 @@
+enum DecodeResultState {
+  SUCCESS,
+  ERROR,
+}

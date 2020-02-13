@@ -1,10 +1,14 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:photochatapp/screens/send/token_field.dart';
+import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:photochatapp/components/token_input_field/token_input_field.dart';
+import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:image/image.dart' as imglib;
+import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
+import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
+import 'package:photochatapp/services/states/loading_states.dart';
 
 class SendScreen extends StatefulWidget {
   @override
@@ -20,8 +24,12 @@ class _SendScreen extends State<SendScreen> {
   TextEditingController msgCtrl;
   TextEditingController tokenCtrl;
   bool encrypt;
+  LoadingState uploadingState;
 
   Future<void> pickImageFromGallery() async {
+    setState(() {
+      this.uploadingState = LoadingState.LOADING;
+    });
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
       editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
@@ -30,21 +38,33 @@ class _SendScreen extends State<SendScreen> {
         this.image = displayableImage;
       });
     }
+    setState(() {
+      this.uploadingState = LoadingState.SUCCESS;
+    });
   }
 
   Future<void> pickImageFromCamera() async {
+    setState(() {
+      this.uploadingState = LoadingState.LOADING;
+    });
     imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
     if (imageFile != null) {
-      editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
-      Image displayableImage = Image.file(imageFile);
+      UploadedImageConversionResponse response =
+          await convertUploadedImageToDataaAsync(
+              UploadedImageConversionRequest(imageFile));
+      editableImage = response.editableImage;
       setState(() {
-        this.image = displayableImage;
+        this.image = response.displayableImage;
       });
     }
+    setState(() {
+      this.uploadingState = LoadingState.SUCCESS;
+    });
   }
 
   Future<void> sendToEncode() async {
-    EncodeRequest req = EncodeRequest(this.editableImage, msgCtrl.text);
+    EncodeRequest req = EncodeRequest(this.editableImage, msgCtrl.text,
+        token: this.tokenCtrl.text);
     Navigator.pushNamed(context, '/encoded', arguments: req);
   }
 
@@ -55,6 +75,7 @@ class _SendScreen extends State<SendScreen> {
     this.msgCtrl = TextEditingController();
     this.tokenCtrl = TextEditingController();
     this.encrypt = false;
+    this.uploadingState = LoadingState.PENDING;
   }
 
   @override
@@ -85,7 +106,8 @@ class _SendScreen extends State<SendScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.camera),
+                      ButtonLogoWithLoadingAndError(
+                          this.uploadingState, Icons.camera),
                       SizedBox(
                         width: 15.0,
                       ),
@@ -105,7 +127,8 @@ class _SendScreen extends State<SendScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.camera_alt),
+                      ButtonLogoWithLoadingAndError(
+                          this.uploadingState, Icons.camera_alt),
                       SizedBox(
                         width: 15.0,
                       ),

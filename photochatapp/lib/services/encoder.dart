@@ -2,10 +2,12 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:photochatapp/services/converters/pad_cryption_key.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:photochatapp/services/responses/encode_response.dart';
 import 'package:photochatapp/services/utilities/config.dart';
 import 'package:image/image.dart' as imglib;
+import 'package:encrypt/encrypt.dart' as crypto;
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 
 int getEncoderCapacity(Uint16List img) {
@@ -50,7 +52,14 @@ Uint16List expandMsg(Uint16List msg) {
 EncodeResponse encodeMessageIntoImage(EncodeRequest req) {
   Uint16List img = Uint16List.fromList(req.original.getBytes().toList());
   String msg = req.msg;
-  // String token = req.token;
+  String token = req.token;
+  if (req.shouldEncrypt()) {
+    crypto.Key key = crypto.Key.fromUtf8(padCryptionKey(token));
+    crypto.IV iv = crypto.IV.fromLength(16);
+    crypto.Encrypter encrypter = crypto.Encrypter(crypto.AES(key));
+    crypto.Encrypted encrypted = encrypter.encrypt(msg, iv: iv);
+    msg = encrypted.base64;
+  }
   Uint16List encodedImg = img;
   if (getEncoderCapacity(img) < getMsgSize(msg)) {
     throw FlutterError('image_capacity_not_enough');

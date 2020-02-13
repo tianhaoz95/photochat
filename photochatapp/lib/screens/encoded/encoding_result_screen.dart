@@ -3,11 +3,15 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
 import 'package:photochatapp/services/encoder.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
+import 'package:photochatapp/services/requests/encode_result_screen_render_request.dart';
 import 'package:photochatapp/services/responses/encode_response.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:photochatapp/services/states/encode_result_states.dart';
+import 'package:photochatapp/services/states/loading_states.dart';
 
 class EncodingResultScreen extends StatefulWidget {
   @override
@@ -17,31 +21,32 @@ class EncodingResultScreen extends StatefulWidget {
 }
 
 class _EncodingResultScreen extends State<EncodingResultScreen> {
-  Future<Image> encodedImage;
-  Uint8List encodedByteImage;
+  Future<DecodeResultScreenRenderRequest> renderRequest;
+  LoadingState savingState;
 
   @override
   void initState() {
     super.initState();
-    encodedByteImage = Uint8List.fromList([]);
+    this.savingState = LoadingState.PENDING;
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (ModalRoute.of(context).settings.arguments != null) {
-      EncodeRequest req = ModalRoute.of(context).settings.arguments;
-      encodedImage = encodeImage(req);
+      EncodeRequest encodeReq = ModalRoute.of(context).settings.arguments;
+      renderRequest = requestEncodeImage(encodeReq);
     }
   }
 
-  Future<Image> encodeImage(EncodeRequest req) async {
+  Future<DecodeResultScreenRenderRequest> requestEncodeImage(
+      EncodeRequest req) async {
     EncodeResponse response = await encodeMessageIntoImageAsync(req);
-    encodedByteImage = response.data;
-    return response.displayableImage;
+    return DecodeResultScreenRenderRequest(
+        DecodeResultState.SUCCESS, response.data, response.displayableImage);
   }
 
-  Future<void> saveImage() async {
+  Future<void> saveImage(Uint8List imageData) async {
     if (Platform.isAndroid) {
       PermissionStatus permissionStorage = await PermissionHandler()
           .checkPermissionStatus(PermissionGroup.storage);
@@ -58,14 +63,24 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
         }
       }
     }
-    dynamic response = await ImageGallerySaver.saveImage(
-        Uint8List.fromList(encodedByteImage.toList()));
+    setState(() {
+      this.savingState = LoadingState.LOADING;
+    });
+    dynamic response = await ImageGallerySaver.saveImage(imageData);
     print(response);
+    if (response.toString().toLowerCase().contains('not found')) {
+      setState(() {
+        this.savingState = LoadingState.ERROR;
+      });
+      throw FlutterError('save_image_to_gallert_failed');
+    }
+    setState(() {
+      this.savingState = LoadingState.SUCCESS;
+    });
   }
 
-  Future<void> shareImage() async {
-    await Share.file(
-        'encoded image', 'encoded.png', this.encodedByteImage, 'image/png',
+  Future<void> shareImage(List<int> imageData) async {
+    await Share.file('encoded image', 'encoded.png', imageData, 'image/png',
         text: 'This is the encoded image.');
   }
 
@@ -75,9 +90,10 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
       appBar: AppBar(
         title: Text('Hooray! Encoded!'),
       ),
-      body: FutureBuilder<Image>(
-          future: this.encodedImage,
-          builder: (BuildContext context, AsyncSnapshot<Image> snapshot) {
+      body: FutureBuilder<DecodeResultScreenRenderRequest>(
+          future: this.renderRequest,
+          builder: (BuildContext context,
+              AsyncSnapshot<DecodeResultScreenRenderRequest> snapshot) {
             if (snapshot.hasData) {
               return Container(
                 padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
@@ -89,18 +105,21 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                     Container(
                         child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
-                      child: snapshot.data,
+                      child: snapshot.data.encodedImage,
                     )),
                     SizedBox(
                       height: 5.0,
                     ),
                     Container(
                       child: RaisedButton(
-                        onPressed: this.saveImage,
+                        onPressed: () {
+                          this.saveImage(snapshot.data.encodedByteImage);
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.save),
+                            ButtonLogoWithLoadingAndError(
+                                this.savingState, Icons.save),
                             SizedBox(
                               width: 20.0,
                             ),
@@ -114,7 +133,9 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                     ),
                     Container(
                       child: RaisedButton(
-                        onPressed: this.shareImage,
+                        onPressed: () {
+                          this.shareImage(snapshot.data.encodedByteImage);
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -139,7 +160,38 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                 ),
               );
             } else if (snapshot.hasError) {
-              return Container();
+              return Container(
+                padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                child: ListView(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                      child: Center(
+                          child: Text(
+                        'Whoops >_<',
+                        style: TextStyle(fontSize: 30.0),
+                      )),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                      child:
+                          Center(child: Text('It seems something went wrong')),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                        child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset('assets/bear_bye.gif'),
+                    )),
+                  ],
+                ),
+              );
             } else {
               return Container(
                 child: ListView(

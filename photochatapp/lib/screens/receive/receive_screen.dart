@@ -3,7 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as imglib;
+import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:photochatapp/components/token_input_field/token_input_field.dart';
+import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
+import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
+import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
+import 'package:photochatapp/services/states/loading_states.dart';
 
 class ReceiveScreen extends StatefulWidget {
   @override
@@ -16,26 +22,40 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   Image image;
   imglib.Image editableImage;
   File imageFile;
+  LoadingState uploadingImage;
+  TextEditingController tokenCtrl;
+  bool decrypt;
 
   @override
   void initState() {
     super.initState();
     this.image = Image.asset('assets/photo_placeholder.png');
+    this.tokenCtrl = TextEditingController();
+    this.decrypt = false;
   }
 
   Future<void> pickImageFromGallery() async {
+    setState(() {
+      uploadingImage = LoadingState.LOADING;
+    });
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
-      editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
-      Image displayableImage = Image.file(imageFile);
+      UploadedImageConversionResponse response =
+          await convertUploadedImageToDataaAsync(
+              UploadedImageConversionRequest(imageFile));
+      editableImage = response.editableImage;
       setState(() {
-        this.image = displayableImage;
+        this.image = response.displayableImage;
       });
     }
+    setState(() {
+      uploadingImage = LoadingState.SUCCESS;
+    });
   }
 
   void sendToDecode() {
-    DecodeRequest req = DecodeRequest(this.editableImage);
+    DecodeRequest req =
+        DecodeRequest(this.editableImage, token: this.tokenCtrl.text);
     Navigator.pushNamed(context, '/decoded', arguments: req);
   }
 
@@ -67,7 +87,8 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Icon(Icons.camera),
+                      ButtonLogoWithLoadingAndError(
+                          this.uploadingImage, Icons.camera),
                       SizedBox(
                         width: 15.0,
                       ),
@@ -81,11 +102,24 @@ class _ReceiveScreen extends State<ReceiveScreen> {
               height: 5.0,
             ),
             Container(
-              child: TextField(
-                decoration: InputDecoration(
-                  labelText: 'Secret Token',
-                ),
+              child: Row(
+                children: <Widget>[
+                  Checkbox(
+                      value: this.decrypt,
+                      onChanged: (bool nextVal) {
+                        setState(() {
+                          this.decrypt = nextVal;
+                        });
+                      }),
+                  Text('Decrypt my message!'),
+                ],
               ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            Container(
+              child: TokenInputField(this.decrypt, this.tokenCtrl),
             ),
             SizedBox(
               height: 5.0,
