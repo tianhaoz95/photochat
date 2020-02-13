@@ -8,7 +8,7 @@
 PRODUCT_NAME = photochatapp
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.photochatapp
+PRODUCT_BUNDLE_IDENTIFIER = com.jacksonz.photochatapp
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2020 com.example. All rights reserved.
