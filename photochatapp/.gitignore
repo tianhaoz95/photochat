@@ -30,8 +30,15 @@
 .pub/
 /build/
 
+# System files
+.DS_Store
+
 # Web related
 lib/generated_plugin_registrant.dart
 
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+# Credential files
+/android/key.properties
+/android/app/key.jks
