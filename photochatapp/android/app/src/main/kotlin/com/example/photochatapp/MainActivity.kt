@@ -1,4 +1,4 @@
-package com.example.photochatapp
+package com.jacksonz.photochatapp
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
