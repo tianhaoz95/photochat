@@ -1,11 +1,13 @@
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
+import 'package:photochatapp/services/converters/pad_cryption_key.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
 import 'package:photochatapp/services/responses/decode_response.dart';
 import 'package:photochatapp/services/utilities/config.dart';
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
+import 'package:encrypt/encrypt.dart' as crypto;
 
 int extractLastBit(int pixel) {
   int lastBit = pixel & 1;
@@ -62,12 +64,19 @@ Uint16List sanitizePaddingZeros(Uint16List msg) {
 
 DecodeResponse decodeMessageFromImage(DecodeRequest req) {
   Uint16List img = Uint16List.fromList(req.original.getBytes().toList());
-  // String token = req.token;
   Uint16List extracted = extractBitsFromImg(img);
   Uint16List padded = padToBytes(extracted);
   Uint16List byteMsg = bits2bytes(padded);
   Uint16List sanitized = sanitizePaddingZeros(byteMsg);
   String msg = bytes2msg(sanitized);
+  String token = req.token;
+  if (req.shouldDecrypt()) {
+    crypto.Key key = crypto.Key.fromUtf8(padCryptionKey(token));
+    crypto.IV iv = crypto.IV.fromLength(16);
+    crypto.Encrypter encrypter = crypto.Encrypter(crypto.AES(key));
+    crypto.Encrypted encryptedMsg = crypto.Encrypted.fromBase64(msg);
+    msg = encrypter.decrypt(encryptedMsg, iv: iv);
+  }
   DecodeResponse response = DecodeResponse(msg);
   return response;
 }

@@ -30,6 +30,7 @@ dependencies:
   esys_flutter_share: ^1.0.2
   image: 
   permission_handler: ^4.2.0+hotfix.3
+  encrypt: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +49,7 @@ flutter:
     - "assets/loading_husky.gif"
     - "assets/message_logo.png"
     - "assets/rabbits_clapping.gif"
+    - "assets/bear_bye.gif"
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

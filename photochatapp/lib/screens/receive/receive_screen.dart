@@ -22,11 +22,13 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   imglib.Image editableImage;
   File imageFile;
   LoadingState uploadingImage;
+  TextEditingController tokenCtrl;
 
   @override
   void initState() {
     super.initState();
     this.image = Image.asset('assets/photo_placeholder.png');
+    this.tokenCtrl = TextEditingController();
   }
 
   Future<void> pickImageFromGallery() async {
@@ -49,7 +51,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   }
 
   void sendToDecode() {
-    DecodeRequest req = DecodeRequest(this.editableImage);
+    DecodeRequest req = DecodeRequest(this.editableImage, token: this.tokenCtrl.text);
     Navigator.pushNamed(context, '/decoded', arguments: req);
   }
 
@@ -97,6 +99,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
             ),
             Container(
               child: TextField(
+                controller: this.tokenCtrl,
                 decoration: InputDecoration(
                   labelText: 'Secret Token',
                 ),

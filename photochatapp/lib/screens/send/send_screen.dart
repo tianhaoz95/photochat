@@ -63,7 +63,8 @@ class _SendScreen extends State<SendScreen> {
   }
 
   Future<void> sendToEncode() async {
-    EncodeRequest req = EncodeRequest(this.editableImage, msgCtrl.text);
+    EncodeRequest req = EncodeRequest(this.editableImage, msgCtrl.text,
+        token: this.tokenCtrl.text);
     Navigator.pushNamed(context, '/encoded', arguments: req);
   }
 

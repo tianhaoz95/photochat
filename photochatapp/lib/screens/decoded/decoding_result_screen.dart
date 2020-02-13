@@ -74,10 +74,40 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
                 ),
               );
             } else if (snapshot.hasError) {
-              return Container();
-            } else {
               return Container(
                 padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                child: ListView(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                      child: Center(
+                          child: Text(
+                        'Whoops >_<',
+                        style: TextStyle(fontSize: 30.0),
+                      )),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                      child:
+                          Center(child: Text('It seems something went wrong')),
+                    ),
+                    SizedBox(
+                      height: 5.0,
+                    ),
+                    Container(
+                        child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset('assets/bear_bye.gif'),
+                    )),
+                  ],
+                ),
+              );
+            } else {
+              return Container(
                 child: ListView(
                   children: <Widget>[
                     LinearProgressIndicator(),
@@ -85,14 +115,16 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
                       height: 5.0,
                     ),
                     Container(
+                        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
                         child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset('assets/loading_dunkey.gif'),
-                    )),
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset('assets/loading_dunkey.gif'),
+                        )),
                     SizedBox(
                       height: 5.0,
                     ),
                     Container(
+                      padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 0.0),
                       child: Text(
                           'Please be patient, mini dunkey is decoding your message...'),
                     ),
