@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
-import 'package:photochatapp/screens/send/token_field.dart';
+import 'package:photochatapp/components/token_input_field/token_input_field.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:image/image.dart' as imglib;
@@ -24,11 +24,11 @@ class _SendScreen extends State<SendScreen> {
   TextEditingController msgCtrl;
   TextEditingController tokenCtrl;
   bool encrypt;
-  LoadingState uploadingImage;
+  LoadingState uploadingState;
 
   Future<void> pickImageFromGallery() async {
     setState(() {
-      this.uploadingImage = LoadingState.LOADING;
+      this.uploadingState = LoadingState.LOADING;
     });
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
@@ -39,13 +39,13 @@ class _SendScreen extends State<SendScreen> {
       });
     }
     setState(() {
-      this.uploadingImage = LoadingState.SUCCESS;
+      this.uploadingState = LoadingState.SUCCESS;
     });
   }
 
   Future<void> pickImageFromCamera() async {
     setState(() {
-      this.uploadingImage = LoadingState.LOADING;
+      this.uploadingState = LoadingState.LOADING;
     });
     imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
     if (imageFile != null) {
@@ -58,7 +58,7 @@ class _SendScreen extends State<SendScreen> {
       });
     }
     setState(() {
-      this.uploadingImage = LoadingState.SUCCESS;
+      this.uploadingState = LoadingState.SUCCESS;
     });
   }
 
@@ -75,7 +75,7 @@ class _SendScreen extends State<SendScreen> {
     this.msgCtrl = TextEditingController();
     this.tokenCtrl = TextEditingController();
     this.encrypt = false;
-    this.uploadingImage = LoadingState.PENDING;
+    this.uploadingState = LoadingState.PENDING;
   }
 
   @override
@@ -107,7 +107,7 @@ class _SendScreen extends State<SendScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ButtonLogoWithLoadingAndError(
-                          this.uploadingImage, Icons.camera),
+                          this.uploadingState, Icons.camera),
                       SizedBox(
                         width: 15.0,
                       ),
@@ -128,7 +128,7 @@ class _SendScreen extends State<SendScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ButtonLogoWithLoadingAndError(
-                          this.uploadingImage, Icons.camera_alt),
+                          this.uploadingState, Icons.camera_alt),
                       SizedBox(
                         width: 15.0,
                       ),

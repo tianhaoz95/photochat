@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:photochatapp/components/token_input_field/token_input_field.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
 import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
@@ -23,12 +24,14 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   File imageFile;
   LoadingState uploadingImage;
   TextEditingController tokenCtrl;
+  bool decrypt;
 
   @override
   void initState() {
     super.initState();
     this.image = Image.asset('assets/photo_placeholder.png');
     this.tokenCtrl = TextEditingController();
+    this.decrypt = false;
   }
 
   Future<void> pickImageFromGallery() async {
@@ -98,12 +101,24 @@ class _ReceiveScreen extends State<ReceiveScreen> {
               height: 5.0,
             ),
             Container(
-              child: TextField(
-                controller: this.tokenCtrl,
-                decoration: InputDecoration(
-                  labelText: 'Secret Token',
-                ),
+              child: Row(
+                children: <Widget>[
+                  Checkbox(
+                      value: this.decrypt,
+                      onChanged: (bool nextVal) {
+                        setState(() {
+                          this.decrypt = nextVal;
+                        });
+                      }),
+                  Text('Decrypt my message!'),
+                ],
               ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            Container(
+              child: TokenInputField(this.decrypt, this.tokenCtrl),
             ),
             SizedBox(
               height: 5.0,

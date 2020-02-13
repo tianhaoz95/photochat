@@ -64,6 +64,27 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/contribute');
+              },
+              color: Colors.pinkAccent,
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(Icons.favorite),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                    Text('Contribute to the Project'),
+                  ],
+                ),
+              ),
             )
           ],
         ),

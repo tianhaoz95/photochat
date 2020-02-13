@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
 import 'package:photochatapp/services/encoder.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:photochatapp/services/requests/encode_result_screen_render_request.dart';
@@ -10,6 +11,7 @@ import 'package:photochatapp/services/responses/encode_response.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:photochatapp/services/states/encode_result_states.dart';
+import 'package:photochatapp/services/states/loading_states.dart';
 
 class EncodingResultScreen extends StatefulWidget {
   @override
@@ -20,10 +22,12 @@ class EncodingResultScreen extends StatefulWidget {
 
 class _EncodingResultScreen extends State<EncodingResultScreen> {
   Future<DecodeResultScreenRenderRequest> renderRequest;
+  LoadingState savingState;
 
   @override
   void initState() {
     super.initState();
+    this.savingState = LoadingState.PENDING;
   }
 
   @override
@@ -59,8 +63,20 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
         }
       }
     }
+    setState(() {
+      this.savingState = LoadingState.LOADING;
+    });
     dynamic response = await ImageGallerySaver.saveImage(imageData);
     print(response);
+    if (response.toString().toLowerCase().contains('not found')) {
+      setState(() {
+        this.savingState = LoadingState.ERROR;
+      });
+      throw FlutterError('save_image_to_gallert_failed');
+    }
+    setState(() {
+      this.savingState = LoadingState.SUCCESS;
+    });
   }
 
   Future<void> shareImage(List<int> imageData) async {
@@ -102,7 +118,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(Icons.save),
+                            ButtonLogoWithLoadingAndError(
+                                this.savingState, Icons.save),
                             SizedBox(
                               width: 20.0,
                             ),

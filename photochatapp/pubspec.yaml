@@ -50,6 +50,8 @@ flutter:
     - "assets/message_logo.png"
     - "assets/rabbits_clapping.gif"
     - "assets/bear_bye.gif"
+    - "assets/in_love_corgi_long.gif"
+    - "assets/programming_corgi.gif"
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
