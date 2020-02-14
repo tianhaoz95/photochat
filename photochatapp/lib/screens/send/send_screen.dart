@@ -28,18 +28,20 @@ class _SendScreen extends State<SendScreen> {
 
   Future<void> pickImageFromGallery() async {
     setState(() {
-      this.uploadingState = LoadingState.LOADING;
+      uploadingState = LoadingState.LOADING;
     });
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
-      editableImage = imglib.decodeImage(imageFile.readAsBytesSync());
-      Image displayableImage = Image.file(imageFile);
+      UploadedImageConversionResponse response =
+          await convertUploadedImageToDataaAsync(
+              UploadedImageConversionRequest(imageFile));
+      editableImage = response.editableImage;
       setState(() {
-        this.image = displayableImage;
+        this.image = response.displayableImage;
       });
     }
     setState(() {
-      this.uploadingState = LoadingState.SUCCESS;
+      uploadingState = LoadingState.SUCCESS;
     });
   }
 
@@ -101,6 +103,7 @@ class _SendScreen extends State<SendScreen> {
             ),
             Container(
               child: RaisedButton(
+                key: Key('encode_pick_image_from_gallery_btn'),
                 onPressed: this.pickImageFromGallery,
                 child: Container(
                   child: Row(
@@ -143,6 +146,7 @@ class _SendScreen extends State<SendScreen> {
             ),
             Container(
               child: TextField(
+                key: Key('decode_screen_msg_input'),
                 controller: this.msgCtrl,
                 decoration: InputDecoration(
                   labelText: 'Message',
@@ -156,6 +160,7 @@ class _SendScreen extends State<SendScreen> {
               child: Row(
                 children: <Widget>[
                   Checkbox(
+                    key: Key('encode_screen_token_checkbox'),
                       value: this.encrypt,
                       onChanged: (bool nextVal) {
                         setState(() {
@@ -166,12 +171,13 @@ class _SendScreen extends State<SendScreen> {
                 ],
               ),
             ),
-            TokenInputField(this.encrypt, this.tokenCtrl),
+            TokenInputField(this.encrypt, this.tokenCtrl, keyVal: 'encode_screen_token_input',),
             SizedBox(
               height: 5.0,
             ),
             Container(
               child: RaisedButton(
+                key: Key('decode_screen_decode_btn'),
                 onPressed: this.sendToEncode,
                 child: Container(
                   child: Row(

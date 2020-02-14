@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/send');
               },
+              key: Key('home_screen_encode_message_btn'),
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -52,6 +53,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/receive');
               },
+              key: Key('home_screen_decode_message_btn'),
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

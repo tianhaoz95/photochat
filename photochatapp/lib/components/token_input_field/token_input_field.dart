@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class TokenInputField extends StatefulWidget {
   final TextEditingController ctrl;
   final bool enable;
-  const TokenInputField(this.enable, this.ctrl);
+  final String keyVal;
+  const TokenInputField(this.enable, this.ctrl, {this.keyVal});
   @override
   State<StatefulWidget> createState() {
     return _TokenInputField();
@@ -42,6 +43,7 @@ class _TokenInputField extends State<TokenInputField> {
             ),
             Container(
               child: TextField(
+                key: Key(widget.keyVal),
                 controller: widget.ctrl,
                 obscureText: !this.visible,
                 decoration: InputDecoration(

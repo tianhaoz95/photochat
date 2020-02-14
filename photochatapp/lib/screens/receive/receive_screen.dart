@@ -22,7 +22,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   Image image;
   imglib.Image editableImage;
   File imageFile;
-  LoadingState uploadingImage;
+  LoadingState uploadingState;
   TextEditingController tokenCtrl;
   bool decrypt;
 
@@ -36,10 +36,11 @@ class _ReceiveScreen extends State<ReceiveScreen> {
 
   Future<void> pickImageFromGallery() async {
     setState(() {
-      uploadingImage = LoadingState.LOADING;
+      uploadingState = LoadingState.LOADING;
     });
     imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
     if (imageFile != null) {
+      print('got image');
       UploadedImageConversionResponse response =
           await convertUploadedImageToDataaAsync(
               UploadedImageConversionRequest(imageFile));
@@ -49,7 +50,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
       });
     }
     setState(() {
-      uploadingImage = LoadingState.SUCCESS;
+      uploadingState = LoadingState.SUCCESS;
     });
   }
 
@@ -82,13 +83,14 @@ class _ReceiveScreen extends State<ReceiveScreen> {
             ),
             Container(
               child: RaisedButton(
+                key: Key('decode_pick_image_from_gallery_btn'),
                 onPressed: this.pickImageFromGallery,
                 child: Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       ButtonLogoWithLoadingAndError(
-                          this.uploadingImage, Icons.camera),
+                          this.uploadingState, Icons.camera),
                       SizedBox(
                         width: 15.0,
                       ),
