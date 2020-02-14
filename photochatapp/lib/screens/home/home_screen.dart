@@ -5,7 +5,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome!'),
+        title: Text('Welcome!', key: Key('home_screen_title'),),
       ),
       body: Container(
         padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
@@ -72,6 +72,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/contribute');
               },
+              key: Key('home_screen_contribute_btn'),
               color: Colors.pinkAccent,
               child: Container(
                 child: Row(
