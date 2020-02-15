@@ -122,7 +122,7 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Choose from Gallery'),
+                          Text('Gallery'),
                         ],
                       ),
                     ),
@@ -143,7 +143,7 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Take Picture with Camera'),
+                          Text('Camera'),
                         ],
                       ),
                     ),
@@ -199,7 +199,7 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Encode My Message'),
+                          Text('Encode'),
                         ],
                       ),
                     ),

@@ -102,7 +102,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Choose from Gallery'),
+                          Text('Gallery'),
                         ],
                       ),
                     ),
@@ -151,7 +151,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                         SizedBox(
                           width: 15.0,
                         ),
-                        Text('Decode My Message'),
+                        Text('Decode'),
                       ],
                     ),
                   ),
