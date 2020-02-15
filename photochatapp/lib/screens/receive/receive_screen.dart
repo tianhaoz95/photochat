@@ -107,6 +107,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
               child: Row(
                 children: <Widget>[
                   Checkbox(
+                      key: Key('decode_encrypt_checkbox'),
                       value: this.decrypt,
                       onChanged: (bool nextVal) {
                         setState(() {
@@ -121,13 +122,18 @@ class _ReceiveScreen extends State<ReceiveScreen> {
               height: 5.0,
             ),
             Container(
-              child: TokenInputField(this.decrypt, this.tokenCtrl),
+              child: TokenInputField(
+                this.decrypt,
+                this.tokenCtrl,
+                keyVal: 'decode_screen_token_input',
+              ),
             ),
             SizedBox(
               height: 5.0,
             ),
             Container(
                 child: RaisedButton(
+              key: Key('decode_screen_decode_btn'),
               onPressed: this.sendToDecode,
               child: Container(
                 child: Row(

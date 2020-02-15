@@ -39,6 +39,6 @@ void main() {
       await checkHomeToContribute(driver);
       await checkHomeToEncode(driver);
       await checkHomeToDecode(driver);
-    });
+    }, timeout: Timeout(Duration(minutes: 10)));
   });
 }
