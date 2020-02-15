@@ -7,7 +7,7 @@ import 'package:image/image.dart' as imglib;
 UploadedImageConversionResponse convertUploadedImageToData(
     UploadedImageConversionRequest req) {
   imglib.Image editableImage = imglib.decodeImage(req.file.readAsBytesSync());
-  Image displayableImage = Image.file(req.file);
+  Image displayableImage = Image.file(req.file, fit: BoxFit.fitWidth);
   UploadedImageConversionResponse response =
       UploadedImageConversionResponse(editableImage, displayableImage);
   return response;

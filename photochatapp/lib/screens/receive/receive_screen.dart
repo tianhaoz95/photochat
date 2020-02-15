@@ -29,7 +29,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   @override
   void initState() {
     super.initState();
-    this.image = Image.asset('assets/photo_placeholder.png');
+    this.image = Image.asset('assets/photo_placeholder.png', fit: BoxFit.fitWidth);
     this.tokenCtrl = TextEditingController();
     this.decrypt = false;
   }
@@ -74,10 +74,14 @@ class _ReceiveScreen extends State<ReceiveScreen> {
               height: 5.0,
             ),
             Container(
+                constraints: BoxConstraints(
+                  minHeight: 200,
+                  maxHeight: 600,
+                ),
                 child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: this.image,
-            )),
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: this.image,
+                )),
             SizedBox(
               height: 5.0,
             ),

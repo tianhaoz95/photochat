@@ -15,15 +15,23 @@ class HomeScreen extends StatelessWidget {
               height: 10.0,
             ),
             Container(
+              constraints: BoxConstraints(
+                  minHeight: 20,
+                  maxHeight: 400,
+                ),
                 child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset('assets/loading_donkey.gif'),
+              child: Image.asset('assets/loading_donkey.gif', fit: BoxFit.fitWidth,),
             )),
             SizedBox(
               height: 10.0,
             ),
             Container(
-              child: Image.asset('assets/message_logo.png'),
+              constraints: BoxConstraints(
+                  minHeight: 20,
+                  maxHeight: 200,
+                ),
+              child: Image.asset('assets/message_logo.png', fit: BoxFit.fitWidth,),
             ),
             SizedBox(
               height: 5.0,

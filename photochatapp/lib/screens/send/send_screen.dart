@@ -73,7 +73,7 @@ class _SendScreen extends State<SendScreen> {
   @override
   void initState() {
     super.initState();
-    this.image = Image.asset('assets/photo_placeholder.png');
+    this.image = Image.asset('assets/photo_placeholder.png', fit: BoxFit.fitWidth);
     this.msgCtrl = TextEditingController();
     this.tokenCtrl = TextEditingController();
     this.encrypt = false;
@@ -94,6 +94,10 @@ class _SendScreen extends State<SendScreen> {
               height: 5.0,
             ),
             Container(
+              constraints: BoxConstraints(
+                  minHeight: 200,
+                  maxHeight: 600,
+                ),
                 child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: this.image,
