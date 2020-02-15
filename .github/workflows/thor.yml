@@ -32,7 +32,7 @@ jobs:
         with:
           api-level: 29
           profile: Pixel 3 XL
-          script: ./scripts/setenv.sh && cd ./photochatapp && flutter pub get && flutter devices && flutter drive --target=test_driver/app.dart
+          script: $ANDROID_HOME/tools/bin/avdmanager list && ./scripts/setenv.sh && cd ./photochatapp && flutter pub get && flutter drive --target=test_driver/app.dart
   ios-integration-test:
     name: run integration test on iOS emulator
     runs-on: macOS-latest
