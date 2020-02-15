@@ -25,6 +25,10 @@ jobs:
           flutter --version
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
+        env:
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           api-level: 29
           script: ./scripts/setenv.sh && cd ./photochatapp && flutter pub get && flutter drive --target=test_driver/app.dart
