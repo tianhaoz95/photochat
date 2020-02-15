@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Encode a Message'),
+                    Text('Encode'),
                   ],
                 ),
               ),
@@ -82,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Decode a Message'),
+                    Text('Decode'),
                   ],
                 ),
               ),
@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Contribute to the Project'),
+                    Text('Contribute'),
                   ],
                 ),
               ),
