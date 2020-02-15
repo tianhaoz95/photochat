@@ -31,8 +31,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           api-level: 29
-          profile: Pixel 3 XL
-          script: /Users/runner/Library/Android/sdk/tools/bin/avdmanager list && ./scripts/setenv.sh && cd ./photochatapp && flutter pub get && flutter drive --target=test_driver/app.dart
+          script: ./scripts/setenv.sh && cd ./photochatapp && flutter pub get && flutter drive --target=test_driver/app.dart
   ios-integration-test:
     name: run integration test on iOS emulator
     runs-on: macOS-latest
