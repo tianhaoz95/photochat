@@ -11,7 +11,8 @@ import 'fixtures/encrypted_corgi_image.dart';
 
 void main() {
   enableFlutterDriverExtension();
-  const MethodChannel channel = MethodChannel('plugins.flutter.io/image_picker');
+  const MethodChannel channel =
+      MethodChannel('plugins.flutter.io/image_picker');
   bool isEncoding = true;
   channel.setMockMethodCallHandler((MethodCall methodCall) async {
     print('isEncoding: ' + isEncoding.toString());
