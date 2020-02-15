@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/components/token_input_field/token_input_field.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
@@ -29,7 +30,8 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   @override
   void initState() {
     super.initState();
-    this.image = Image.asset('assets/photo_placeholder.png', fit: BoxFit.fitWidth);
+    this.image =
+        Image.asset('assets/photo_placeholder.png', fit: BoxFit.fitWidth);
     this.tokenCtrl = TextEditingController();
     this.decrypt = false;
   }
@@ -63,98 +65,100 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Decode a Message'),
-      ),
-      body: Container(
-        padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-        child: ListView(
-          children: <Widget>[
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-                constraints: BoxConstraints(
-                  minHeight: 200,
-                  maxHeight: 600,
+        appBar: AppBar(
+          title: Text('Decode a Message'),
+        ),
+        resizeToAvoidBottomInset: false,
+        body: ScreenAdapter(
+          child: Container(
+            padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+            child: ListView(
+              children: <Widget>[
+                SizedBox(
+                  height: 5.0,
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: this.image,
-                )),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-              child: RaisedButton(
-                key: Key('decode_pick_image_from_gallery_btn'),
-                onPressed: this.pickImageFromGallery,
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      ButtonLogoWithLoadingAndError(
-                          this.uploadingState, Icons.camera),
-                      SizedBox(
-                        width: 15.0,
+                Container(
+                    constraints: BoxConstraints(
+                      minHeight: 200,
+                      maxHeight: 600,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: this.image,
+                    )),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Container(
+                  child: RaisedButton(
+                    key: Key('decode_pick_image_from_gallery_btn'),
+                    onPressed: this.pickImageFromGallery,
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ButtonLogoWithLoadingAndError(
+                              this.uploadingState, Icons.camera),
+                          SizedBox(
+                            width: 15.0,
+                          ),
+                          Text('Choose from Gallery'),
+                        ],
                       ),
-                      Text('Choose from Gallery'),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Container(
+                  child: Row(
+                    children: <Widget>[
+                      Checkbox(
+                          key: Key('decode_encrypt_checkbox'),
+                          value: this.decrypt,
+                          onChanged: (bool nextVal) {
+                            setState(() {
+                              this.decrypt = nextVal;
+                            });
+                          }),
+                      Text('Decrypt my message!'),
                     ],
                   ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-              child: Row(
-                children: <Widget>[
-                  Checkbox(
-                      key: Key('decode_encrypt_checkbox'),
-                      value: this.decrypt,
-                      onChanged: (bool nextVal) {
-                        setState(() {
-                          this.decrypt = nextVal;
-                        });
-                      }),
-                  Text('Decrypt my message!'),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-              child: TokenInputField(
-                this.decrypt,
-                this.tokenCtrl,
-                keyVal: 'decode_screen_token_input',
-              ),
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Container(
-                child: RaisedButton(
-              key: Key('decode_screen_decode_btn'),
-              onPressed: this.sendToDecode,
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Icon(Icons.drafts),
-                    SizedBox(
-                      width: 15.0,
-                    ),
-                    Text('Decode My Message'),
-                  ],
+                SizedBox(
+                  height: 5.0,
                 ),
-              ),
-            )),
-          ],
-        ),
-      ),
-    );
+                Container(
+                  child: TokenInputField(
+                    this.decrypt,
+                    this.tokenCtrl,
+                    keyVal: 'decode_screen_token_input',
+                  ),
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Container(
+                    child: RaisedButton(
+                  key: Key('decode_screen_decode_btn'),
+                  onPressed: this.sendToDecode,
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(Icons.drafts),
+                        SizedBox(
+                          width: 15.0,
+                        ),
+                        Text('Decode My Message'),
+                      ],
+                    ),
+                  ),
+                )),
+              ],
+            ),
+          ),
+        ));
   }
 }

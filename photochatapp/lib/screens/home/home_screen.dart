@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome!', key: Key('home_screen_title'),),
+        title: Text(
+          'Welcome!',
+          key: Key('home_screen_title'),
+        ),
       ),
-      body: Container(
+      resizeToAvoidBottomInset: false,
+      body: ScreenAdapter(
+          child: Container(
         padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         child: ListView(
           children: <Widget>[
@@ -15,23 +21,29 @@ class HomeScreen extends StatelessWidget {
               height: 10.0,
             ),
             Container(
-              constraints: BoxConstraints(
+                constraints: BoxConstraints(
                   minHeight: 20,
                   maxHeight: 400,
                 ),
                 child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset('assets/loading_donkey.gif', fit: BoxFit.fitWidth,),
-            )),
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    'assets/loading_donkey.gif',
+                    fit: BoxFit.fitWidth,
+                  ),
+                )),
             SizedBox(
               height: 10.0,
             ),
             Container(
               constraints: BoxConstraints(
-                  minHeight: 20,
-                  maxHeight: 200,
-                ),
-              child: Image.asset('assets/message_logo.png', fit: BoxFit.fitWidth,),
+                minHeight: 20,
+                maxHeight: 200,
+              ),
+              child: Image.asset(
+                'assets/message_logo.png',
+                fit: BoxFit.fitWidth,
+              ),
             ),
             SizedBox(
               height: 5.0,
@@ -99,7 +111,7 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-      ),
+      )),
     );
   }
 }
