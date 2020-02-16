@@ -5,7 +5,7 @@ import '../config/logger.dart';
 // import '../utilities/screenshot.dart';
 
 Future<void> checkDecodeToResult(FlutterDriver driver) async {
-  String decodeToResultTestLoggingNamespace = 'encode_screen_integration_test';
+  String decodeToResultTestLoggingNamespace = 'decode_screen_integration_test';
   logger.info('try to tap checkbox to open token input', name: decodeToResultTestLoggingNamespace);
   await driver.tap(find.byValueKey('decode_encrypt_checkbox'));
   await Future.delayed(const Duration(seconds: 1));
