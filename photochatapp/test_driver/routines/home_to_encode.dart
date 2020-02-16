@@ -5,7 +5,7 @@ import '../utilities/screenshot.dart';
 import 'encode_to_result.dart';
 
 Future<void> checkHomeToEncode(FlutterDriver driver) async {
-  String homeToEncodeTestLoggingNamespace = 'encode_screen_integration_test';
+  String homeToEncodeTestLoggingNamespace = 'home_to_encode_integration_test';
   logger.info('try to navigate to decode screen',
       name: homeToEncodeTestLoggingNamespace);
   await driver.tap(find.byValueKey('home_screen_encode_message_btn'));

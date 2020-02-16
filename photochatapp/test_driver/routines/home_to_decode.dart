@@ -6,7 +6,7 @@ import 'decode_to_result.dart';
 
 Future<void> checkHomeToDecode(FlutterDriver driver) async {
   const String homeToDecodeTestLoggingNamespace =
-      'decode_screen_integration_test';
+      'home_to_decode_integration_test';
   logger.info('try to navigate to decode screen',
       name: homeToDecodeTestLoggingNamespace);
   await driver.tap(find.byValueKey('home_screen_decode_message_btn'));
