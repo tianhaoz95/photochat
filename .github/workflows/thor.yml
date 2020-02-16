@@ -9,7 +9,6 @@ jobs:
   android-integration-test:
     name: run integration test on Android emulator
     runs-on: macOS-latest
-    timeout-minutes: 30
     strategy:
       matrix:
         device:
@@ -32,6 +31,7 @@ jobs:
           flutter upgrade
           flutter --version
       - name: run tests
+        timeout-minutes: 30
         uses: reactivecircus/android-emulator-runner@v2
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
@@ -44,7 +44,6 @@ jobs:
   ios-integration-test:
     name: run integration test on iOS emulator
     runs-on: macOS-latest
-    timeout-minutes: 30
     strategy:
       matrix:
         device:
@@ -80,6 +79,7 @@ jobs:
           )
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
       - name: run integration tests
+        timeout-minutes: 30
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
