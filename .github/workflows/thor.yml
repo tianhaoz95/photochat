@@ -12,9 +12,9 @@ jobs:
     strategy:
       matrix:
         device:
+          - "pixel"
           - "pixel_xl"
           - "pixel_c"
-          - "10.1in WXGA (Tablet)"
       fail-fast: false
     steps:
       - uses: actions/checkout@v1
