@@ -51,7 +51,7 @@ jobs:
           - "iPad Pro (12.9-inch) (3rd generation) (13.3)"
           - "iPhone 11 Pro Max (13.3)"
           - "iPhone 11 (13.3)"
-          - "iPad Pro (9.7-inch)"
+          - "iPad Pro (9.7-inch) (13.3)"
       fail-fast: false
     steps:
       - uses: actions/checkout@v1
