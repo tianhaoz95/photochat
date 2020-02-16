@@ -15,6 +15,9 @@ Future<void> checkEncodeToResult(FlutterDriver driver) async {
   await Future.delayed(const Duration(seconds: 1));
   logger.info('try to tap checkbox to enter token',
       name: encodeToResultTestLoggingNamespace);
+  await driver.scrollUntilVisible(
+      find.byValueKey('encode_screen_scrollable_list'),
+      find.byValueKey('encode_screen_token_checkbox'));
   await driver.tap(find.byValueKey('encode_screen_token_checkbox'));
   await Future.delayed(const Duration(seconds: 1));
   logger.info('try to scroll to token input',
