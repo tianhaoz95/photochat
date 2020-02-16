@@ -36,5 +36,7 @@ Future<void> checkEncodeToResult(FlutterDriver driver) async {
       name: encodeToResultTestLoggingNamespace);
   await Future.delayed(const Duration(seconds: 1));
   await driver.tap(find.pageBack());
+  logger.info('shoud have gone back from encode result screen to encode screen',
+      name: encodeToResultTestLoggingNamespace);
   await Future.delayed(const Duration(seconds: 1));
 }
