@@ -32,9 +32,9 @@ jobs:
         with:
           api-level: 29
           script: \
-            /Users/runner/Library/Android/sdk/tools/bin/sdkmanager list && \
-            ./scripts/setenv.sh && cd ./photochatapp && \
-            flutter pub get && \
+            /Users/runner/Library/Android/sdk/tools/bin/sdkmanager list &&
+            ./scripts/setenv.sh && cd ./photochatapp &&
+            flutter pub get &&
             flutter drive --target=test_driver/app.dart
   ios-integration-test:
     name: run integration test on iOS emulator
