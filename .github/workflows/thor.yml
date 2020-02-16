@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
+          java-version: '8.x'
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.12.13+hotfix.5'
@@ -31,7 +31,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
           api-level: 29
-          script: ./scripts/setenv.sh && cd ./photochatapp && flutter pub get && flutter drive --target=test_driver/app.dart
+          script: \
+            /Users/runner/Library/Android/sdk/tools/bin/sdkmanager list && \
+            ./scripts/setenv.sh && cd ./photochatapp && \
+            flutter pub get && \
+            flutter drive --target=test_driver/app.dart
   ios-integration-test:
     name: run integration test on iOS emulator
     runs-on: macOS-latest
