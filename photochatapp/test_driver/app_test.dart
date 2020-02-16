@@ -2,41 +2,28 @@ import 'dart:async';
 
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
-
-import 'config/logger.dart';
 import 'routines/home_to_contribute.dart';
 import 'routines/home_to_decode.dart';
 import 'routines/home_to_encode.dart';
 import 'routines/init.dart';
+import 'utilities/async_workaround.dart';
 import 'utilities/screenshot.dart';
 
 void main() {
   group('real device smoke test', () {
     FlutterDriver driver;
-    StreamSubscription streamSubscription;
+    IsolatesWorkaround workaround = IsolatesWorkaround(driver);
     setUpAll(() async {
       driver = await FlutterDriver.connect();
       // This is a workaround to prevent flutter driver from pausing isolates
-      streamSubscription = driver.serviceClient.onIsolateRunnable
-          .asBroadcastStream()
-          .listen((isolateRef) {
-        logger.info(
-            ('resuming isolate: ${isolateRef.numberAsString}:${isolateRef.name}'));
-        isolateRef.resume();
-      }, onDone: () {
-        logger.info('isolate finished');
-      }, onError: (dynamic error, StackTrace stackTrace) {
-        logger.info('isolate error out: ' + error.toString());
-      });
+      await workaround.resumeIsolates();
     });
     tearDownAll(() async {
       if (driver != null) {
-        driver.close();
-      }
-      // This is a workaround to prevent flutter driver from pausing isolates
-      if (streamSubscription != null) {
-        streamSubscription.cancel();
-      }
+        await driver.close();
+        // This is a workaround to prevent flutter driver from pausing isolates
+        await workaround.tearDown();
+      }    
     });
     test('smoke test', () async {
       await prepareScreenshotArea();
