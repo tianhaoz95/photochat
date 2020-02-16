@@ -27,7 +27,7 @@ jobs:
           channel: 'stable'
       - name: upgrade flutter
         run: |
-          flutter channel master
+          flutter channel stable
           flutter upgrade
           flutter --version
       - name: run tests
