@@ -21,8 +21,12 @@ void main() {
           .asBroadcastStream()
           .listen((isolateRef) {
         logger.info(
-            ('Resuming isolate: ${isolateRef.numberAsString}:${isolateRef.name}'));
+            ('resuming isolate: ${isolateRef.numberAsString}:${isolateRef.name}'));
         isolateRef.resume();
+      }, onDone: () {
+        logger.info('isolate finished');
+      }, onError: (dynamic error, StackTrace stackTrace) {
+        logger.info('isolate error out: ' + error.toString());
       });
     });
     tearDownAll(() async {
