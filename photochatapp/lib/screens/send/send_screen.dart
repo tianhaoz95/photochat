@@ -12,7 +12,6 @@ import 'package:photochatapp/services/requests/uploaded_img_conversion_request.d
 import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
 import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:photochatapp/services/states/loading_states.dart';
-import 'package:photochatapp/services/utilities/load_asset.dart';
 import 'package:provider/provider.dart';
 
 class SendScreen extends StatefulWidget {

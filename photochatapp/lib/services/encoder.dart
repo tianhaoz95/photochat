@@ -87,13 +87,14 @@ EncodeResponse encodeMessageIntoImage(EncodeRequest req) {
 
 Future<EncodeResponse> getMockedEncodeResult() async {
   Uint8List mockedEncodedImageData =
-          await loadAsset('assets/test_images/encrypted_corgi.png');
-      imglib.Image mockedEditableImage = imglib.decodeImage(mockedEncodedImageData.toList());
-      Image mockedDisplayableImage =
-          Image.memory(imglib.encodePng(mockedEditableImage));
-      EncodeResponse mockedResponse = EncodeResponse(
-          mockedEditableImage, mockedDisplayableImage, mockedEncodedImageData);
-      return mockedResponse;
+      await loadAsset('assets/test_images/encrypted_corgi.png');
+  imglib.Image mockedEditableImage =
+      imglib.decodeImage(mockedEncodedImageData.toList());
+  Image mockedDisplayableImage =
+      Image.memory(imglib.encodePng(mockedEditableImage));
+  EncodeResponse mockedResponse = EncodeResponse(
+      mockedEditableImage, mockedDisplayableImage, mockedEncodedImageData);
+  return mockedResponse;
 }
 
 Future<EncodeResponse> encodeMessageIntoImageAsync(EncodeRequest req,

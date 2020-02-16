@@ -42,7 +42,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
 
   Future<DecodeResultScreenRenderRequest> requestEncodeImage(
       EncodeRequest req) async {
-    EncodeResponse response = await encodeMessageIntoImageAsync(req, context: context);
+    EncodeResponse response =
+        await encodeMessageIntoImageAsync(req, context: context);
     return DecodeResultScreenRenderRequest(
         DecodeResultState.SUCCESS, response.data, response.displayableImage);
   }
@@ -182,7 +183,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                         ),
                         Container(
                           child: Center(
-                              child: Text('It seems something went wrong: ' + snapshot.error.toString())),
+                              child: Text('It seems something went wrong: ' +
+                                  snapshot.error.toString())),
                         ),
                         SizedBox(
                           height: 5.0,

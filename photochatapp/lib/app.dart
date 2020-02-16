@@ -14,20 +14,21 @@ class PhotoChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<AppContext>(
-      create: (context) => AppContext(appRunningStateOverride: AppRunningState.INTEGRATION_TEST),
-      child: MaterialApp(
-      title: 'Mini Donkey',
-      theme: theme,
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomeScreen(),
-        '/send': (context) => SendScreen(),
-        '/receive': (context) => ReceiveScreen(),
-        '/encoded': (context) => EncodingResultScreen(),
-        '/decoded': (context) => DecodingResultScreen(),
-        '/contribute': (context) => ContributeScreen(),
-      },
-    ));
+        create: (context) => AppContext(
+            appRunningStateOverride: AppRunningState.INTEGRATION_TEST),
+        child: MaterialApp(
+          title: 'Mini Donkey',
+          theme: theme,
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          routes: {
+            '/': (context) => HomeScreen(),
+            '/send': (context) => SendScreen(),
+            '/receive': (context) => ReceiveScreen(),
+            '/encoded': (context) => EncodingResultScreen(),
+            '/decoded': (context) => DecodingResultScreen(),
+            '/contribute': (context) => ContributeScreen(),
+          },
+        ));
   }
 }
