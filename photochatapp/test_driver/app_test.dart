@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 import 'routines/home_to_contribute.dart';
@@ -24,7 +22,7 @@ void main() {
         await driver.close();
         // This is a workaround to prevent flutter driver from pausing isolates
         await workaround.tearDown();
-      }    
+      }
     });
     test('smoke test', () async {
       await prepareScreenshotArea();

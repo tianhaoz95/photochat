@@ -5,13 +5,18 @@ import 'package:photochatapp/screens/encoded/encoding_result_screen.dart';
 import 'package:photochatapp/screens/home/home_screen.dart';
 import 'package:photochatapp/screens/receive/receive_screen.dart';
 import 'package:photochatapp/screens/send/send_screen.dart';
+import 'package:photochatapp/services/context/app_context.dart';
+import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:photochatapp/theme.dart';
+import 'package:provider/provider.dart';
 
 class PhotoChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Photo Chat',
+    return ChangeNotifierProvider<AppContext>(
+      create: (context) => AppContext(appRunningStateOverride: AppRunningState.INTEGRATION_TEST),
+      child: MaterialApp(
+      title: 'Mini Donkey',
       theme: theme,
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
@@ -23,6 +28,6 @@ class PhotoChatApp extends StatelessWidget {
         '/decoded': (context) => DecodingResultScreen(),
         '/contribute': (context) => ContributeScreen(),
       },
-    );
+    ));
   }
 }

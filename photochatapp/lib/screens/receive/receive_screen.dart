@@ -6,11 +6,14 @@ import 'package:image/image.dart' as imglib;
 import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/components/token_input_field/token_input_field.dart';
+import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
 import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
 import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
+import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:photochatapp/services/states/loading_states.dart';
+import 'package:provider/provider.dart';
 
 class ReceiveScreen extends StatefulWidget {
   @override
@@ -40,16 +43,24 @@ class _ReceiveScreen extends State<ReceiveScreen> {
     setState(() {
       uploadingState = LoadingState.LOADING;
     });
-    imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if (imageFile != null) {
-      print('got image');
-      UploadedImageConversionResponse response =
-          await convertUploadedImageToDataaAsync(
-              UploadedImageConversionRequest(imageFile));
-      editableImage = response.editableImage;
+    AppRunningState appRunningState =
+        Provider.of<AppContext>(context, listen: false).getAppRunningState();
+    if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
-        this.image = response.displayableImage;
+        this.image = Image.asset('assets/test_images/corgi.png');
       });
+    } else {
+      imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
+      if (imageFile != null) {
+        print('got image');
+        UploadedImageConversionResponse response =
+            await convertUploadedImageToDataaAsync(
+                UploadedImageConversionRequest(imageFile));
+        editableImage = response.editableImage;
+        setState(() {
+          this.image = response.displayableImage;
+        });
+      }
     }
     setState(() {
       uploadingState = LoadingState.SUCCESS;

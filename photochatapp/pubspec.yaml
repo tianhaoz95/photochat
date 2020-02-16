@@ -31,6 +31,7 @@ dependencies:
   image: 
   permission_handler: ^4.2.0+hotfix.3
   encrypt: ^4.0.0
+  provider: ^4.0.4
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,8 @@ flutter:
     - "assets/bear_bye.gif"
     - "assets/in_love_corgi_long.gif"
     - "assets/programming_corgi.gif"
+    - "assets/test_images/corgi.png"
+    - "assets/test_images/encrypted_corgi.png"
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

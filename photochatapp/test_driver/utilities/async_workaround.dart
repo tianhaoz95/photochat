@@ -3,19 +3,19 @@ import 'dart:async';
 import 'package:flutter_driver/flutter_driver.dart';
 
 /// Workaround for bug: https://github.com/flutter/flutter/issues/24703
-/// 
+///
 /// USAGE
-/// 
+///
 /// ```
 /// FlutterDriver driver;
 /// IsolatesWorkaround workaround;
-/// 
+///
 /// setUpAll(() async {
 ///   driver = await FlutterDriver.connect();
 ///   workaround = IsolatesWorkaround(driver);
 ///   await workaround.resumeIsolates();
 /// });
-/// 
+///
 /// tearDownAll(() async {
 ///   if (driver != null) {
 ///     await driver.close();

@@ -1,13 +1,17 @@
 import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/converters/pad_cryption_key.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
 import 'package:photochatapp/services/responses/decode_response.dart';
+import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:photochatapp/services/utilities/config.dart';
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
 import 'package:encrypt/encrypt.dart' as crypto;
+import 'package:provider/provider.dart';
 
 int extractLastBit(int pixel) {
   int lastBit = pixel & 1;
@@ -81,7 +85,25 @@ DecodeResponse decodeMessageFromImage(DecodeRequest req) {
   return response;
 }
 
-Future<DecodeResponse> decodeMessageFromImageAsync(DecodeRequest req) async {
-  final DecodeResponse res = await compute(decodeMessageFromImage, req);
-  return res;
+DecodeResponse getMockedDecodeResult() {
+  String msg = 'My awesome message!';
+  DecodeResponse response = DecodeResponse(msg);
+  return response;
+}
+
+Future<DecodeResponse> decodeMessageFromImageAsync(DecodeRequest req,
+    {BuildContext context}) async {
+  if (context != null) {
+    AppRunningState appRunningState =
+        Provider.of<AppContext>(context, listen: false).getAppRunningState();
+    if (appRunningState == AppRunningState.INTEGRATION_TEST) {
+      return getMockedDecodeResult();
+    } else {
+      final DecodeResponse res = await compute(decodeMessageFromImage, req);
+      return res;
+    }
+  } else {
+    final DecodeResponse res = await compute(decodeMessageFromImage, req);
+    return res;
+  }
 }

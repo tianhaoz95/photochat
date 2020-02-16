@@ -24,7 +24,7 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
   }
 
   Future<String> decodeMsg(DecodeRequest req) async {
-    DecodeResponse response = await decodeMessageFromImageAsync(req);
+    DecodeResponse response = await decodeMessageFromImageAsync(req, context: context);
     String msg = response.decodedMsg;
     return msg;
   }
