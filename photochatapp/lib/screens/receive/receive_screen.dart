@@ -84,6 +84,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
           child: Container(
             padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
             child: ListView(
+              key: Key('decode_screen_scrollable_list'),
               children: <Widget>[
                 SizedBox(
                   height: 5.0,

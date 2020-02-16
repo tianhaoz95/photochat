@@ -9,6 +9,9 @@ Future<void> checkDecodeToResult(FlutterDriver driver) async {
   logger.info('try to tap checkbox to open token input', name: decodeToResultTestLoggingNamespace);
   await driver.tap(find.byValueKey('decode_encrypt_checkbox'));
   await Future.delayed(const Duration(seconds: 1));
+  await driver.scrollUntilVisible(
+      find.byValueKey('decode_screen_scrollable_list'),
+      find.byValueKey('decode_screen_token_input'));
   logger.info('try to tap on token input', name: decodeToResultTestLoggingNamespace);
   await driver.tap(find.byValueKey('decode_screen_token_input'));
   await Future.delayed(const Duration(seconds: 1));
