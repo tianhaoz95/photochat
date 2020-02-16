@@ -209,7 +209,7 @@ class _SendScreen extends State<SendScreen> {
                 ),
                 Container(
                   child: RaisedButton(
-                    key: Key('encode_screen_decode_btn'),
+                    key: Key('encode_screen_encode_btn'),
                     onPressed: this.sendToEncode,
                     child: Container(
                       child: Row(

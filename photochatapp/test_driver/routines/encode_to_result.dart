@@ -16,8 +16,8 @@ Future<void> checkEncodeToResult(FlutterDriver driver) async {
   await Future.delayed(const Duration(seconds: 1));
   await driver.scrollUntilVisible(
       find.byValueKey('encode_screen_scrollable_list'),
-      find.byValueKey('encode_screen_decode_btn'));
-  await driver.tap(find.byValueKey('decode_screen_decode_btn'));
+      find.byValueKey('encode_screen_encode_btn'));
+  await driver.tap(find.byValueKey('encode_screen_encode_btn'));
   await Future.delayed(const Duration(seconds: 1));
   await driver.tap(find.pageBack());
   await Future.delayed(const Duration(seconds: 1));
