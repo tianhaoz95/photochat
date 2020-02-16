@@ -1,0 +1,55 @@
+name: loki
+on:
+  push:
+    branches:
+      - "master"
+      - "actions/release_android__*"
+    paths:
+      - "photochatapp/pubspec.yaml"
+      - ".github/workflows/loki.yml"
+      - "photochatapp/android/Gemfile"
+      - "photochatapp/android/Gemfile.lock"
+jobs:
+  release-android:
+    name: release android app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.12.13+hotfix.5'
+          channel: 'stable'
+      - name: upgrade flutter
+        run: |
+          flutter channel stable
+          flutter upgrade
+      - name: install ruby packages
+        run: |
+          cd photochatapp/android
+          bundle install
+      - name: build apk and app bundle package
+        env:
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          ./scripts/setenv.sh
+          cd ./photochatapp
+          flutter pub get
+          flutter test
+          flutter build appbundle
+      - name: upload app to Google Play Store
+        env:
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          ./scripts/setenv.sh
+          cd ./photochatapp/android
+          fastlane internal
