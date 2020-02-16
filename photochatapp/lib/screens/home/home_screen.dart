@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome!'),
+        title: Text(
+          'Welcome!',
+          key: Key('home_screen_title'),
+        ),
       ),
-      body: Container(
+      resizeToAvoidBottomInset: false,
+      body: ScreenAdapter(
+          child: Container(
         padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
         child: ListView(
           children: <Widget>[
@@ -15,15 +21,29 @@ class HomeScreen extends StatelessWidget {
               height: 10.0,
             ),
             Container(
+                constraints: BoxConstraints(
+                  minHeight: 20,
+                  maxHeight: 400,
+                ),
                 child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset('assets/loading_donkey.gif'),
-            )),
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    'assets/loading_donkey.gif',
+                    fit: BoxFit.fitWidth,
+                  ),
+                )),
             SizedBox(
               height: 10.0,
             ),
             Container(
-              child: Image.asset('assets/message_logo.png'),
+              constraints: BoxConstraints(
+                minHeight: 20,
+                maxHeight: 200,
+              ),
+              child: Image.asset(
+                'assets/message_logo.png',
+                fit: BoxFit.fitWidth,
+              ),
             ),
             SizedBox(
               height: 5.0,
@@ -32,6 +52,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/send');
               },
+              key: Key('home_screen_encode_message_btn'),
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Encode a Message'),
+                    Text('Encode'),
                   ],
                 ),
               ),
@@ -52,6 +73,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/receive');
               },
+              key: Key('home_screen_decode_message_btn'),
               child: Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +82,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Decode a Message'),
+                    Text('Decode'),
                   ],
                 ),
               ),
@@ -72,6 +94,7 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/contribute');
               },
+              key: Key('home_screen_contribute_btn'),
               color: Colors.pinkAccent,
               child: Container(
                 child: Row(
@@ -81,14 +104,14 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Contribute to the Project'),
+                    Text('Contribute'),
                   ],
                 ),
               ),
             )
           ],
         ),
-      ),
+      )),
     );
   }
 }

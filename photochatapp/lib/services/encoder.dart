@@ -2,13 +2,17 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/converters/pad_cryption_key.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:photochatapp/services/responses/encode_response.dart';
+import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:photochatapp/services/utilities/config.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:encrypt/encrypt.dart' as crypto;
+import 'package:photochatapp/services/utilities/load_asset.dart';
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
+import 'package:provider/provider.dart';
 
 int getEncoderCapacity(Uint16List img) {
   return img.length;
@@ -81,7 +85,32 @@ EncodeResponse encodeMessageIntoImage(EncodeRequest req) {
   return response;
 }
 
-Future<EncodeResponse> encodeMessageIntoImageAsync(EncodeRequest req) async {
-  final EncodeResponse res = await compute(encodeMessageIntoImage, req);
-  return res;
+Future<EncodeResponse> getMockedEncodeResult() async {
+  Uint8List mockedEncodedImageData =
+      await loadAsset('assets/test_images/encrypted_corgi.png');
+  imglib.Image mockedEditableImage =
+      imglib.decodeImage(mockedEncodedImageData.toList());
+  Image mockedDisplayableImage =
+      Image.memory(imglib.encodePng(mockedEditableImage));
+  EncodeResponse mockedResponse = EncodeResponse(
+      mockedEditableImage, mockedDisplayableImage, mockedEncodedImageData);
+  return mockedResponse;
+}
+
+Future<EncodeResponse> encodeMessageIntoImageAsync(EncodeRequest req,
+    {BuildContext context}) async {
+  if (context != null) {
+    AppRunningState appRunningState =
+        Provider.of<AppContext>(context, listen: false).getAppRunningState();
+    if (appRunningState == AppRunningState.INTEGRATION_TEST) {
+      EncodeResponse mockedResponse = await getMockedEncodeResult();
+      return mockedResponse;
+    } else {
+      final EncodeResponse res = await compute(encodeMessageIntoImage, req);
+      return res;
+    }
+  } else {
+    final EncodeResponse res = await compute(encodeMessageIntoImage, req);
+    return res;
+  }
 }

@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/services/encoder.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:photochatapp/services/requests/encode_result_screen_render_request.dart';
@@ -41,7 +42,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
 
   Future<DecodeResultScreenRenderRequest> requestEncodeImage(
       EncodeRequest req) async {
-    EncodeResponse response = await encodeMessageIntoImageAsync(req);
+    EncodeResponse response =
+        await encodeMessageIntoImageAsync(req, context: context);
     return DecodeResultScreenRenderRequest(
         DecodeResultState.SUCCESS, response.data, response.displayableImage);
   }
@@ -87,132 +89,135 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Hooray! Encoded!'),
-      ),
-      body: FutureBuilder<DecodeResultScreenRenderRequest>(
-          future: this.renderRequest,
-          builder: (BuildContext context,
-              AsyncSnapshot<DecodeResultScreenRenderRequest> snapshot) {
-            if (snapshot.hasData) {
-              return Container(
-                padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-                child: ListView(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Container(
-                        child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: snapshot.data.encodedImage,
-                    )),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Container(
-                      child: RaisedButton(
-                        onPressed: () {
-                          this.saveImage(snapshot.data.encodedByteImage);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            ButtonLogoWithLoadingAndError(
-                                this.savingState, Icons.save),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            Text('Save'),
-                          ],
+        appBar: AppBar(
+          title: Text('Hooray! Encoded!'),
+        ),
+        resizeToAvoidBottomInset: false,
+        body: ScreenAdapter(
+          child: FutureBuilder<DecodeResultScreenRenderRequest>(
+              future: this.renderRequest,
+              builder: (BuildContext context,
+                  AsyncSnapshot<DecodeResultScreenRenderRequest> snapshot) {
+                if (snapshot.hasData) {
+                  return Container(
+                    padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                    child: ListView(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5.0,
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Container(
-                      child: RaisedButton(
-                        onPressed: () {
-                          this.shareImage(snapshot.data.encodedByteImage);
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Icon(Icons.share),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            Text('Share'),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 30.0,
-                    ),
-                    Container(
-                        child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset('assets/rabbits_clapping.gif'),
-                    )),
-                  ],
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return Container(
-                padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-                child: ListView(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Container(
-                      child: Center(
-                          child: Text(
-                        'Whoops >_<',
-                        style: TextStyle(fontSize: 30.0),
-                      )),
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Container(
-                      child:
-                          Center(child: Text('It seems something went wrong')),
-                    ),
-                    SizedBox(
-                      height: 5.0,
-                    ),
-                    Container(
-                        child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset('assets/bear_bye.gif'),
-                    )),
-                  ],
-                ),
-              );
-            } else {
-              return Container(
-                child: ListView(
-                  children: <Widget>[
-                    LinearProgressIndicator(),
-                    Container(
-                        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
-                        child: ClipRRect(
+                        Container(
+                            child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: Image.asset('assets/loading_donkey.gif'),
+                          child: snapshot.data.encodedImage,
                         )),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
-                      child: Text(
-                          'Please be patient, mini donkey is encoding your message...'),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Container(
+                          child: RaisedButton(
+                            onPressed: () {
+                              this.saveImage(snapshot.data.encodedByteImage);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                ButtonLogoWithLoadingAndError(
+                                    this.savingState, Icons.save),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text('Save'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Container(
+                          child: RaisedButton(
+                            onPressed: () {
+                              this.shareImage(snapshot.data.encodedByteImage);
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.share),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text('Share'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30.0,
+                        ),
+                        Container(
+                            child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset('assets/rabbits_clapping.gif'),
+                        )),
+                      ],
                     ),
-                  ],
-                ),
-              );
-            }
-          }),
-    );
+                  );
+                } else if (snapshot.hasError) {
+                  return Container(
+                    padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                    child: ListView(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Container(
+                          child: Center(
+                              child: Text(
+                            'Whoops >_<',
+                            style: TextStyle(fontSize: 30.0),
+                          )),
+                        ),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Container(
+                          child: Center(
+                              child: Text('It seems something went wrong: ' +
+                                  snapshot.error.toString())),
+                        ),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Container(
+                            child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8.0),
+                          child: Image.asset('assets/bear_bye.gif'),
+                        )),
+                      ],
+                    ),
+                  );
+                } else {
+                  return Container(
+                    child: ListView(
+                      children: <Widget>[
+                        LinearProgressIndicator(),
+                        Container(
+                            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset('assets/loading_donkey.gif'),
+                            )),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+                          child: Text(
+                              'Please be patient, mini donkey is encoding your message...'),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              }),
+        ));
   }
 }
