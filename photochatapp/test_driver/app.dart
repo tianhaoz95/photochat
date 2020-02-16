@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter_driver/driver_extension.dart';
 import 'package:photochatapp/main.dart' as app;
 
+import 'config/logger.dart';
 import 'fixtures/corgi_image.dart';
 import 'fixtures/encrypted_corgi_image.dart';
 
@@ -15,10 +16,10 @@ void main() {
       MethodChannel('plugins.flutter.io/image_picker');
   bool isEncoding = true;
   channel.setMockMethodCallHandler((MethodCall methodCall) async {
-    print('isEncoding: ' + isEncoding.toString());
+    logger.info('isEncoding: ' + isEncoding.toString());
     Uint8List bytes = corgiByteImage;
     if (!isEncoding) {
-      print('use encrypted corgi image');
+      logger.info('use encrypted corgi image');
       bytes = encryptedcorgiByteImage;
     }
     Directory tempDir = await getTemporaryDirectory();
@@ -28,11 +29,11 @@ void main() {
     }
     File file = await File('${tempDir.path}/$filename').writeAsBytes(bytes);
     if (isEncoding) {
-      print('use corgi image');
+      logger.info('use corgi image');
       isEncoding = false;
-      print('setting isEncoding to ' + isEncoding.toString());
+      logger.info('setting isEncoding to ' + isEncoding.toString());
     }
-    print(file.path);
+    logger.info('setting selected image to ' + file.path);
     return file.path;
   });
   app.main();

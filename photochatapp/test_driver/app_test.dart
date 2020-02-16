@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
+import 'config/logger.dart';
 import 'routines/home_to_contribute.dart';
 import 'routines/home_to_decode.dart';
 import 'routines/home_to_encode.dart';
@@ -19,8 +20,8 @@ void main() {
       streamSubscription = driver.serviceClient.onIsolateRunnable
           .asBroadcastStream()
           .listen((isolateRef) {
-        print(
-            'Resuming isolate: ${isolateRef.numberAsString}:${isolateRef.name}');
+        logger.info(
+            ('Resuming isolate: ${isolateRef.numberAsString}:${isolateRef.name}'));
         isolateRef.resume();
       });
     });
