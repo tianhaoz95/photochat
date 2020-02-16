@@ -174,7 +174,7 @@ class _SendScreen extends State<SendScreen> {
                 ),
                 Container(
                   child: TextField(
-                    key: Key('decode_screen_msg_input'),
+                    key: Key('encode_screen_msg_input'),
                     controller: this.msgCtrl,
                     decoration: InputDecoration(
                       labelText: 'Message',
@@ -209,7 +209,7 @@ class _SendScreen extends State<SendScreen> {
                 ),
                 Container(
                   child: RaisedButton(
-                    key: Key('decode_screen_decode_btn'),
+                    key: Key('encode_screen_decode_btn'),
                     onPressed: this.sendToEncode,
                     child: Container(
                       child: Row(
