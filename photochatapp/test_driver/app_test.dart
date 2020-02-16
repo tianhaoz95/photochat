@@ -12,10 +12,11 @@ import 'utilities/screenshot.dart';
 void main() {
   group('real device smoke test', () {
     FlutterDriver driver;
-    IsolatesWorkaround workaround = IsolatesWorkaround(driver);
+    IsolatesWorkaround workaround;
     setUpAll(() async {
       driver = await FlutterDriver.connect();
       // This is a workaround to prevent flutter driver from pausing isolates
+      workaround = IsolatesWorkaround(driver);
       await workaround.resumeIsolates();
     });
     tearDownAll(() async {
