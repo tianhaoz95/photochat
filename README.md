@@ -2,4 +2,8 @@
 
 > Smart: my chats are encrypted. Next level: my chats are encrypted but I pretend they are not.
 
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/tianhaoz95/photochat) 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/tianhaoz95/photochat)
+
+![encoding flow](./assets/post/encoding_flow.png)
+
+![decoding flow](./assets/post/decoding_flow.png)
