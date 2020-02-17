@@ -7,3 +7,7 @@
 ![encoding flow](./assets/post/encoding_flow.png)
 
 ![decoding flow](./assets/post/decoding_flow.png)
+
+![encoding app demo](./assets/post/encoding_flow_app_demo.png)
+
+![decoding app demo](./assets/post/decoding_flow_app_demo.png)
