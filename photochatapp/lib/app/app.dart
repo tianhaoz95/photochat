@@ -17,7 +17,7 @@ class PhotoChatApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<AppContext>(
         create: (context) => AppContext(
-            appRunningStateOverride: AppRunningState.INTEGRATION_TEST),
+            appRunningStateOverride: this.appRunningState),
         child: MaterialApp(
           title: 'Mini Donkey',
           theme: theme,
