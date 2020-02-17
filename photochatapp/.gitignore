@@ -42,3 +42,4 @@ lib/generated_plugin_registrant.dart
 # Credential files
 /android/key.properties
 /android/app/key.jks
+/android/fastlane/Appfile

@@ -1,5 +1,6 @@
 enum AppRunningState {
   INTEGRATION_TEST,
+  UNIT_TEST,
   DEVELOPMENT,
   PRODUCTION,
 }
