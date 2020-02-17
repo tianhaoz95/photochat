@@ -19,6 +19,7 @@ Future<void> checkHomeToDecode(FlutterDriver driver) async {
   await Future.delayed(const Duration(seconds: 1));
   logger.info('image picked from gallery, try to test decode result screen',
       name: homeToDecodeTestLoggingNamespace);
+  await takeNamedScreenshot(driver, 'decode_screen_info_filled');
   await checkDecodeToResult(driver);
   logger.info('navigated back from decode result screen',
       name: homeToDecodeTestLoggingNamespace);
