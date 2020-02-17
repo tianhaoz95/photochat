@@ -29,7 +29,7 @@ jobs:
         run: |
           flutter channel stable
           flutter upgrade
-      - name: install ruby packages
+      - name: install gem packages
         run: |
           cd photochatapp/android
           bundle install
