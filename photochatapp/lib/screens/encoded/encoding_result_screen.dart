@@ -201,7 +201,6 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                   return Container(
                     child: ListView(
                       children: <Widget>[
-                        LinearProgressIndicator(),
                         Container(
                             padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
                             child: ClipRRect(
@@ -209,7 +208,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                               child: Image.asset('assets/loading_donkey.gif'),
                             )),
                         Container(
-                          padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 0.0),
+                          padding: EdgeInsets.fromLTRB(20.0, 5.0, 20.0, 0.0),
                           child: Text(
                               'Please be patient, mini donkey is encoding your message...'),
                         ),

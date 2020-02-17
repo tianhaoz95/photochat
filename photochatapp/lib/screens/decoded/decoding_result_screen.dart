@@ -114,7 +114,6 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
                   return Container(
                     child: ListView(
                       children: <Widget>[
-                        LinearProgressIndicator(),
                         SizedBox(
                           height: 5.0,
                         ),
