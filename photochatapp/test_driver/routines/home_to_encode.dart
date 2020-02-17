@@ -10,7 +10,7 @@ Future<void> checkHomeToEncode(FlutterDriver driver) async {
       name: homeToEncodeTestLoggingNamespace);
   await driver.tap(find.byValueKey('home_screen_encode_message_btn'));
   logger.info('decode screen reached', name: homeToEncodeTestLoggingNamespace);
-  await takeNamedScreenshot(driver, 'encode_screen');
+  await takeNamedScreenshot(driver, 'encode_screen_start');
   await Future.delayed(const Duration(seconds: 1));
   logger.info('try to pick image from gallery',
       name: homeToEncodeTestLoggingNamespace);
@@ -20,6 +20,8 @@ Future<void> checkHomeToEncode(FlutterDriver driver) async {
   await Future.delayed(const Duration(seconds: 1));
   logger.info('try to test encode result screen',
       name: homeToEncodeTestLoggingNamespace);
+  await takeNamedScreenshot(driver, 'encode_screen_info_filled');
+  await Future.delayed(const Duration(seconds: 1));
   await checkEncodeToResult(driver);
   logger.info('back from encode result screen, try to go back to home screen',
       name: homeToEncodeTestLoggingNamespace);
