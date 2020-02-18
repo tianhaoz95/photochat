@@ -4,7 +4,7 @@
 
 [![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/tianhaoz95/photochat)
 
-<img height="85px" src="assets/post/mini_donkey.gif" />
+<img height="120px" src="assets/post/mini_donkey.gif" />
 
 Mini Donkey carries private messages securely and secretly by encrypting and encoding messages into images.
 
