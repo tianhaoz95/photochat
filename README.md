@@ -6,7 +6,9 @@
 
 ## Getting started
 
-[![google play store logo](./assets/post/google_play_store_logo.png)](https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp)
+<a href="https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp">
+  <img height="36px" src="assets/post/google_play_store_logo.png">
+<a/>
 
 ## Design
 
