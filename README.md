@@ -10,9 +10,13 @@ Mini Donkey carries private messages securely and secretly by encrypting and enc
 
 ## Getting started
 
-<a href="https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp">
-  <img height="50px" src="assets/post/google_play_store_logo.png" />
-<a/>
+| Platform | Download | Alternative Source |
+|:--------:|:--------:|:------------------:|
+| Android | ![get it on play store](assets/post/google_play_store_logo.png) | Coming soon ... |
+| iOS | Coming soon... (too poor to buy $99/year the Apple developer account | Coming soon ... |
+| MacOS | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
+| Windows | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
+| Linux | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 
 ## Design
 
