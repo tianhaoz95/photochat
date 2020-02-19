@@ -19,6 +19,7 @@ Mini Donkey carries private messages securely and secretly by encrypting and enc
 |:--------:|:--------:|:------------------:|
 | Android | ![get it on play store](assets/post/google_play_store_logo.png) | Coming soon ... |
 | iOS | Coming soon... (too poor to buy the $99/year Apple developer account) | Coming soon ... |
+| Web | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | MacOS | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | Windows | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | Linux | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
