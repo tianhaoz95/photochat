@@ -2,8 +2,6 @@
 
 Mini Donkey carries private messages securely and secretly by encrypting and encoding messages into images.
 
-> Smart: my chats are encrypted. Next level: my chats are encrypted but I pretend they are not.
-
 ## Repository Status
 
 | Task | Description | Status |
