@@ -1,6 +1,6 @@
 # Mini Donkey
 
-Mini Donkey carries private messages securely and secretly by encrypting and encoding messages into images.
+**Mini Donkey** carries private messages **securely** and **secretly** with encryption ([AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)) and [steganography](https://en.wikipedia.org/wiki/Steganography) (technique of concealing messages in images).
 
 ## Repository Status
 
