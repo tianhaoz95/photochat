@@ -1,5 +1,11 @@
 # Mini Donkey
 
+[![Flutter](https://img.shields.io/badge/built%20with-Flutter-brightgreen)](https://flutter.dev/docs)
+[![Issues](https://img.shields.io/github/issues/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/issues)
+[![Pull requests](https://img.shields.io/github/issues-pr/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/pulls)
+[![GitHub license](https://img.shields.io/github/license/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/blob/master/LICENSE)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/tianhaoz95/photochat/graphs/commit-activity)
+
 **Mini Donkey** carries private messages **securely** and **secretly** with encryption ([AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)) and [steganography](https://en.wikipedia.org/wiki/Steganography) (technique of concealing messages in images).
 
 ## Repository Status
