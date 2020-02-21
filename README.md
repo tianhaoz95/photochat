@@ -4,7 +4,7 @@
 
 ## Repository Status
 
-| Task | Description | Status | Link |
+| Task ID | Description | Status @ [master](https://github.com/tianhaoz95/photochat) | Link |
 |:----:|:-----------:|:------:|:----:|
 | Heimdall | Static analysis, lint and unit tests | ![heimdall](https://github.com/tianhaoz95/photochat/workflows/heimdall/badge.svg?branch=master) | [check heimdall status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aheimdall+branch%3Amaster) |
 | Thor | End to end tests | ![thor](https://github.com/tianhaoz95/photochat/workflows/thor/badge.svg?branch=master) |  [check thor status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Athor+branch%3Amaster) |
