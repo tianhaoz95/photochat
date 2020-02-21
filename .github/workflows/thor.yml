@@ -8,7 +8,7 @@ on:
 jobs:
   android-integration-test:
     name: run integration test on Android emulator
-    runs-on: macOS-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         device:
@@ -47,7 +47,7 @@ jobs:
           path: /tmp/iwfpapp_screenshot
   ios-integration-test:
     name: run integration test on iOS emulator
-    runs-on: macOS-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         device:
