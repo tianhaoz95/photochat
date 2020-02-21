@@ -1,5 +1,11 @@
 name: thor
 on:
+  push:
+    paths: 
+      - .github/workflows/thor.yml
+    branches: 
+      - "master"
+      - "ci/thor__*"
   pull_request:
     branches:
       - "master"
