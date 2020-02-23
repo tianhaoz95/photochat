@@ -1,8 +1,6 @@
 # Mini Donkey
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 [![Flutter](https://img.shields.io/badge/built%20with-Flutter-brightgreen)](https://flutter.dev/docs)
 [![Issues](https://img.shields.io/github/issues/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/issues)
 [![Pull requests](https://img.shields.io/github/issues-pr/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/pulls)
@@ -20,7 +18,7 @@
 | Loki | App release | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) |  [check loki status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aloki+branch%3Amaster) |
 |Gitpod | Prebuilt workspace | ![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod) | [open workspace](https://gitpod.io/#https://github.com/tianhaoz95/photochat) |
 
-## Getting started
+## Getting Started
 
 | Platform | Download | Alternative Source |
 |:--------:|:--------:|:------------------:|
@@ -33,25 +31,17 @@
 
 ## Design
 
-### Encoding Flow: Message -> Encryption -> Encoding (Steganography) -> Image
-
 ![encoding flow](./assets/post/encoding_flow.png)
-
-### Decoding Flow: Image -> Message Extraction -> Decryption -> Message
 
 ![decoding flow](./assets/post/decoding_flow.png)
 
 ## Demo
 
-### Encoding Flow: Message -> Encryption -> Encoding (Steganography) -> Image
-
 ![encoding app demo](./assets/post/encoding_flow_app_demo.png)
-
-### Decoding Flow: Image -> Message Extraction -> Decryption -> Message
 
 ![decoding app demo](./assets/post/decoding_flow_app_demo.png)
 
-## Contribute
+## Let's Make It Better Together!
 
 To ensure the transparency of the implementation (so that no privacy message get stolen secretly), Mini Donkey is completely open source. All kinds of contribution including but not limited to pull requests, feature requests, bug reports, sponsorship, etc, are welcome.
 
