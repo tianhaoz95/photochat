@@ -21,7 +21,7 @@
 
 | Platform | Download | Alternative Source |
 |:--------:|:--------:|:------------------:|
-| Android | ![get it on play store](assets/post/google_play_store_logo.png) | Coming soon ... |
+| Android | [![get it on play store](assets/post/google_play_store_logo.png)](https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp) | Coming soon ... |
 | iOS | Coming soon... (too poor to buy the $99/year Apple developer account) | Coming soon ... |
 | Web | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | MacOS | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
