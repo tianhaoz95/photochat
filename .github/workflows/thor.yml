@@ -29,7 +29,12 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.12.13+hotfix.8'
-          channel: 'dev'
+          channel: 'stable'
+      - name: upgrade flutter to dev latest
+        run: |
+          flutter channel dev
+          flutter upgrade
+          flutter --version
       - name: run tests
         timeout-minutes: 30
         uses: reactivecircus/android-emulator-runner@v2
