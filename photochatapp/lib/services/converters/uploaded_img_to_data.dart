@@ -28,10 +28,12 @@ Future<UploadedImageConversionResponse> convertUploadedImageToDataaAsync(
 Future<UploadedImageConversionResponse> getRandomImageFromWebAsync() async {
   Random randomGenerator = Random();
   int randomId = randomGenerator.nextInt(1000);
-  String randomImageUrl = 'https://i.picsum.photos/id/${randomId.toString()}/300/300.jpg';
+  String randomImageUrl =
+      'https://i.picsum.photos/id/${randomId.toString()}/300/300.jpg';
   http.Response urlResponse = await http.get(randomImageUrl);
   imglib.Image editableImage = imglib.decodeImage(msg2bytes(urlResponse.body));
-  Image displayableImage = Image.memory(imglib.encodePng(editableImage));
+  Image displayableImage =
+      Image.memory(imglib.encodePng(editableImage), fit: BoxFit.fitWidth);
   UploadedImageConversionResponse response =
       UploadedImageConversionResponse(editableImage, displayableImage);
   return response;
