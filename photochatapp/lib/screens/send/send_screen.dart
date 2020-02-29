@@ -30,6 +30,29 @@ class _SendScreen extends State<SendScreen> {
   bool encrypt;
   LoadingState uploadingState;
 
+  Future<void> randomImageFromWeb() async {
+    setState(() {
+      uploadingState = LoadingState.LOADING;
+    });
+    AppRunningState appRunningState =
+        Provider.of<AppContext>(context, listen: false).getAppRunningState();
+    if (appRunningState == AppRunningState.INTEGRATION_TEST) {
+      setState(() {
+        this.image = Image.asset('assets/test_images/corgi.png', fit: BoxFit.fitWidth);
+      });
+    } else {
+      UploadedImageConversionResponse response =
+          await getRandomImageFromWebAsync();
+      editableImage = response.editableImage;
+      setState(() {
+        this.image = response.displayableImage;
+      });
+    }
+    setState(() {
+      uploadingState = LoadingState.SUCCESS;
+    });
+  }
+
   Future<void> pickImageFromGallery() async {
     setState(() {
       uploadingState = LoadingState.LOADING;
@@ -38,7 +61,7 @@ class _SendScreen extends State<SendScreen> {
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
-        this.image = Image.asset('assets/test_images/corgi.png');
+        this.image = Image.asset('assets/test_images/corgi.png', fit: BoxFit.fitWidth);
       });
     } else {
       imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -126,6 +149,27 @@ class _SendScreen extends State<SendScreen> {
                       borderRadius: BorderRadius.circular(8.0),
                       child: this.image,
                     )),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Container(
+                  child: RaisedButton(
+                    onPressed: this.randomImageFromWeb,
+                    child: Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ButtonLogoWithLoadingAndError(
+                              this.uploadingState, Icons.sync),
+                          SizedBox(
+                            width: 15.0,
+                          ),
+                          Text('Random'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 5.0,
                 ),

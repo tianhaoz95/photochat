@@ -47,7 +47,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
-        this.image = Image.asset('assets/test_images/corgi.png');
+        this.image = Image.asset('assets/test_images/corgi.png', fit: BoxFit.fitWidth);
       });
     } else {
       imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);

@@ -5,7 +5,8 @@ import '../config/logger.dart';
 // import '../utilities/screenshot.dart';
 
 Future<void> checkEncodeToResult(FlutterDriver driver) async {
-  String encodeToResultTestLoggingNamespace = 'encode_to_result_integration_test';
+  String encodeToResultTestLoggingNamespace =
+      'encode_to_result_integration_test';
   logger.info('try to tap message input',
       name: encodeToResultTestLoggingNamespace);
   await driver.tap(find.byValueKey('encode_screen_msg_input'));
