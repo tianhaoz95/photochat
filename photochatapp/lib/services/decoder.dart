@@ -73,7 +73,9 @@ DecodeResponse decodeMessageFromImage(DecodeRequest req) {
   Uint16List byteMsg = bits2bytes(padded);
   Uint16List sanitized = sanitizePaddingZeros(byteMsg);
   String msg = bytes2msg(sanitized);
+  print('message decoded as: ' + msg);
   String token = req.token;
+  print('token requested: ' + token);
   if (req.shouldDecrypt()) {
     crypto.Key key = crypto.Key.fromUtf8(padCryptionKey(token));
     crypto.IV iv = crypto.IV.fromLength(16);

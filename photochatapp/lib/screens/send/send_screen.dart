@@ -160,7 +160,7 @@ class _SendScreen extends State<SendScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           ButtonLogoWithLoadingAndError(
-                              this.uploadingState, Icons.scatter_plot),
+                              this.uploadingState, Icons.sync),
                           SizedBox(
                             width: 15.0,
                           ),
