@@ -1,5 +1,8 @@
 name: loki
 on:
+  release:
+    types:
+      - "created"
   push:
     branches:
       - "master"
@@ -54,5 +57,13 @@ jobs:
           ./scripts/setenv.sh
           cd ./photochatapp/android
           fastlane internal
-          sleep 10
+          sleep 5
+      - name: promote to beta
+        run: |
+          cd ./photochatapp/android
           fastlane beta
+      - name: promote to production
+        if: ${{ github.event == release.created }}
+        run: |
+          cd ./photochatapp/android
+          fastlane production
