@@ -68,7 +68,7 @@ jobs:
           cd ./photochatapp/android
           fastlane alpha
       - name: promote to production
-        if: contains(github.event,release)
+        if: contains(github.event,"release")
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
