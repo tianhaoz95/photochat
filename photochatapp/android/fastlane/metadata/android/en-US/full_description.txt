@@ -1,0 +1,1 @@
+Mini Donkey is a utility app that helps deliver messages securely through any channel.
