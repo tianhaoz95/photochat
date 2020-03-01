@@ -1,0 +1,2 @@
+What's new:
+* Added support for random placeholder images to reduce the time and effort to create a message.
