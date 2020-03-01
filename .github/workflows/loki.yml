@@ -65,7 +65,9 @@ jobs:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          TRIGGER_EVENT: ${{ github.event.type }}
         run: |
+          echo "triggering event type: $TRIGGER_EVENT"
           cd ./photochatapp/android
           fastlane alpha
       - name: promote to production
