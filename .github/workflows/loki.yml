@@ -54,3 +54,5 @@ jobs:
           ./scripts/setenv.sh
           cd ./photochatapp/android
           fastlane internal
+          sleep 10
+          fastlane beta
