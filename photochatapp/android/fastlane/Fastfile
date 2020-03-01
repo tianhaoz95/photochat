@@ -11,6 +11,7 @@ platform :android do
         skip_upload_screenshots: true,
         skip_upload_images: true
       )
+    end
     rescue => exception
       raise exception unless exception.message.include?('apkNotificationMessageKeyUpgradeVersionConflict')
       puts 'Current version already present on the Play Store. Omitting this upload.'
@@ -28,6 +29,7 @@ platform :android do
         skip_upload_screenshots: true,
         skip_upload_images: true
       )
+    end
   end
 
   desc "promote to production track in Google Play Store"
@@ -41,5 +43,6 @@ platform :android do
         skip_upload_screenshots: true,
         skip_upload_images: true
       )
+    end
   end
 end
