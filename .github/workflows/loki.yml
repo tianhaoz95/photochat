@@ -63,7 +63,7 @@ jobs:
           cd ./photochatapp/android
           fastlane beta
       - name: promote to production
-        if: ${{ github.event == release.created }}
+        if: ${{ github.event }} == "release.created"
         run: |
           cd ./photochatapp/android
           fastlane production
