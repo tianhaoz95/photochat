@@ -1,35 +1,6 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:android)
 
 platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
-  end
-
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: "clean assembleRelease")
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
-
   desc "submit to internal track in Google Play Store"
   lane :internal do
     begin
@@ -46,9 +17,29 @@ platform :android do
     end
   end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
+  desc "promote to alpha track in Google Play Store"
+  lane :alpha do
+    begin
+      gradle(task: 'bundle', build_type: 'Release')
+      upload_to_play_store(
+        track: 'internal',
+        track_promote_to: 'alpha',
+        skip_upload_aab: true,
+        skip_upload_screenshots: true,
+        skip_upload_images: true
+      )
+  end
+
+  desc "promote to production track in Google Play Store"
+  lane :production do
+    begin
+      gradle(task: 'bundle', build_type: 'Release')
+      upload_to_play_store(
+        track: 'beta',
+        track_promote_to: 'production',
+        skip_upload_aab: true,
+        skip_upload_screenshots: true,
+        skip_upload_images: true
+      )
   end
 end
