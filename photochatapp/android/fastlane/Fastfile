@@ -36,7 +36,7 @@ platform :android do
     begin
       gradle(task: 'bundle', build_type: 'Release')
       upload_to_play_store(
-        track: 'beta',
+        track: 'alpha',
         track_promote_to: 'production',
         skip_upload_aab: true,
         skip_upload_screenshots: true,

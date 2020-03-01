@@ -2,7 +2,7 @@ name: loki
 on:
   release:
     types:
-      - "created"
+      - "published"
   push:
     branches:
       - "master"
@@ -68,7 +68,7 @@ jobs:
           cd ./photochatapp/android
           fastlane alpha
       - name: promote to production
-        if: ${{ github.event }} == "release.created"
+        if: ${{ github.event == "release.published" }}
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
