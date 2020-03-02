@@ -10,7 +10,7 @@ on:
       - "actions/release_android__*"
     paths:
       - "photochatapp/pubspec.yaml"
-      - "photochatapp/android/fastlane/Fastfile"
+      - "photochatapp/android/fastlane/*"
       - ".github/workflows/loki.yml"
       - "photochatapp/android/Gemfile"
       - "photochatapp/android/Gemfile.lock"
