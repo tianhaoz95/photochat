@@ -10,3 +10,4 @@
 *.js.map
 
 .DS_Store
+photochatapp/android/fastlane/report.xml

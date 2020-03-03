@@ -23,6 +23,7 @@ platform :android do
       gradle(task: 'bundle', build_type: 'Release')
       upload_to_play_store(
         track: 'internal',
+        version_code: flutter_version(),
         track_promote_to: 'alpha',
         skip_upload_aab: true,
         skip_upload_screenshots: true,
@@ -37,6 +38,7 @@ platform :android do
       gradle(task: 'bundle', build_type: 'Release')
       upload_to_play_store(
         track: 'alpha',
+        version_code: flutter_version(),
         track_promote_to: 'production',
         skip_upload_aab: true,
         skip_upload_screenshots: true,
