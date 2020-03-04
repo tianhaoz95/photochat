@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:http/http.dart' as http;
 import 'dart:math';
 
@@ -6,14 +8,17 @@ import 'package:flutter/widgets.dart';
 import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
 import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
 import 'package:image/image.dart' as imglib;
+import 'package:photochatapp/services/utilities/get_capacity.dart';
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 
 UploadedImageConversionResponse convertUploadedImageToData(
     UploadedImageConversionRequest req) {
   imglib.Image editableImage = imglib.decodeImage(req.file.readAsBytesSync());
   Image displayableImage = Image.file(req.file, fit: BoxFit.fitWidth);
-  UploadedImageConversionResponse response =
-      UploadedImageConversionResponse(editableImage, displayableImage);
+  int imageByteSize = getEncoderCapacity(
+      Uint16List.fromList(editableImage.getBytes().toList()));
+  UploadedImageConversionResponse response = UploadedImageConversionResponse(
+      editableImage, displayableImage, imageByteSize);
   return response;
 }
 
@@ -34,7 +39,9 @@ Future<UploadedImageConversionResponse> getRandomImageFromWebAsync() async {
   imglib.Image editableImage = imglib.decodeImage(msg2bytes(urlResponse.body));
   Image displayableImage =
       Image.memory(imglib.encodePng(editableImage), fit: BoxFit.fitWidth);
-  UploadedImageConversionResponse response =
-      UploadedImageConversionResponse(editableImage, displayableImage);
+  int imageByteSize = getEncoderCapacity(
+      Uint16List.fromList(editableImage.getBytes().toList()));
+  UploadedImageConversionResponse response = UploadedImageConversionResponse(
+      editableImage, displayableImage, imageByteSize);
   return response;
 }

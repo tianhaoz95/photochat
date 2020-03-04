@@ -6,12 +6,14 @@ import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/components/token_input_field/token_input_field.dart';
 import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
+import 'package:photochatapp/services/requests/capacity_usage_request.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
 import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
 import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:photochatapp/services/states/loading_states.dart';
+import 'package:photochatapp/services/utilities/capacity_usage.dart';
 import 'package:provider/provider.dart';
 
 class SendScreen extends StatefulWidget {
@@ -25,9 +27,13 @@ class _SendScreen extends State<SendScreen> {
   File imageFile;
   imglib.Image editableImage;
   Image image;
+  int imageByteSize;
   TextEditingController msgCtrl;
   TextEditingController tokenCtrl;
   bool encrypt;
+  bool pickedImg;
+  double capacityUsageStats;
+  String capacityUsage;
   LoadingState uploadingState;
 
   Future<void> randomImageFromWeb() async {
@@ -38,7 +44,10 @@ class _SendScreen extends State<SendScreen> {
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
-        this.image = Image.asset('assets/test_images/corgi.png', fit: BoxFit.fitWidth);
+        this.image =
+            Image.asset('assets/test_images/corgi.png', fit: BoxFit.fitWidth);
+        this.pickedImg = true;
+        this.imageByteSize = 1000;
       });
     } else {
       UploadedImageConversionResponse response =
@@ -46,6 +55,8 @@ class _SendScreen extends State<SendScreen> {
       editableImage = response.editableImage;
       setState(() {
         this.image = response.displayableImage;
+        this.pickedImg = true;
+        this.imageByteSize = response.imageByteSize;
       });
     }
     setState(() {
@@ -61,7 +72,10 @@ class _SendScreen extends State<SendScreen> {
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
-        this.image = Image.asset('assets/test_images/corgi.png', fit: BoxFit.fitWidth);
+        this.image =
+            Image.asset('assets/test_images/corgi.png', fit: BoxFit.fitWidth);
+        this.pickedImg = true;
+        this.imageByteSize = 1000;
       });
     } else {
       imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
@@ -72,6 +86,8 @@ class _SendScreen extends State<SendScreen> {
         editableImage = response.editableImage;
         setState(() {
           this.image = response.displayableImage;
+          this.pickedImg = true;
+          this.imageByteSize = response.imageByteSize;
         });
       }
     }
@@ -89,6 +105,8 @@ class _SendScreen extends State<SendScreen> {
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
         this.image = Image.asset('assets/test_images/corgi.png');
+        this.pickedImg = true;
+        this.imageByteSize = 1000;
       });
     } else {
       imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -99,6 +117,8 @@ class _SendScreen extends State<SendScreen> {
         editableImage = response.editableImage;
         setState(() {
           this.image = response.displayableImage;
+          this.pickedImg = true;
+          this.imageByteSize = response.imageByteSize;
         });
       }
     }
@@ -113,6 +133,29 @@ class _SendScreen extends State<SendScreen> {
     Navigator.pushNamed(context, '/encoded', arguments: req);
   }
 
+  Future<void> onMessageChange(String msg) async {
+    if (!this.pickedImg ||
+        this.editableImage == null ||
+        this.image == null ||
+        this.imageByteSize == 0) {
+      setState(() {
+        this.capacityUsage = 'Not applicable, no image uploaded';
+        this.capacityUsageStats = 1.0;
+      });
+    } else {
+      double usage = await calculateCapacityUsageAsync(
+          CapacityUsageRequest(msg, this.imageByteSize));
+      String strUsage = usage.toString();
+      if (strUsage.length > 5) {
+        strUsage = strUsage.substring(1, 6);
+      }
+      setState(() {
+        this.capacityUsageStats = usage;
+        this.capacityUsage = 'Usage: ' + strUsage + '%';
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -122,6 +165,10 @@ class _SendScreen extends State<SendScreen> {
     this.tokenCtrl = TextEditingController();
     this.encrypt = false;
     this.uploadingState = LoadingState.PENDING;
+    this.pickedImg = false;
+    this.capacityUsage = 'Not applicable, no image uploaded';
+    this.capacityUsageStats = 0.0;
+    this.imageByteSize = 0;
   }
 
   @override
@@ -217,9 +264,24 @@ class _SendScreen extends State<SendScreen> {
                   height: 5.0,
                 ),
                 Container(
+                  child: Text(this.capacityUsage),
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Container(
+                  child: LinearProgressIndicator(
+                    value: this.capacityUsageStats,
+                  ),
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Container(
                   child: TextField(
                     key: Key('encode_screen_msg_input'),
                     controller: this.msgCtrl,
+                    onChanged: this.onMessageChange,
                     decoration: InputDecoration(
                       labelText: 'Message',
                     ),
