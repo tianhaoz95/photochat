@@ -2,9 +2,6 @@ tasks:
   - init: download & install Flutter
     command: |
       flutter --version
-vscode:
-  extensions:
-    - Dart-Code.flutter@3.8.1:cytqQi/+kpu802ZOaJwayw==
 image:
   file: .gitpod.Dockerfile
 github:
