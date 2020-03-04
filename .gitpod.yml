@@ -1,7 +1,9 @@
 tasks:
-  - init: download & install Flutter
+  - init: download & install Flutter dependencies
     command: |
       flutter --version
+      cd photochatapp
+      flutter pub get
 image:
   file: .gitpod.Dockerfile
 github:
