@@ -10,13 +10,10 @@ import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:photochatapp/services/utilities/config.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:encrypt/encrypt.dart' as crypto;
+import 'package:photochatapp/services/utilities/get_capacity.dart';
 import 'package:photochatapp/services/utilities/load_asset.dart';
 import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
 import 'package:provider/provider.dart';
-
-int getEncoderCapacity(Uint16List img) {
-  return img.length;
-}
 
 int getMsgSize(String msg) {
   Uint16List byteMsg = msg2bytes(msg);
