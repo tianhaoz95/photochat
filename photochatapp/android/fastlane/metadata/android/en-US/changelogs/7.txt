@@ -1,0 +1,2 @@
+Bug fix:
+* Android permission issue with the random image generator.
