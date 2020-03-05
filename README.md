@@ -22,7 +22,7 @@
 
 | Platform | Download | Alternative Source |
 |:--------:|:--------:|:------------------:|
-| Android | [![get it on play store](assets/post/google_play_store_logo.png)](https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp) | Sign up for: [bleeding edge version](https://play.google.com/apps/internaltest/4698816689834074582), [alpha](https://play.google.com/apps/testing/com.jacksonz.photochatapp) |
+| Android | [![get it on play store](assets/post/google_play_store_logo.png)](https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp) | Sign up for: [bleeding edge version](https://play.google.com/apps/internaltest/4698816689834074582), [alpha version](https://play.google.com/apps/testing/com.jacksonz.photochatapp) |
 | iOS | Coming soon... (too poor to buy the $99/year Apple developer account) | Coming soon ... |
 | Web | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | MacOS | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
