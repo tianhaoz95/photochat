@@ -93,7 +93,9 @@ jobs:
           ./scripts/setenv.sh
           cd ./photochatapp
           flutter pub get
+          export RECORDING_PID = $(xcrun simctl io booted recordVideo /tmp/iwfpapp_screenshot/recording.mov)
           flutter drive --target=test_driver/app.dart
+          kill -SIGINT $RECORDING_PID
       - name: upload screenshot
         uses: actions/upload-artifact@master
         with:
