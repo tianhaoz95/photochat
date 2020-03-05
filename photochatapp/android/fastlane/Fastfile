@@ -7,6 +7,7 @@ platform :android do
       gradle(task: 'bundle', build_type: 'Release')
       upload_to_play_store(
         track: 'internal',
+        version_code: flutter_version(),
         aab: '../build/app/outputs/bundle/release/app-release.aab',
         skip_upload_screenshots: true,
         skip_upload_images: true
@@ -25,6 +26,21 @@ platform :android do
         track: 'internal',
         version_code: flutter_version(),
         track_promote_to: 'alpha',
+        skip_upload_aab: true,
+        skip_upload_screenshots: true,
+        skip_upload_images: true
+      )
+    end
+  end
+  
+  desc "promote to alpha track in Google Play Store"
+  lane :beta do
+    begin
+      gradle(task: 'bundle', build_type: 'Release')
+      upload_to_play_store(
+        track: 'internal',
+        version_code: flutter_version(),
+        track_promote_to: 'beta',
         skip_upload_aab: true,
         skip_upload_screenshots: true,
         skip_upload_images: true
