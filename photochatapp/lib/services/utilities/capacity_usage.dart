@@ -5,7 +5,7 @@ double calculateCapacityUsage(CapacityUsageRequest req) {
   String msg = req.msg;
   double encoderCapacity = req.imgBytes.toDouble();
   double msgSize = msg.length.toDouble();
-  return msgSize / encoderCapacity * 100.0;
+  return msgSize / encoderCapacity;
 }
 
 Future<double> calculateCapacityUsageAsync(CapacityUsageRequest req) async {

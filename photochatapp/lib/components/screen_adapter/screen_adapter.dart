@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class ScreenAdapter extends StatelessWidget {
@@ -5,18 +7,11 @@ class ScreenAdapter extends StatelessWidget {
   ScreenAdapter({this.child});
   @override
   Widget build(BuildContext context) {
-    double aspectRatio =
-        MediaQuery.of(context).size.width / MediaQuery.of(context).size.height;
-    double preferredAspectRatio = 10.0 / 16.0;
-    if (aspectRatio > preferredAspectRatio) {
-      aspectRatio = preferredAspectRatio;
-    }
+    double preferredWidth = 600.0;
+    double contentWidth = min(MediaQuery.of(context).size.width, preferredWidth);
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          AspectRatio(aspectRatio: aspectRatio, child: this.child),
-        ],
+      child: Center(
+        child: Container(width: contentWidth, child: this.child),
       ),
     );
   }

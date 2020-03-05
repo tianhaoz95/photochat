@@ -36,6 +36,34 @@ class _SendScreen extends State<SendScreen> {
   String capacityUsage;
   LoadingState uploadingState;
 
+  Future<void> showAlert(String warningMsg) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Whoops, something went wrong :('),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Error message: '),
+                Text(warningMsg),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> randomImageFromWeb() async {
     setState(() {
       uploadingState = LoadingState.LOADING;
@@ -50,14 +78,22 @@ class _SendScreen extends State<SendScreen> {
         this.imageByteSize = 1000;
       });
     } else {
-      UploadedImageConversionResponse response =
-          await getRandomImageFromWebAsync();
-      editableImage = response.editableImage;
-      setState(() {
-        this.image = response.displayableImage;
-        this.pickedImg = true;
-        this.imageByteSize = response.imageByteSize;
-      });
+      try {
+        UploadedImageConversionResponse response =
+            await getRandomImageFromWebAsync();
+        editableImage = response.editableImage;
+        setState(() {
+          this.image = response.displayableImage;
+          this.pickedImg = true;
+          this.imageByteSize = response.imageByteSize;
+        });
+      } catch (err) {
+        await showAlert(err.toString());
+        setState(() {
+          uploadingState = LoadingState.ERROR;
+        });
+        return;
+      }
     }
     setState(() {
       uploadingState = LoadingState.SUCCESS;
@@ -145,7 +181,7 @@ class _SendScreen extends State<SendScreen> {
     } else {
       double usage = await calculateCapacityUsageAsync(
           CapacityUsageRequest(msg, this.imageByteSize));
-      String strUsage = usage.toString();
+      String strUsage = (usage * 100.0).toString();
       if (strUsage.length > 5) {
         strUsage = strUsage.substring(1, 6);
       }
@@ -177,7 +213,7 @@ class _SendScreen extends State<SendScreen> {
         appBar: AppBar(
           title: Text('Encode a Message'),
         ),
-        resizeToAvoidBottomInset: false,
+        // resizeToAvoidBottomInset: false,
         body: ScreenAdapter(
           child: Container(
             padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
