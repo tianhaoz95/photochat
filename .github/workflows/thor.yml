@@ -93,7 +93,7 @@ jobs:
           ./scripts/setenv.sh
           cd ./photochatapp
           flutter pub get
-          export RECORDING_PID = $(xcrun simctl io booted recordVideo recording.mov)
+          export RECORDING_PID = $(xcrun simctl io booted recordVideo recording.mov &)
           flutter drive --target=test_driver/app.dart
           kill -SIGINT $RECORDING_PID
       - name: upload screenshot
