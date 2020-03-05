@@ -1,1 +1,5 @@
 What's new:
+* Random container image now works on Android
+* Implement layout with preferred width
+* Better message on loading random image error
+* Add infra for better error message presentation

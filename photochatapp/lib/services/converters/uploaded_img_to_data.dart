@@ -34,7 +34,7 @@ Future<UploadedImageConversionResponse> getRandomImageFromWebAsync() async {
   Random randomGenerator = Random();
   int randomId = randomGenerator.nextInt(1000);
   String randomImageUrl =
-      'https://i.picsum.photos/id/${randomId.toString()}/300/300.jpg';
+      'https://i.picsum.photos/id/${randomId.toString()}/150/150.jpg';
   http.Response urlResponse = await http.get(randomImageUrl);
   imglib.Image editableImage = imglib.decodeImage(msg2bytes(urlResponse.body));
   Image displayableImage =
