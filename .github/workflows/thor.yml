@@ -98,6 +98,7 @@ jobs:
           echo "Recording process up with pid: ${RECORDING_PID}"
           flutter drive --target=test_driver/app.dart
           kill -SIGINT $RECORDING_PID
+          cp recording.mov /tmp/iwfpapp_screenshot
       - name: upload screenshot
         uses: actions/upload-artifact@master
         with:
