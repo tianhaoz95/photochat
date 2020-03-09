@@ -89,7 +89,7 @@ Future<EncodeResponse> getMockedEncodeResult() async {
   imglib.Image mockedEditableImage =
       imglib.decodeImage(mockedEncodedImageData.toList());
   Image mockedDisplayableImage =
-      Image.memory(imglib.encodePng(mockedEditableImage));
+      Image.memory(imglib.encodePng(mockedEditableImage), fit: BoxFit.fitWidth);
   EncodeResponse mockedResponse = EncodeResponse(
       mockedEditableImage, mockedDisplayableImage, mockedEncodedImageData);
   return mockedResponse;
