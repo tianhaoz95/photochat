@@ -47,9 +47,10 @@ jobs:
           cd ./photochatapp
           flutter test
       - name: clean up stable flutter build artifacts
-        if: matrix.os != 'macos-latest'
         run: |
           cd ./photochatapp
+          flutter --version
+          flutter doctor -v
           flutter clean
       - name: upgrade flutter to the bleeding edge version
         run: |
