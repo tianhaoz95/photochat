@@ -35,12 +35,6 @@
 
 ![decoding flow](./assets/post/decoding_flow.png)
 
-## Demo
-
-![encoding app demo](./assets/post/encoding_flow_app_demo.png)
-
-![decoding app demo](./assets/post/decoding_flow_app_demo.png)
-
 ## Let's Make It Better Together!
 
 To ensure the transparency of the implementation (so that no privacy message get stolen secretly), Mini Donkey is completely open source. All kinds of contribution including but not limited to pull requests, feature requests, bug reports, sponsorship, etc, are welcome.
