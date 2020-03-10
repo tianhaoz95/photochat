@@ -47,6 +47,7 @@ jobs:
           cd ./photochatapp
           flutter test
       - name: clean up stable flutter build artifacts
+        if: matrix.os!="macos-latest"
         run: |
           cd ./photochatapp
           flutter clean
@@ -68,7 +69,3 @@ jobs:
         run: |
           cd ./photochatapp
           flutter test
-      - name: clean up stable flutter build artifacts
-        run: |
-          cd ./photochatapp
-          flutter clean
