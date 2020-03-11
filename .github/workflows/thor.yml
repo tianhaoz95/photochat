@@ -45,7 +45,7 @@ jobs:
         with:
           api-level: 29
           profile: ${{ matrix.device }}
-          script: /Users/runner/Library/Android/sdk/tools/bin/avdmanager list && sleep 10 && ./scripts/setenv.sh && cd ./photochatapp && flutter pub get && flutter drive --target=test_driver/app.dart
+          script: /Users/runner/Library/Android/sdk/tools/bin/avdmanager list && sleep 10 && ./scripts/setenv.sh && cd ./photochatapp && flutter doctor -v && flutter pub get && flutter drive --target=test_driver/app.dart
       - name: upload screenshot
         uses: actions/upload-artifact@master
         with:

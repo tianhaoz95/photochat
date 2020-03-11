@@ -34,6 +34,10 @@ jobs:
         with:
           flutter-version: '1.12.13+hotfix.8'
           channel: 'stable'
+      - name: check flutter status
+        run: |
+          flutter --version
+          flutter doctor -v
       - name: install flutter dependencies for stable flutter
         run: |
           cd ./photochatapp
@@ -47,16 +51,17 @@ jobs:
           cd ./photochatapp
           flutter test
       - name: clean up stable flutter build artifacts
-        if: matrix.os != 'macos-latest'
         run: |
           cd ./photochatapp
-          flutter clean
+          flutter clean --verbose
       - name: upgrade flutter to the bleeding edge version
         run: |
           flutter channel master
           flutter upgrade
-          flutter doctor -v
+      - name: check flutter status
+        run: |
           flutter --version
+          flutter doctor -v
       - name: install flutter dependencies for bleeding edge flutter
         run: |
           cd ./photochatapp
