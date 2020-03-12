@@ -9,6 +9,7 @@ import 'package:photochatapp/screens/send/send_screen.dart';
 import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class PhotoChatApp extends StatelessWidget {
   final AppRunningState appRunningState;
@@ -20,6 +21,15 @@ class PhotoChatApp extends StatelessWidget {
             AppContext(appRunningStateOverride: this.appRunningState),
         child: MaterialApp(
           title: 'Mini Donkey',
+          localizationsDelegates: [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            const Locale('en'),
+            const Locale.fromSubtags(languageCode: 'zh'),
+          ],
           theme: theme,
           debugShowCheckedModeBanner: false,
           initialRoute: '/',
