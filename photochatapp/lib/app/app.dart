@@ -7,6 +7,7 @@ import 'package:photochatapp/screens/home/home_screen.dart';
 import 'package:photochatapp/screens/receive/receive_screen.dart';
 import 'package:photochatapp/screens/send/send_screen.dart';
 import 'package:photochatapp/services/context/app_context.dart';
+import 'package:photochatapp/services/i18n/i18n.dart';
 import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,10 +23,16 @@ class PhotoChatApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Mini Donkey',
           localizationsDelegates: [
+            const AppLocalizationsDelegate(),
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
+          localeResolutionCallback:
+              (Locale locale, Iterable<Locale> supportedLocales) {
+            print('checking ' + locale.toString());
+            return locale;
+          },
           supportedLocales: [
             const Locale('en'),
             const Locale.fromSubtags(languageCode: 'zh'),
