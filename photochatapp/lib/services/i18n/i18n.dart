@@ -7,7 +7,8 @@ class AppLocalizations {
 
   static Future<AppLocalizations> load(Locale locale) {
     print('received locale: ' + locale.toString());
-    final String name = locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
+    final String name =
+        locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
     print('setting locale to ' + localeName);
     return initializeMessages(localeName).then((_) {
