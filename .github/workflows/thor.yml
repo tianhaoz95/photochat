@@ -32,7 +32,7 @@ jobs:
           channel: 'stable'
       - name: upgrade flutter to dev latest
         run: |
-          flutter channel dev
+          flutter channel master
           flutter upgrade
           flutter --version
       - name: run tests
@@ -92,6 +92,7 @@ jobs:
         run: |
           ./scripts/setenv.sh
           cd ./photochatapp
+          flutter doctor -v
           flutter pub get
           xcrun simctl io booted recordVideo recording.mov &
           sleep 5
