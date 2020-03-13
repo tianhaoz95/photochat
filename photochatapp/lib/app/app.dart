@@ -23,7 +23,7 @@ class PhotoChatApp extends StatelessWidget {
         child: MaterialApp(
           title: 'Mini Donkey',
           localizationsDelegates: [
-            const AppLocalizationsDelegate(),
+            AppLocalizationsDelegate(),
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
