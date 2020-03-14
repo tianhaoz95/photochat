@@ -32,7 +32,7 @@ jobs:
           channel: 'stable'
       - name: upgrade flutter to dev latest
         run: |
-          flutter channel master
+          flutter channel stable
           flutter upgrade
           flutter --version
       - name: run tests
@@ -45,7 +45,7 @@ jobs:
         with:
           api-level: 29
           profile: ${{ matrix.device }}
-          script: /Users/runner/Library/Android/sdk/tools/bin/avdmanager list && sleep 10 && ./scripts/setenv.sh && cd ./photochatapp && flutter doctor -v && flutter pub get && flutter drive --target=test_driver/app.dart
+          script: /Users/runner/Library/Android/sdk/tools/bin/avdmanager list && sleep 20 && ./scripts/setenv.sh && cd ./photochatapp && flutter doctor -v && flutter pub get && flutter drive --target=test_driver/app.dart
       - name: upload screenshot
         uses: actions/upload-artifact@master
         with:
@@ -71,6 +71,10 @@ jobs:
         with:
           flutter-version: '1.12.13+hotfix.8'
           channel: 'stable'
+      - name: upgrade flutter
+        run: |
+          flutter channel dev
+          flutter upgrade
       - name: list all simulators
         run: xcrun instruments -s
       - name: start simulator
