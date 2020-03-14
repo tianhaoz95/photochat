@@ -212,6 +212,12 @@ class _SendScreen extends State<SendScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Encode a Message'),
+          leading: IconButton(
+              key: Key('send_screen_back_btn'),
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
         ),
         // resizeToAvoidBottomInset: false,
         body: ScreenAdapter(

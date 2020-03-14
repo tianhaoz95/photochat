@@ -27,7 +27,7 @@ Future<void> checkDecodeToResult(FlutterDriver driver) async {
   await Future.delayed(const Duration(seconds: 1));
   logger.info('should have landed on the decode result screen',
       name: decodeToResultTestLoggingNamespace);
-  await driver.tap(find.pageBack());
+  await driver.tap(find.byValueKey('decoded_screen_back_btn'));
   await Future.delayed(const Duration(seconds: 1));
   logger.info('should have been back from decode screen',
       name: decodeToResultTestLoggingNamespace);

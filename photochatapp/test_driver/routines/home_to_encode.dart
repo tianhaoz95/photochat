@@ -25,7 +25,7 @@ Future<void> checkHomeToEncode(FlutterDriver driver) async {
   await checkEncodeToResult(driver);
   logger.info('back from encode result screen, try to go back to home screen',
       name: homeToEncodeTestLoggingNamespace);
-  await driver.tap(find.pageBack());
+  await driver.tap(find.byValueKey('send_screen_back_btn'));
   logger.info('should have reached home screen',
       name: homeToEncodeTestLoggingNamespace);
   await Future.delayed(const Duration(seconds: 1));

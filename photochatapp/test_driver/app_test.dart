@@ -27,7 +27,7 @@ void main() {
     test('smoke test', () async {
       await prepareScreenshotArea();
       await initHome(driver);
-      await checkHomeToContribute(driver);
+      // await checkHomeToContribute(driver);
       await checkHomeToEncode(driver);
       await checkHomeToDecode(driver);
     }, timeout: Timeout(Duration(minutes: 5)));

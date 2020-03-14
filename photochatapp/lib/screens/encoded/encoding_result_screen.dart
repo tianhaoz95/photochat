@@ -91,6 +91,12 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Hooray! Encoded!'),
+          leading: IconButton(
+              key: Key('encoded_screen_back_btn'),
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
         ),
         resizeToAvoidBottomInset: false,
         body: ScreenAdapter(
