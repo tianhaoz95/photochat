@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
+import 'package:photochatapp/services/i18n/i18n.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -7,7 +8,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Welcome!',
+          AppLocalizations.of(context).title,
           key: Key('home_screen_title'),
         ),
       ),

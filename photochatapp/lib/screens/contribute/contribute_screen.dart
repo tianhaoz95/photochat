@@ -15,6 +15,12 @@ class ContributeScreen extends StatelessWidget {
               Icon(Icons.favorite),
             ],
           ),
+          leading: IconButton(
+              key: Key('contrib_screen_back_btn'),
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
         ),
         resizeToAvoidBottomInset: false,
         body: ScreenAdapter(

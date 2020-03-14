@@ -26,7 +26,7 @@ Future<void> checkHomeToDecode(FlutterDriver driver) async {
   await Future.delayed(const Duration(seconds: 1));
   logger.info('try to go back to home screen',
       name: homeToDecodeTestLoggingNamespace);
-  await driver.tap(find.pageBack());
+  await driver.tap(find.byValueKey('receive_screen_back_btn'));
   logger.info('should have reached home screen',
       name: homeToDecodeTestLoggingNamespace);
   await Future.delayed(const Duration(seconds: 1));

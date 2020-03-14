@@ -11,13 +11,15 @@ description: A mini donkey to help carry messages securely and secretly.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.6+8
+version: 1.0.6+9
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
+    sdk: flutter
+  flutter_localizations:
     sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
@@ -33,6 +35,7 @@ dependencies:
   encrypt: ^4.0.0
   provider: ^4.0.4
   http: ^0.12.0+4
+  intl: ^0.16.0
 
 dev_dependencies:
   flutter_test:
@@ -42,6 +45,7 @@ dev_dependencies:
   test: any
   mockito: ^4.1.1
   path_provider: ^1.6.0
+  intl_translation: ^0.17.9
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

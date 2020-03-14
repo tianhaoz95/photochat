@@ -79,6 +79,12 @@ class _ReceiveScreen extends State<ReceiveScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Decode a Message'),
+          leading: IconButton(
+              key: Key('receive_screen_back_btn'),
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
         ),
         resizeToAvoidBottomInset: false,
         body: ScreenAdapter(
