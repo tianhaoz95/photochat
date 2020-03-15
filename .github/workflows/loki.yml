@@ -31,6 +31,7 @@ jobs:
           echo "triggering event type: $TRIGGER_EVENT_NAME"
           echo "is prerelease: $TRIGGER_EVENT_IS_PRERELEASE"
           echo "is draft: $TRIGGER_EVENT_IS_DRAFT"
+          echo "full event: $TRIGGER_EVENT"
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
