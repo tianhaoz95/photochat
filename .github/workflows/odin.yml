@@ -1,3 +1,4 @@
+name: odin
 on:
   release:
     types:
