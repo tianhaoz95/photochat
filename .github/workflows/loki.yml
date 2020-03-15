@@ -1,9 +1,5 @@
 name: loki
 on:
-  release:
-    types:
-      - "published"
-      - "edited"
   push:
     branches:
       - "master"
@@ -72,24 +68,3 @@ jobs:
           echo "triggering event type: $TRIGGER_EVENT"
           cd ./photochatapp/android
           bundle exec fastlane alpha
-      - name: promote to beta
-        env:
-          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
-          SECRET_REPO: ${{ secrets.SECRET_REPO }}
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-          TRIGGER_EVENT: ${{ github.event_name }}
-        run: |
-          echo "triggering event type: $TRIGGER_EVENT"
-          cd ./photochatapp/android
-          bundle exec fastlane beta
-      - name: promote to production
-        if: contains(github.event_name,'release')
-        env:
-          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
-          SECRET_REPO: ${{ secrets.SECRET_REPO }}
-          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-          TRIGGER_EVENT: ${{ github.event_name }}
-        run: |
-          echo "triggering event type: $TRIGGER_EVENT"
-          cd ./photochatapp/android
-          bundle exec fastlane production
