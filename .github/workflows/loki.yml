@@ -4,6 +4,7 @@ on:
     types:	
       - "published"	
       - "edited"
+      - "prereleased"
   push:
     branches:
       - "master"
