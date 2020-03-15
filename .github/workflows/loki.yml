@@ -24,7 +24,7 @@ jobs:
       - name: check triggering event type
         env:
           TRIGGER_EVENT: ${{ github.event_name }}
-          TRIGGER_EVENT_TYPE: ${{ github.event }}
+          TRIGGER_EVENT_TYPE: ${{ github.event.type }}
         run: |
           echo "triggering event type: $TRIGGER_EVENT $TRIGGER_EVENT_TYPE"
       - uses: actions/setup-java@v1
