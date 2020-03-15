@@ -21,6 +21,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - name: check triggering event type
+        env:
+          TRIGGER_EVENT: ${{ github.event_name }}
+          TRIGGER_EVENT_TYPE: ${{ github.event }}
+        run: |
+          echo "triggering event type: $TRIGGER_EVENT $TRIGGER_EVENT_TYPE"
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
@@ -70,7 +76,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           TRIGGER_EVENT: ${{ github.event_name }}
         run: |
-          echo "triggering event type: $TRIGGER_EVENT"
           cd ./photochatapp/android
           bundle exec fastlane alpha
       - name: promote to beta
@@ -79,10 +84,7 @@ jobs:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-          TRIGGER_EVENT: ${{ github.event_name }}
-          TRIGGER_EVENT_TYPE: ${{ github.event.type }}
         run: |
-          echo "triggering event type: $TRIGGER_EVENT, $TRIGGER_EVENT_TYPE"
           cd ./photochatapp/android
           bundle exec fastlane beta
       - name: promote to production
@@ -91,9 +93,6 @@ jobs:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-          TRIGGER_EVENT: ${{ github.event_name }}
-          TRIGGER_EVENT_TYPE: ${{ github.event.name }}
         run: |
-          echo "triggering event type: $TRIGGER_EVENT, $TRIGGER_EVENT_TYPE"
           cd ./photochatapp/android
           bundle exec fastlane production
