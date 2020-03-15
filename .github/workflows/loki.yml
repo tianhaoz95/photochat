@@ -84,7 +84,7 @@ jobs:
           cd ./photochatapp/android
           bundle exec fastlane alpha
       - name: promote to beta
-        if: github.event_name == 'release'
+        if: contains(github.event_name, 'release')
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
@@ -93,7 +93,7 @@ jobs:
           cd ./photochatapp/android
           bundle exec fastlane beta
       - name: promote to production
-        if: github.event_name == 'release' && github.event.release.prerelease == false
+        if: contains(github.event_name, 'release') && (github.event.release.prerelease == false)
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
