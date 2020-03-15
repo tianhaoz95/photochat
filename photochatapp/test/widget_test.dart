@@ -6,13 +6,14 @@ import 'package:photochatapp/services/states/app_running_states.dart';
 void main() {
   testWidgets('smoke test', (WidgetTester tester) async {
     await tester.pumpWidget(PhotoChatApp(AppRunningState.UNIT_TEST));
+    await tester.pumpAndSettle();
     await tester.tap(find.byKey(Key('home_screen_encode_message_btn')));
     await tester.pumpAndSettle();
-    await tester.pageBack();
+    await tester.tap(find.byKey(Key('send_screen_back_btn')));
     await tester.pumpAndSettle();
     await tester.tap(find.byKey(Key('home_screen_decode_message_btn')));
     await tester.pumpAndSettle();
-    await tester.pageBack();
+    await tester.tap(find.byKey(Key('receive_screen_back_btn')));
     await tester.pumpAndSettle();
   });
 }

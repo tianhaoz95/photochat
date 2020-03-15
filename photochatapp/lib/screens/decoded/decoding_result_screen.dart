@@ -35,6 +35,12 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Here is your message!'),
+          leading: IconButton(
+              key: Key('decoded_screen_back_btn'),
+              icon: Icon(Icons.arrow_back_ios),
+              onPressed: () {
+                Navigator.pop(context);
+              }),
         ),
         resizeToAvoidBottomInset: false,
         body: ScreenAdapter(
