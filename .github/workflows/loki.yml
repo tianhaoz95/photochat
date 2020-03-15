@@ -25,8 +25,8 @@ jobs:
         env:
           TRIGGER_EVENT_NAME: ${{ github.event_name }}
           TRIGGER_EVENT: ${{ toJson(github.event) }}
-          TRIGGER_EVENT_IS_PRERELEASE: ${{ github.event.prerelease }}
-          TRIGGER_EVENT_IS_DRAFT: ${{ github.event.draft }}
+          TRIGGER_EVENT_IS_PRERELEASE: ${{ github.event.release.prerelease }}
+          TRIGGER_EVENT_IS_DRAFT: ${{ github.event.release.draft }}
         run: |
           echo "triggering event type: $TRIGGER_EVENT_NAME"
           echo "is prerelease: $TRIGGER_EVENT_IS_PRERELEASE"
