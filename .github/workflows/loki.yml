@@ -24,9 +24,12 @@ jobs:
       - name: check triggering event type
         env:
           TRIGGER_EVENT: ${{ github.event_name }}
-          TRIGGER_EVENT_TYPE: ${{ github.event.type }}
+          TRIGGER_EVENT_IS_PRERELEASE: ${{ github.event.prerelease }}
+          TRIGGER_EVENT_IS_DRAFT: ${{ github.event.draft }}
         run: |
-          echo "triggering event type: $TRIGGER_EVENT $TRIGGER_EVENT_TYPE"
+          echo "triggering event type: $TRIGGER_EVENT"
+          echo "is prerelease: $TRIGGER_EVENT_IS_PRERELEASE"
+          echo "is draft: $TRIGGER_EVENT_IS_DRAFT"
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
