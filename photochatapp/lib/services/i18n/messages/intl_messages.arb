@@ -28,5 +28,29 @@
     "description": "Text for the title of the encode screen",
     "type": "text",
     "placeholders": {}
+  },
+  "encodeScreenRandomBtnText": "Random",
+  "@encodeScreenRandomBtnText": {
+    "description": "Text for the random button of the encode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeScreenGalleryBtnText": "Gallery",
+  "@encodeScreenGalleryBtnText": {
+    "description": "Text for the gallery button of the encode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeScreenCameraBtnText": "Camera",
+  "@encodeScreenCameraBtnText": {
+    "description": "Text for the camera button of the encode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeScreenEncodeBtnText": "Encode",
+  "@encodeScreenCameraBtnText": {
+    "description": "Text for the encode button of the encode screen",
+    "type": "text",
+    "placeholders": {}
   }
 }

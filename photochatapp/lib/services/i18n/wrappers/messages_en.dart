@@ -24,6 +24,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "contribBtnText" : MessageLookupByLibrary.simpleMessage("Contribute"),
     "decodeBtnText" : MessageLookupByLibrary.simpleMessage("Decode"),
     "encodeBtnText" : MessageLookupByLibrary.simpleMessage("Encode"),
+    "encodeScreenCameraBtnText" : MessageLookupByLibrary.simpleMessage("Camera"),
+    "encodeScreenEncodeBtnText" : MessageLookupByLibrary.simpleMessage("Encode"),
+    "encodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("Gallery"),
+    "encodeScreenRandomBtnText" : MessageLookupByLibrary.simpleMessage("Random"),
+    "encodeScreenTitle" : MessageLookupByLibrary.simpleMessage("Encode a Message"),
     "title" : MessageLookupByLibrary.simpleMessage("Mini Donkey")
   };
 }

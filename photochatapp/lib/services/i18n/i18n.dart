@@ -59,6 +59,51 @@ class AppLocalizations {
       locale: localeName,
     );
   }
+
+  String get encodeScreenTitle {
+    return Intl.message(
+      'Encode a Message',
+      name: 'encodeScreenTitle',
+      desc: 'Text for the title of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenRandomBtnText {
+    return Intl.message(
+      'Random',
+      name: 'encodeScreenRandomBtnText',
+      desc: 'Text for the random button of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenGalleryBtnText {
+    return Intl.message(
+      'Gallery',
+      name: 'encodeScreenGalleryBtnText',
+      desc: 'Text for the random button of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenCameraBtnText {
+    return Intl.message(
+      'Camera',
+      name: 'encodeScreenCameraBtnText',
+      desc: 'Text for the camera button of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenEncodeBtnText {
+    return Intl.message(
+      'Encode',
+      name: 'encodeScreenEncodeBtnText',
+      desc: 'Text for the encode button of the encode screen',
+      locale: localeName,
+    );
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -24,6 +24,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "contribBtnText" : MessageLookupByLibrary.simpleMessage("贡献"),
     "decodeBtnText" : MessageLookupByLibrary.simpleMessage("解密"),
     "encodeBtnText" : MessageLookupByLibrary.simpleMessage("加密"),
+    "encodeScreenCameraBtnText" : MessageLookupByLibrary.simpleMessage("相机"),
+    "encodeScreenEncodeBtnText" : MessageLookupByLibrary.simpleMessage("加密"),
+    "encodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("相册"),
+    "encodeScreenRandomBtnText" : MessageLookupByLibrary.simpleMessage("随机"),
+    "encodeScreenTitle" : MessageLookupByLibrary.simpleMessage("加密一条信息"),
     "title" : MessageLookupByLibrary.simpleMessage("小驴za")
   };
 }

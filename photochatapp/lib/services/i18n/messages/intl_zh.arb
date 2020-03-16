@@ -22,6 +22,26 @@
   "encodeScreenTitle": "加密一条信息",
   "@encodeScreenTitle": {
     "description": "加密屏幕的标题",
-    "type": "text",
+    "type": "text"
+  },
+  "encodeScreenRandomBtnText": "随机",
+  "@encodeScreenRandomBtnText": {
+    "description": "加密屏幕随机按钮文本",
+    "type": "text"
+  },
+  "encodeScreenGalleryBtnText": "相册",
+  "@encodeScreenGalleryBtnText": {
+    "description": "加密屏幕相册按钮文本",
+    "type": "text"
+  },
+  "encodeScreenCameraBtnText": "相机",
+  "@encodeScreenCameraBtnText": {
+    "description": "加密屏幕相机按钮文本",
+    "type": "text"
+  },
+  "encodeScreenEncodeBtnText": "加密",
+  "@encodeScreenCameraBtnText": {
+    "description": "加密屏幕加密按钮文本",
+    "type": "text"
   }
 }
