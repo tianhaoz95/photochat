@@ -5,4 +5,10 @@
     "type": "text",
     "placeholders": {}
   }
+  "encode_btn_text": "Encode",
+  "@encode_btn_text": {
+    "description": "Text for the encoding button",
+    "type": "text",
+    "placeholders": {}
+  }
 }

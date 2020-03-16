@@ -1,2 +1,0 @@
-What's new:
-* Added automated releasing flow to delivery the lastest updates to users faster.
