@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Encode'),
+                    Text(AppLocalizations.of(context).encodeBtnText),
                   ],
                 ),
               ),
@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Decode'),
+                    Text(AppLocalizations.of(context).decodeBtnText),
                   ],
                 ),
               ),
@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('Contribute'),
+                    Text(AppLocalizations.of(context).contribBtnText),
                   ],
                 ),
               ),

@@ -4,10 +4,22 @@
     "description": "Title for the application",
     "type": "text",
     "placeholders": {}
-  }
-  "encode_btn_text": "Encode",
-  "@encode_btn_text": {
+  },
+  "encodeBtnText": "Encode",
+  "@encodeBtnText": {
     "description": "Text for the encoding button",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeBtnText": "Decode",
+  "@decodeBtnText": {
+    "description": "Text for the decoding button",
+    "type": "text",
+    "placeholders": {}
+  },
+  "contribBtnText": "Contribute",
+  "@contribBtnText": {
+    "description": "Text for the contribute button",
     "type": "text",
     "placeholders": {}
   }

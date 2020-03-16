@@ -1,7 +1,22 @@
 {
   "title": "小驴za",
   "@title": {
-    "description": "Title for the application",
+    "description": "应用标题",
+    "type": "text"
+  },
+  "encodeBtnText": "加密",
+  "@encodeBtnText": {
+    "description": "加密按钮文本",
+    "type": "text"
+  },
+  "decodeBtnText": "解密",
+  "@decodeBtnText": {
+    "description": "解密按钮文本",
+    "type": "text"
+  },
+  "contribBtnText": "贡献",
+  "@contribBtnText": {
+    "description": "贡献按钮文本",
     "type": "text"
   }
 }

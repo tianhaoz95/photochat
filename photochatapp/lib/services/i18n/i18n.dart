@@ -26,9 +26,36 @@ class AppLocalizations {
 
   String get title {
     return Intl.message(
-      'Hello World',
+      'Mini Donkey',
       name: 'title',
-      desc: 'Title for the Demo application',
+      desc: 'Title for the application',
+      locale: localeName,
+    );
+  }
+
+  String get encodeBtnText {
+    return Intl.message(
+      'Encode',
+      name: 'encodeBtnText',
+      desc: 'Text for the encoding button',
+      locale: localeName,
+    );
+  }
+
+  String get decodeBtnText {
+    return Intl.message(
+      'Decode',
+      name: 'decodeBtnText',
+      desc: 'Text for the decoding button',
+      locale: localeName,
+    );
+  }
+
+  String get contribBtnText {
+    return Intl.message(
+      'Contribute',
+      name: 'contribBtnText',
+      desc: 'Text for the contribute button',
       locale: localeName,
     );
   }

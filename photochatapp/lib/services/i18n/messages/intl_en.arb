@@ -3,5 +3,20 @@
   "@title": {
     "description": "Title for the application",
     "type": "text"
+  },
+  "encodeBtnText": "Encode",
+  "@encodeBtnText": {
+    "description": "Text for the encoding button",
+    "type": "text"
+  },
+  "decodeBtnText": "Decode",
+  "@decodeBtnText": {
+    "description": "Text for the decoding button",
+    "type": "text"
+  },
+  "contribBtnText": "Contribute",
+  "@contribBtnText": {
+    "description": "Text for the contribute button",
+    "type": "text"
   }
 }
