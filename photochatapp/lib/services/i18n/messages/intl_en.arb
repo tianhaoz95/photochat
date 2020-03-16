@@ -18,5 +18,10 @@
   "@contribBtnText": {
     "description": "Text for the contribute button",
     "type": "text"
+  },
+  "encodeScreenTitle": "Encode a Message",
+  "@encodeScreenTitle": {
+    "description": "Text for the title of the encode screen",
+    "type": "text",
   }
 }

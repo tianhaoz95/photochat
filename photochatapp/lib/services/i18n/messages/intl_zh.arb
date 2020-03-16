@@ -18,5 +18,10 @@
   "@contribBtnText": {
     "description": "贡献按钮文本",
     "type": "text"
+  },
+  "encodeScreenTitle": "加密一条信息",
+  "@encodeScreenTitle": {
+    "description": "加密屏幕的标题",
+    "type": "text",
   }
 }
