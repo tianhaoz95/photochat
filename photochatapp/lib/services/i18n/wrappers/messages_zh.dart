@@ -20,6 +20,24 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'zh';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) =>
-      <String, Function>{"title": MessageLookupByLibrary.simpleMessage("小驴za")};
+  static _notInlinedMessages(_) => <String, Function> {
+    "contribBtnText" : MessageLookupByLibrary.simpleMessage("贡献"),
+    "decodeBtnText" : MessageLookupByLibrary.simpleMessage("解密"),
+    "decodeResultScreenTitle" : MessageLookupByLibrary.simpleMessage("解密完事儿"),
+    "decodeScreenDecodeBtnText" : MessageLookupByLibrary.simpleMessage("解密"),
+    "decodeScreenDecryptCheckboxText" : MessageLookupByLibrary.simpleMessage("使用密码!"),
+    "decodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("相册"),
+    "decodeScreenTitleText" : MessageLookupByLibrary.simpleMessage("解密一条信息"),
+    "encodeBtnText" : MessageLookupByLibrary.simpleMessage("加密"),
+    "encodeResultScreenSaveBtnText" : MessageLookupByLibrary.simpleMessage("收下"),
+    "encodeResultScreenShareBtnText" : MessageLookupByLibrary.simpleMessage("分享"),
+    "encodeResultScreenTitleText" : MessageLookupByLibrary.simpleMessage("棒棒的，加密完了！"),
+    "encodeScreenCameraBtnText" : MessageLookupByLibrary.simpleMessage("相机"),
+    "encodeScreenEncodeBtnText" : MessageLookupByLibrary.simpleMessage("加密"),
+    "encodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("相册"),
+    "encodeScreenRandomBtnText" : MessageLookupByLibrary.simpleMessage("随机"),
+    "encodeScreenTitle" : MessageLookupByLibrary.simpleMessage("加密一条信息"),
+    "showTokenCheckboxText" : MessageLookupByLibrary.simpleMessage("密码可见"),
+    "title" : MessageLookupByLibrary.simpleMessage("小驴za")
+  };
 }

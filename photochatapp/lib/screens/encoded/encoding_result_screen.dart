@@ -6,6 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/services/encoder.dart';
+import 'package:photochatapp/services/i18n/i18n.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:photochatapp/services/requests/encode_result_screen_render_request.dart';
 import 'package:photochatapp/services/responses/encode_response.dart';
@@ -90,7 +91,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Hooray! Encoded!'),
+          title: Text(AppLocalizations.of(context).encodeResultScreenTitleText),
           leading: IconButton(
               key: Key('encoded_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),
@@ -133,7 +134,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                                 SizedBox(
                                   width: 20.0,
                                 ),
-                                Text('Save'),
+                                Text(AppLocalizations.of(context).encodeResultScreenSaveBtnText),
                               ],
                             ),
                           ),
@@ -153,7 +154,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                                 SizedBox(
                                   width: 20.0,
                                 ),
-                                Text('Share'),
+                                Text(AppLocalizations.of(context).encodeResultScreenShareBtnText),
                               ],
                             ),
                           ),

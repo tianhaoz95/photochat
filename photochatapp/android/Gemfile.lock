@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/tianhaoz95/fastlane-plugin-flutter_version
-  revision: 78db667173e92e64956532e7ff77a48e03cbf15e
+  revision: 243903159aed3ac74103c15f32267352b0d07cea
   specs:
-    fastlane-plugin-flutter_version (0.1.0)
+    fastlane-plugin-flutter_version (0.1.5)
 
 GEM
   remote: https://rubygems.org/
@@ -11,6 +11,16 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     atomos (0.1.3)
+    aws-eventstream (1.0.3)
+    aws-sdk (2.11.463)
+      aws-sdk-resources (= 2.11.463)
+    aws-sdk-core (2.11.463)
+      aws-sigv4 (~> 1.0)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.11.463)
+      aws-sdk-core (= 2.11.463)
+    aws-sigv4 (1.1.1)
+      aws-eventstream (~> 1.0, >= 1.0.2)
     babosa (1.0.3)
     claide (1.0.3)
     colored (1.2)
@@ -19,7 +29,7 @@ GEM
       highline (~> 1.7.2)
     declarative (0.0.10)
     declarative-option (0.1.0)
-    digest-crc (0.4.1)
+    digest-crc (0.5.1)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.5)
@@ -33,9 +43,10 @@ GEM
     faraday_middleware (0.13.1)
       faraday (>= 0.7.4, < 1.0)
     fastimage (2.1.7)
-    fastlane (2.142.0)
+    fastlane (2.143.0)
       CFPropertyList (>= 2.3, < 4.0.0)
       addressable (>= 2.3, < 3.0.0)
+      aws-sdk (~> 2.3)
       babosa (>= 1.0.2, < 2.0.0)
       bundler (>= 1.12.0, < 3.0.0)
       colored
@@ -82,8 +93,8 @@ GEM
     google-cloud-core (1.5.0)
       google-cloud-env (~> 1.0)
       google-cloud-errors (~> 1.0)
-    google-cloud-env (1.3.0)
-      faraday (~> 0.11)
+    google-cloud-env (1.3.1)
+      faraday (>= 0.17.3, < 2.0)
     google-cloud-errors (1.0.0)
     google-cloud-storage (1.25.1)
       addressable (~> 2.5)
@@ -92,8 +103,8 @@ GEM
       google-cloud-core (~> 1.2)
       googleauth (~> 0.9)
       mini_mime (~> 1.0)
-    googleauth (0.10.0)
-      faraday (~> 0.12)
+    googleauth (0.11.0)
+      faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.4, < 3.0)
       memoist (~> 0.16)
       multi_json (~> 1.11)
@@ -103,6 +114,7 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
+    jmespath (1.4.0)
     json (2.3.0)
     jwt (2.1.0)
     memoist (0.16.2)
@@ -124,9 +136,9 @@ GEM
     rouge (2.0.7)
     rubyzip (1.3.0)
     security (0.1.3)
-    signet (0.12.0)
+    signet (0.13.0)
       addressable (~> 2.3)
-      faraday (~> 0.9)
+      faraday (>= 0.17.3, < 2.0)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
     simctl (1.6.8)
@@ -144,7 +156,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
-    unicode-display_width (1.6.1)
+    unicode-display_width (1.7.0)
     word_wrap (1.0.0)
     xcodeproj (1.15.0)
       CFPropertyList (>= 2.3.3, < 4.0)
@@ -161,7 +173,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fastlane (= 2.142.0)
+  fastlane (= 2.143.0)
   fastlane-plugin-flutter_version!
 
 BUNDLED WITH

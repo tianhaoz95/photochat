@@ -1,7 +1,92 @@
 {
   "title": "小驴za",
   "@title": {
-    "description": "Title for the application",
+    "description": "应用标题",
+    "type": "text"
+  },
+  "encodeBtnText": "加密",
+  "@encodeBtnText": {
+    "description": "加密按钮文本",
+    "type": "text"
+  },
+  "decodeBtnText": "解密",
+  "@decodeBtnText": {
+    "description": "解密按钮文本",
+    "type": "text"
+  },
+  "contribBtnText": "贡献",
+  "@contribBtnText": {
+    "description": "贡献按钮文本",
+    "type": "text"
+  },
+  "encodeScreenTitle": "加密一条信息",
+  "@encodeScreenTitle": {
+    "description": "加密页面的标题",
+    "type": "text"
+  },
+  "encodeScreenRandomBtnText": "随机",
+  "@encodeScreenRandomBtnText": {
+    "description": "加密页面随机按钮文本",
+    "type": "text"
+  },
+  "encodeScreenGalleryBtnText": "相册",
+  "@encodeScreenGalleryBtnText": {
+    "description": "加密页面相册按钮文本",
+    "type": "text"
+  },
+  "encodeScreenCameraBtnText": "相机",
+  "@encodeScreenCameraBtnText": {
+    "description": "加密页面相机按钮文本",
+    "type": "text"
+  },
+  "encodeScreenEncodeBtnText": "加密",
+  "@encodeScreenCameraBtnText": {
+    "description": "加密页面加密按钮文本",
+    "type": "text"
+  },
+  "encodeResultScreenTitleText": "棒棒的，加密完了！",
+  "@encodeResultScreenTitleText": {
+    "description": "加密结果页面的标题",
+    "type": "text"
+  },
+  "encodeResultScreenSaveBtnText": "收下",
+  "@encodeResultScreenSaveBtnText": {
+    "description": "加密结果页面储存按钮文本",
+    "type": "text"
+  },
+  "encodeResultScreenShareBtnText": "分享",
+  "@encodeResultScreenShareBtnText": {
+    "description": "加密结果页面分享按钮文本",
+    "type": "text"
+  },
+  "decodeScreenTitleText": "解密一条信息",
+  "@decodeScreenTitleText": {
+    "description": "解密信息页面标题",
+    "type": "text"
+  },
+  "decodeScreenGalleryBtnText": "相册",
+  "@decodeScreenGalleryBtnText": {
+    "description": "解密信息页面相册按钮文本",
+    "type": "text"
+  },
+  "decodeScreenDecodeBtnText": "解密",
+  "@decodeScreenDecodeBtnText": {
+    "description": "解密信息页面解密按钮文本",
+    "type": "text"
+  },
+  "decodeScreenDecryptCheckboxText": "使用密码!",
+  "@decodeScreenDecryptCheckboxText": {
+    "description": "解密信息页面使用密码开关文本",
+    "type": "text"
+  },
+  "showTokenCheckboxText": "密码可见",
+  "@showTokenCheckboxText": {
+    "description": "密码可见开关文本",
+    "type": "text"
+  },
+  "decodeResultScreenTitle": "解密完事儿",
+  "@decodeResultScreenTitle": {
+    "description": "解密结果页面标题",
     "type": "text"
   }
 }

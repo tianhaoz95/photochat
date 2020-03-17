@@ -26,9 +26,162 @@ class AppLocalizations {
 
   String get title {
     return Intl.message(
-      'Hello World',
+      'Mini Donkey',
       name: 'title',
-      desc: 'Title for the Demo application',
+      desc: 'Title for the application',
+      locale: localeName,
+    );
+  }
+
+  String get encodeBtnText {
+    return Intl.message(
+      'Encode',
+      name: 'encodeBtnText',
+      desc: 'Text for the encoding button',
+      locale: localeName,
+    );
+  }
+
+  String get decodeBtnText {
+    return Intl.message(
+      'Decode',
+      name: 'decodeBtnText',
+      desc: 'Text for the decoding button',
+      locale: localeName,
+    );
+  }
+
+  String get contribBtnText {
+    return Intl.message(
+      'Contribute',
+      name: 'contribBtnText',
+      desc: 'Text for the contribute button',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenTitle {
+    return Intl.message(
+      'Encode a Message',
+      name: 'encodeScreenTitle',
+      desc: 'Text for the title of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenRandomBtnText {
+    return Intl.message(
+      'Random',
+      name: 'encodeScreenRandomBtnText',
+      desc: 'Text for the random button of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenGalleryBtnText {
+    return Intl.message(
+      'Gallery',
+      name: 'encodeScreenGalleryBtnText',
+      desc: 'Text for the random button of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenCameraBtnText {
+    return Intl.message(
+      'Camera',
+      name: 'encodeScreenCameraBtnText',
+      desc: 'Text for the camera button of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeScreenEncodeBtnText {
+    return Intl.message(
+      'Encode',
+      name: 'encodeScreenEncodeBtnText',
+      desc: 'Text for the encode button of the encode screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeResultScreenTitleText {
+    return Intl.message(
+      'Hooray! Encoded!',
+      name: 'encodeResultScreenTitleText',
+      desc: 'Text for the title of the encode result screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeResultScreenSaveBtnText {
+    return Intl.message(
+      'Save',
+      name: 'encodeResultScreenSaveBtnText',
+      desc: 'Text for the save button of the encode result screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeResultScreenShareBtnText {
+    return Intl.message(
+      'Share',
+      name: 'encodeResultScreenShareBtnText',
+      desc: 'Text for the share button of the encode result screen',
+      locale: localeName,
+    );
+  }
+
+  String get decodeScreenTitleText {
+    return Intl.message(
+      'Decode a Message',
+      name: 'decodeScreenTitleText',
+      desc: 'Text for the title of the decode screen',
+      locale: localeName,
+    );
+  }
+
+  String get decodeScreenGalleryBtnText {
+    return Intl.message(
+      'Gallery',
+      name: 'decodeScreenGalleryBtnText',
+      desc: 'Text for the gallery button of the decode screen',
+      locale: localeName,
+    );
+  }
+
+  String get decodeScreenDecodeBtnText {
+    return Intl.message(
+      'Decode',
+      name: 'decodeScreenDecodeBtnText',
+      desc: 'Text for the decode button of the decode screen',
+      locale: localeName,
+    );
+  }
+
+  String get decodeScreenDecryptCheckboxText {
+    return Intl.message(
+      'Decrypt my message!',
+      name: 'decodeScreenDecryptCheckboxText',
+      desc: 'Text for the decrypt checkbox of the decode screen',
+      locale: localeName,
+    );
+  }
+
+  String get showTokenCheckboxText {
+    return Intl.message(
+      'Show token',
+      name: 'showTokenCheckboxText',
+      desc: 'Text for the show token checkbox',
+      locale: localeName,
+    );
+  }
+
+  String get decodeResultScreenTitle {
+    return Intl.message(
+      'Here is Your Message!',
+      name: 'decodeResultScreenTitle',
+      desc: 'Text for the title of the decode result screen',
       locale: localeName,
     );
   }

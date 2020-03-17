@@ -4,5 +4,107 @@
     "description": "Title for the application",
     "type": "text",
     "placeholders": {}
+  },
+  "encodeBtnText": "Encode",
+  "@encodeBtnText": {
+    "description": "Text for the encoding button",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeBtnText": "Decode",
+  "@decodeBtnText": {
+    "description": "Text for the decoding button",
+    "type": "text",
+    "placeholders": {}
+  },
+  "contribBtnText": "Contribute",
+  "@contribBtnText": {
+    "description": "Text for the contribute button",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeScreenTitle": "Encode a Message",
+  "@encodeScreenTitle": {
+    "description": "Text for the title of the encode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeScreenRandomBtnText": "Random",
+  "@encodeScreenRandomBtnText": {
+    "description": "Text for the random button of the encode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeScreenGalleryBtnText": "Gallery",
+  "@encodeScreenGalleryBtnText": {
+    "description": "Text for the gallery button of the encode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeScreenCameraBtnText": "Camera",
+  "@encodeScreenCameraBtnText": {
+    "description": "Text for the camera button of the encode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeScreenEncodeBtnText": "Encode",
+  "@encodeScreenCameraBtnText": {
+    "description": "Text for the encode button of the encode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeResultScreenTitleText": "Hooray! Encoded!",
+  "@encodeResultScreenTitleText": {
+    "description": "Text for the title of the encode result screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeResultScreenSaveBtnText": "Save",
+  "@encodeResultScreenSaveBtnText": {
+    "description": "Text for the save button of the encode result screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeResultScreenShareBtnText": "Share",
+  "@encodeResultScreenShareBtnText": {
+    "description": "Text for the share button of the encode result screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeScreenTitleText": "Decode a Message",
+  "@decodeScreenTitleText": {
+    "description": "Text for the title of the decode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeScreenGalleryBtnText": "Gallery",
+  "@decodeScreenGalleryBtnText": {
+    "description": "Text for the gallery button of the decode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeScreenDecodeBtnText": "Decode",
+  "@decodeScreenDecodeBtnText": {
+    "description": "Text for the decode button of the decode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeScreenDecryptCheckboxText": "Decrypt my message!",
+  "@decodeScreenDecryptCheckboxText": {
+    "description": "Text for the decrypt checkbox of the decode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "showTokenCheckboxText": "Show token",
+  "@showTokenCheckboxText": {
+    "description": "Text for the show token checkbox",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeResultScreenTitle": "Here is Your Message!",
+  "@decodeResultScreenTitle": {
+    "description": "Text for the title of the decode result screen",
+    "type": "text",
+    "placeholders": {}
   }
 }

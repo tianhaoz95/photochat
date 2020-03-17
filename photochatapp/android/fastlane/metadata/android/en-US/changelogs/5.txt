@@ -1,5 +1,0 @@
-What's new:
-* Add capacity indicator for message size
-* Refactor the get capacity service utility
-
-Note: this will be the last short release. In the future, release is planned at bi-weekly.

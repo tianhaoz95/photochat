@@ -6,6 +6,7 @@ import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/components/token_input_field/token_input_field.dart';
 import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
+import 'package:photochatapp/services/i18n/i18n.dart';
 import 'package:photochatapp/services/requests/capacity_usage_request.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
 import 'package:image/image.dart' as imglib;
@@ -211,7 +212,7 @@ class _SendScreen extends State<SendScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Encode a Message'),
+          title: Text(AppLocalizations.of(context).encodeScreenTitle),
           leading: IconButton(
               key: Key('send_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),
@@ -253,7 +254,7 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Random'),
+                          Text(AppLocalizations.of(context).encodeScreenRandomBtnText),
                         ],
                       ),
                     ),
@@ -275,7 +276,7 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Gallery'),
+                          Text(AppLocalizations.of(context).encodeScreenGalleryBtnText),
                         ],
                       ),
                     ),
@@ -296,7 +297,7 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Camera'),
+                          Text(AppLocalizations.of(context).encodeScreenCameraBtnText),
                         ],
                       ),
                     ),
@@ -367,7 +368,7 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Encode'),
+                          Text(AppLocalizations.of(context).encodeScreenEncodeBtnText),
                         ],
                       ),
                     ),

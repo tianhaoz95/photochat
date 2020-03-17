@@ -1,3 +1,0 @@
-What's new:
-* Added support for random placeholder images to reduce the time and effort to create a message.
-* Added automated releasing flow to delivery the lastest updates to users faster.

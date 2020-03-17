@@ -1,2 +1,0 @@
-Bug fix:
-* Android permission location misplaced
