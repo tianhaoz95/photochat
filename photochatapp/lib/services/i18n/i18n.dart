@@ -132,6 +132,50 @@ class AppLocalizations {
     );
   }
 
+  String get decodeScreenTitleText {
+    return Intl.message(
+      'Decode a Message',
+      name: 'decodeScreenTitleText',
+      desc: 'Text for the title of the decode screen',
+      locale: localeName,
+    );
+  }
+
+  String get decodeScreenGalleryBtnText {
+    return Intl.message(
+      'Gallery',
+      name: 'decodeScreenGalleryBtnText',
+      desc: 'Text for the gallery button of the decode screen',
+      locale: localeName,
+    );
+  }
+
+  String get decodeScreenDecodeBtnText {
+    return Intl.message(
+      'Decode',
+      name: 'decodeScreenDecodeBtnText',
+      desc: 'Text for the decode button of the decode screen',
+      locale: localeName,
+    );
+  }
+
+  String get decodeScreenDecryptCheckboxText {
+    return Intl.message(
+      'Decrypt my message!',
+      name: 'decodeScreenDecryptCheckboxText',
+      desc: 'Text for the decrypt checkbox of the decode screen',
+      locale: localeName,
+    );
+  }
+
+  String get showTokenCheckboxText {
+    return Intl.message(
+      'Show token',
+      name: 'showTokenCheckboxText',
+      desc: 'Text for the show token checkbox',
+      locale: localeName,
+    );
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

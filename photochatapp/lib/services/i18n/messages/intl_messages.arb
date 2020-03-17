@@ -70,5 +70,35 @@
     "description": "Text for the share button of the encode result screen",
     "type": "text",
     "placeholders": {}
+  },
+  "decodeScreenTitleText": "Decode a Message",
+  "@decodeScreenTitleText": {
+    "description": "Text for the title of the decode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeScreenGalleryBtnText": "Gallery",
+  "@decodeScreenGalleryBtnText": {
+    "description": "Text for the gallery button of the decode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeScreenDecodeBtnText": "Decode",
+  "@decodeScreenDecodeBtnText": {
+    "description": "Text for the decode button of the decode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "decodeScreenDecryptCheckboxText": "Decrypt my message!",
+  "@decodeScreenDecryptCheckboxText": {
+    "description": "Text for the decrypt checkbox of the decode screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "showTokenCheckboxText": "Show token",
+  "@showTokenCheckboxText": {
+    "description": "Text for the show token checkbox",
+    "type": "text",
+    "placeholders": {}
   }
 }

@@ -23,6 +23,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "contribBtnText" : MessageLookupByLibrary.simpleMessage("贡献"),
     "decodeBtnText" : MessageLookupByLibrary.simpleMessage("解密"),
+    "decodeScreenDecodeBtnText" : MessageLookupByLibrary.simpleMessage("解密"),
+    "decodeScreenDecryptCheckboxText" : MessageLookupByLibrary.simpleMessage("使用密码!"),
+    "decodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("相册"),
+    "decodeScreenTitleText" : MessageLookupByLibrary.simpleMessage("解密一条信息"),
     "encodeBtnText" : MessageLookupByLibrary.simpleMessage("加密"),
     "encodeResultScreenSaveBtnText" : MessageLookupByLibrary.simpleMessage("收下"),
     "encodeResultScreenShareBtnText" : MessageLookupByLibrary.simpleMessage("分享"),
@@ -32,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "encodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("相册"),
     "encodeScreenRandomBtnText" : MessageLookupByLibrary.simpleMessage("随机"),
     "encodeScreenTitle" : MessageLookupByLibrary.simpleMessage("加密一条信息"),
+    "showTokenCheckboxText" : MessageLookupByLibrary.simpleMessage("密码可见"),
     "title" : MessageLookupByLibrary.simpleMessage("小驴za")
   };
 }

@@ -8,6 +8,7 @@ import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/components/token_input_field/token_input_field.dart';
 import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
+import 'package:photochatapp/services/i18n/i18n.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
 import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
 import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
@@ -78,7 +79,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Decode a Message'),
+          title: Text(AppLocalizations.of(context).decodeScreenTitleText),
           leading: IconButton(
               key: Key('receive_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),
@@ -121,7 +122,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text('Gallery'),
+                          Text(AppLocalizations.of(context).decodeScreenGalleryBtnText),
                         ],
                       ),
                     ),
@@ -141,7 +142,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                               this.decrypt = nextVal;
                             });
                           }),
-                      Text('Decrypt my message!'),
+                      Text(AppLocalizations.of(context).decodeScreenDecryptCheckboxText),
                     ],
                   ),
                 ),
@@ -170,7 +171,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                         SizedBox(
                           width: 15.0,
                         ),
-                        Text('Decode'),
+                        Text(AppLocalizations.of(context).decodeScreenDecodeBtnText),
                       ],
                     ),
                   ),

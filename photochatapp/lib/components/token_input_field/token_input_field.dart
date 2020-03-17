@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photochatapp/services/i18n/i18n.dart';
 
 class TokenInputField extends StatefulWidget {
   final TextEditingController ctrl;
@@ -37,7 +38,7 @@ class _TokenInputField extends State<TokenInputField> {
                           });
                         }),
                   ),
-                  Text('Show token'),
+                  Text(AppLocalizations.of(context).showTokenCheckboxText),
                 ],
               ),
             ),

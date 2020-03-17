@@ -58,5 +58,30 @@
   "@encodeResultScreenShareBtnText": {
     "description": "Text for the share button of the encode result screen",
     "type": "text"
+  },
+  "decodeScreenTitleText": "Decode a Message",
+  "@decodeScreenTitleText": {
+    "description": "Text for the title of the decode screen",
+    "type": "text"
+  },
+  "decodeScreenGalleryBtnText": "Gallery",
+  "@decodeScreenGalleryBtnText": {
+    "description": "Text for the gallery button of the decode screen",
+    "type": "text"
+  },
+  "decodeScreenDecodeBtnText": "Decode",
+  "@decodeScreenDecodeBtnText": {
+    "description": "Text for the decode button of the decode screen",
+    "type": "text"
+  },
+  "decodeScreenDecryptCheckboxText": "Decrypt my message!",
+  "@decodeScreenDecryptCheckboxText": {
+    "description": "Text for the decrypt checkbox of the decode screen",
+    "type": "text"
+  },
+  "showTokenCheckboxText": "Show token",
+  "@showTokenCheckboxText": {
+    "description": "Text for the show token checkbox",
+    "type": "text"
   }
 }

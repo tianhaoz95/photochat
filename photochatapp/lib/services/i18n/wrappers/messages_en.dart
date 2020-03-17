@@ -23,6 +23,10 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "contribBtnText" : MessageLookupByLibrary.simpleMessage("Contribute"),
     "decodeBtnText" : MessageLookupByLibrary.simpleMessage("Decode"),
+    "decodeScreenDecodeBtnText" : MessageLookupByLibrary.simpleMessage("Decode"),
+    "decodeScreenDecryptCheckboxText" : MessageLookupByLibrary.simpleMessage("Decrypt my message!"),
+    "decodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("Gallery"),
+    "decodeScreenTitleText" : MessageLookupByLibrary.simpleMessage("Decode a Message"),
     "encodeBtnText" : MessageLookupByLibrary.simpleMessage("Encode"),
     "encodeResultScreenSaveBtnText" : MessageLookupByLibrary.simpleMessage("Save"),
     "encodeResultScreenShareBtnText" : MessageLookupByLibrary.simpleMessage("Share"),
@@ -32,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "encodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("Gallery"),
     "encodeScreenRandomBtnText" : MessageLookupByLibrary.simpleMessage("Random"),
     "encodeScreenTitle" : MessageLookupByLibrary.simpleMessage("Encode a Message"),
+    "showTokenCheckboxText" : MessageLookupByLibrary.simpleMessage("Show token"),
     "title" : MessageLookupByLibrary.simpleMessage("Mini Donkey")
   };
 }

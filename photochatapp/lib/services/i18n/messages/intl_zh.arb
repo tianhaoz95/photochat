@@ -58,5 +58,30 @@
   "@encodeResultScreenShareBtnText": {
     "description": "加密结果页面分享按钮文本",
     "type": "text"
+  },
+  "decodeScreenTitleText": "解密一条信息",
+  "@decodeScreenTitleText": {
+    "description": "解密信息页面标题",
+    "type": "text"
+  },
+  "decodeScreenGalleryBtnText": "相册",
+  "@decodeScreenGalleryBtnText": {
+    "description": "解密信息页面相册按钮文本",
+    "type": "text"
+  },
+  "decodeScreenDecodeBtnText": "解密",
+  "@decodeScreenDecodeBtnText": {
+    "description": "解密信息页面解密按钮文本",
+    "type": "text"
+  },
+  "decodeScreenDecryptCheckboxText": "使用密码!",
+  "@decodeScreenDecryptCheckboxText": {
+    "description": "解密信息页面使用密码开关文本",
+    "type": "text"
+  },
+  "showTokenCheckboxText": "密码可见",
+  "@showTokenCheckboxText": {
+    "description": "密码可见开关文本",
+    "type": "text"
   }
 }
