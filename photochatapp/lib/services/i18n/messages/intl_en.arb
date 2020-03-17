@@ -43,5 +43,20 @@
   "@encodeScreenCameraBtnText": {
     "description": "Text for the encode button of the encode screen",
     "type": "text"
+  },
+  "encodeResultScreenTitleText": "Hooray! Encoded!",
+  "@encodeResultScreenTitleText": {
+    "description": "Text for the title of the encode result screen",
+    "type": "text"
+  },
+  "encodeResultScreenSaveBtnText": "Save",
+  "@encodeResultScreenSaveBtnText": {
+    "description": "Text for the save button of the encode result screen",
+    "type": "text"
+  },
+  "encodeResultScreenShareBtnText": "Share",
+  "@encodeResultScreenShareBtnText": {
+    "description": "Text for the share button of the encode result screen",
+    "type": "text"
   }
 }

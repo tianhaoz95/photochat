@@ -52,5 +52,23 @@
     "description": "Text for the encode button of the encode screen",
     "type": "text",
     "placeholders": {}
+  },
+  "encodeResultScreenTitleText": "Hooray! Encoded!",
+  "@encodeResultScreenTitleText": {
+    "description": "Text for the title of the encode result screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeResultScreenSaveBtnText": "Save",
+  "@encodeResultScreenSaveBtnText": {
+    "description": "Text for the save button of the encode result screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "encodeResultScreenShareBtnText": "Share",
+  "@encodeResultScreenShareBtnText": {
+    "description": "Text for the share button of the encode result screen",
+    "type": "text",
+    "placeholders": {}
   }
 }

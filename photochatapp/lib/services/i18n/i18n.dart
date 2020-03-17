@@ -104,6 +104,34 @@ class AppLocalizations {
       locale: localeName,
     );
   }
+
+  String get encodeResultScreenTitleText {
+    return Intl.message(
+      'Hooray! Encoded!',
+      name: 'encodeResultScreenTitleText',
+      desc: 'Text for the title of the encode result screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeResultScreenSaveBtnText {
+    return Intl.message(
+      'Save',
+      name: 'encodeResultScreenSaveBtnText',
+      desc: 'Text for the save button of the encode result screen',
+      locale: localeName,
+    );
+  }
+
+  String get encodeResultScreenShareBtnText {
+    return Intl.message(
+      'Share',
+      name: 'encodeResultScreenShareBtnText',
+      desc: 'Text for the share button of the encode result screen',
+      locale: localeName,
+    );
+  }
+
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
