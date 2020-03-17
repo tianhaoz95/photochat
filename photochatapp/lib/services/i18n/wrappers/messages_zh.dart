@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "contribBtnText" : MessageLookupByLibrary.simpleMessage("贡献"),
     "decodeBtnText" : MessageLookupByLibrary.simpleMessage("解密"),
+    "decodeResultScreenTitle" : MessageLookupByLibrary.simpleMessage("解密完事儿"),
     "decodeScreenDecodeBtnText" : MessageLookupByLibrary.simpleMessage("解密"),
     "decodeScreenDecryptCheckboxText" : MessageLookupByLibrary.simpleMessage("使用密码!"),
     "decodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("相册"),

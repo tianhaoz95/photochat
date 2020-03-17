@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/services/decoder.dart';
+import 'package:photochatapp/services/i18n/i18n.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
 import 'package:photochatapp/services/responses/decode_response.dart';
 
@@ -34,7 +35,7 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Here is your message!'),
+          title: Text(AppLocalizations.of(context).decodeResultScreenTitle),
           leading: IconButton(
               key: Key('decoded_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),

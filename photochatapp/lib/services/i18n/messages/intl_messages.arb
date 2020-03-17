@@ -100,5 +100,11 @@
     "description": "Text for the show token checkbox",
     "type": "text",
     "placeholders": {}
+  },
+  "decodeResultScreenTitle": "Here is Your Message!",
+  "@decodeResultScreenTitle": {
+    "description": "Text for the title of the decode result screen",
+    "type": "text",
+    "placeholders": {}
   }
 }

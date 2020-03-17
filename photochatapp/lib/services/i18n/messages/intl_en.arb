@@ -83,5 +83,10 @@
   "@showTokenCheckboxText": {
     "description": "Text for the show token checkbox",
     "type": "text"
+  },
+  "decodeResultScreenTitle": "Here is Your Message!",
+  "@decodeResultScreenTitle": {
+    "description": "Text for the title of the decode result screen",
+    "type": "text"
   }
 }

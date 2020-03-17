@@ -83,5 +83,10 @@
   "@showTokenCheckboxText": {
     "description": "密码可见开关文本",
     "type": "text"
+  },
+  "decodeResultScreenTitle": "解密完事儿",
+  "@decodeResultScreenTitle": {
+    "description": "解密结果页面标题",
+    "type": "text"
   }
 }

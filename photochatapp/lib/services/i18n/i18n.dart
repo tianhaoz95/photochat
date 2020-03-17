@@ -176,6 +176,15 @@ class AppLocalizations {
       locale: localeName,
     );
   }
+
+  String get decodeResultScreenTitle {
+    return Intl.message(
+      'Here is Your Message!',
+      name: 'decodeResultScreenTitle',
+      desc: 'Text for the title of the decode result screen',
+      locale: localeName,
+    );
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

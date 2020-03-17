@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "contribBtnText" : MessageLookupByLibrary.simpleMessage("Contribute"),
     "decodeBtnText" : MessageLookupByLibrary.simpleMessage("Decode"),
+    "decodeResultScreenTitle" : MessageLookupByLibrary.simpleMessage("Here is Your Message!"),
     "decodeScreenDecodeBtnText" : MessageLookupByLibrary.simpleMessage("Decode"),
     "decodeScreenDecryptCheckboxText" : MessageLookupByLibrary.simpleMessage("Decrypt my message!"),
     "decodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("Gallery"),
