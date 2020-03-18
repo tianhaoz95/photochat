@@ -9,4 +9,5 @@ RUN mkdir -p /home/gitpod/development && \
   echo "export PATH=\"\$PATH:/home/gitpod/development/flutter/bin\"" >> ~/.bashrc && \
   echo "export PATH=\"\$PATH:/home/gitpod/development/flutter/bin/cache/dart-sdk/bin/\"" >> ~/.bashrc
 
-RUN pub global activate dhttpd && echo "export PATH=\"\$PATH:/home/gitpod/.pub-cache/bin\"" >> ~/.bashrc
+RUN /home/gitpod/development/flutter/bin/flutter pub global activate dhttpd && \
+  echo "export PATH=\"\$PATH:/home/gitpod/.pub-cache/bin\"" >> ~/.bashrc
