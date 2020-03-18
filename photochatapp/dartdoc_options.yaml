@@ -1,6 +1,9 @@
 dartdoc:
   categories:
-    i18n:
+    "i18n":
       name: "i18n"
+      markdown: lib/services/i18n/README.md
+    "i18n Messages":
+      name: "i18n Messages"
       markdown: lib/services/i18n/messages/README.md
-    categoryOrder: ["i18n"]
+    categoryOrder: ["i18n", "i18n Messages"]
