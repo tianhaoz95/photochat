@@ -7,7 +7,5 @@ RUN mkdir -p /home/gitpod/development && \
   wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_${FLUTTER_VERSION}.tar.xz && \
   tar -xf ./flutter_linux_${FLUTTER_VERSION}.tar.xz && \
   echo "export PATH=\"\$PATH:/home/gitpod/development/flutter/bin\"" >> ~/.bashrc && \
-  echo "export PATH=\"\$PATH:/home/gitpod/development/flutter/bin/cache/dart-sdk/bin/\"" >> ~/.bashrc
-
-RUN /home/gitpod/development/flutter/bin/flutter pub global activate dhttpd && \
+  echo "export PATH=\"\$PATH:/home/gitpod/development/flutter/bin/cache/dart-sdk/bin/\"" >> ~/.bashrc && \
   echo "export PATH=\"\$PATH:/home/gitpod/.pub-cache/bin\"" >> ~/.bashrc

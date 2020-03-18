@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:photochatapp/services/i18n/wrappers/messages_all.dart';
 
+/// {@category i18n}
 class AppLocalizations {
   AppLocalizations(this.localeName);
 

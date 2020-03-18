@@ -1,0 +1,6 @@
+dartdoc:
+  categories:
+    i18n:
+      name: "i18n"
+      markdown: lib/services/i18n/messages/README.md
+    categoryOrder: ["i18n"]
