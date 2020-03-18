@@ -1,5 +1,5 @@
 tasks:
-  - init: cd photochatapp && flutter --version && flutter pub get
+  - init: cd photochatapp && flutter --version && flutter pub get && pub global activate dhttpd
 image:
   file: .gitpod.Dockerfile
 github:
