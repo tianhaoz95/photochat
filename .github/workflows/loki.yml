@@ -16,6 +16,41 @@ on:
       - "photochatapp/android/Gemfile"
       - "photochatapp/android/Gemfile.lock"
 jobs:
+  release-docs:
+    name: release app docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install dart sdk
+        run: |
+          apt update -y
+          apt install -y apt-transport-https
+          sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+          sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+          apt update -y
+          apt install -y dart
+      - name: generate docs
+        working-directory: ./photochatapp
+        run: |
+          export PATH="$PATH:/usr/lib/dart/bin"
+          dartdoc
+      - name: upload docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          cd photochatapp
+          mkdir -p ~/upload
+          cp -r doc/api ~/upload/docs
+          cd ~/upload/docs
+          touch .nojekyll
+          git config --global user.email "tianhaoz@umich.edu"
+          git config --global user.name "Tianhao Zhou"
+          git init
+          git add -A
+          git commit -m "docs: update"
+          git remote add origin https://github.com/MiniDonkey/app-doc.git
+          echo "machine github.com login tianhaoz95 password $GITHUB_TOKEN" > ~/.netrc
+          git push -u -f origin master
   release-android:
     name: release android app
     runs-on: ubuntu-latest

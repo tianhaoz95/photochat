@@ -43,3 +43,6 @@ lib/generated_plugin_registrant.dart
 /android/key.properties
 /android/app/key.jks
 /android/fastlane/Appfile
+
+# Docs
+/doc
