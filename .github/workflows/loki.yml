@@ -104,6 +104,17 @@ jobs:
           flutter pub get
           flutter test
           flutter build appbundle
+          flutter build apk
+      - name: upload to release
+        if: contains(github.event_name,'release')
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: photochatapp/build/app/outputs/apk/release
+          asset_name: MiniDonkey-Android
+          asset_content_type: application/zip
       - name: upload app to Google Play Store
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
