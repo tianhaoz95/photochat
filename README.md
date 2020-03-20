@@ -6,6 +6,7 @@
 [![Pull requests](https://img.shields.io/github/issues-pr/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/pulls)
 [![GitHub license](https://img.shields.io/github/license/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/blob/master/LICENSE)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/tianhaoz95/photochat/graphs/commit-activity)
+[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=tianhaoz95/photochat)](https://app.dependabot.com/)
 
 **Mini Donkey** carries private messages **securely** and **secretly** with encryption ([AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)) and [steganography](https://en.wikipedia.org/wiki/Steganography) (technique of concealing messages in images).
 
