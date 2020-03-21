@@ -20,24 +20,38 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function> {
-    "contribBtnText" : MessageLookupByLibrary.simpleMessage("Contribute"),
-    "decodeBtnText" : MessageLookupByLibrary.simpleMessage("Decode"),
-    "decodeResultScreenTitle" : MessageLookupByLibrary.simpleMessage("Here is Your Message!"),
-    "decodeScreenDecodeBtnText" : MessageLookupByLibrary.simpleMessage("Decode"),
-    "decodeScreenDecryptCheckboxText" : MessageLookupByLibrary.simpleMessage("Decrypt my message!"),
-    "decodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("Gallery"),
-    "decodeScreenTitleText" : MessageLookupByLibrary.simpleMessage("Decode a Message"),
-    "encodeBtnText" : MessageLookupByLibrary.simpleMessage("Encode"),
-    "encodeResultScreenSaveBtnText" : MessageLookupByLibrary.simpleMessage("Save"),
-    "encodeResultScreenShareBtnText" : MessageLookupByLibrary.simpleMessage("Share"),
-    "encodeResultScreenTitleText" : MessageLookupByLibrary.simpleMessage("Hooray! Encoded!"),
-    "encodeScreenCameraBtnText" : MessageLookupByLibrary.simpleMessage("Camera"),
-    "encodeScreenEncodeBtnText" : MessageLookupByLibrary.simpleMessage("Encode"),
-    "encodeScreenGalleryBtnText" : MessageLookupByLibrary.simpleMessage("Gallery"),
-    "encodeScreenRandomBtnText" : MessageLookupByLibrary.simpleMessage("Random"),
-    "encodeScreenTitle" : MessageLookupByLibrary.simpleMessage("Encode a Message"),
-    "showTokenCheckboxText" : MessageLookupByLibrary.simpleMessage("Show token"),
-    "title" : MessageLookupByLibrary.simpleMessage("Mini Donkey")
-  };
+  static _notInlinedMessages(_) => <String, Function>{
+        "contribBtnText": MessageLookupByLibrary.simpleMessage("Contribute"),
+        "decodeBtnText": MessageLookupByLibrary.simpleMessage("Decode"),
+        "decodeResultScreenTitle":
+            MessageLookupByLibrary.simpleMessage("Here is Your Message!"),
+        "decodeScreenDecodeBtnText":
+            MessageLookupByLibrary.simpleMessage("Decode"),
+        "decodeScreenDecryptCheckboxText":
+            MessageLookupByLibrary.simpleMessage("Decrypt my message!"),
+        "decodeScreenGalleryBtnText":
+            MessageLookupByLibrary.simpleMessage("Gallery"),
+        "decodeScreenTitleText":
+            MessageLookupByLibrary.simpleMessage("Decode a Message"),
+        "encodeBtnText": MessageLookupByLibrary.simpleMessage("Encode"),
+        "encodeResultScreenSaveBtnText":
+            MessageLookupByLibrary.simpleMessage("Save"),
+        "encodeResultScreenShareBtnText":
+            MessageLookupByLibrary.simpleMessage("Share"),
+        "encodeResultScreenTitleText":
+            MessageLookupByLibrary.simpleMessage("Hooray! Encoded!"),
+        "encodeScreenCameraBtnText":
+            MessageLookupByLibrary.simpleMessage("Camera"),
+        "encodeScreenEncodeBtnText":
+            MessageLookupByLibrary.simpleMessage("Encode"),
+        "encodeScreenGalleryBtnText":
+            MessageLookupByLibrary.simpleMessage("Gallery"),
+        "encodeScreenRandomBtnText":
+            MessageLookupByLibrary.simpleMessage("Random"),
+        "encodeScreenTitle":
+            MessageLookupByLibrary.simpleMessage("Encode a Message"),
+        "showTokenCheckboxText":
+            MessageLookupByLibrary.simpleMessage("Show token"),
+        "title": MessageLookupByLibrary.simpleMessage("Mini Donkey")
+      };
 }

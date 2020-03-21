@@ -134,7 +134,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                                 SizedBox(
                                   width: 20.0,
                                 ),
-                                Text(AppLocalizations.of(context).encodeResultScreenSaveBtnText),
+                                Text(AppLocalizations.of(context)
+                                    .encodeResultScreenSaveBtnText),
                               ],
                             ),
                           ),
@@ -154,7 +155,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                                 SizedBox(
                                   width: 20.0,
                                 ),
-                                Text(AppLocalizations.of(context).encodeResultScreenShareBtnText),
+                                Text(AppLocalizations.of(context)
+                                    .encodeResultScreenShareBtnText),
                               ],
                             ),
                           ),

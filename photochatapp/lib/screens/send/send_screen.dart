@@ -1,9 +1,14 @@
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:photochatapp/components/alerts/dialog.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/components/token_input_field/token_input_field.dart';
+import 'package:photochatapp/screens/send/camera_img_btn.dart';
+import 'package:photochatapp/screens/send/gallery_img_btn.dart';
+import 'package:photochatapp/screens/send/image_preview.dart';
+import 'package:photochatapp/screens/send/random_web_img_btn.dart';
 import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/i18n/i18n.dart';
@@ -17,6 +22,10 @@ import 'package:photochatapp/services/states/loading_states.dart';
 import 'package:photochatapp/services/utilities/capacity_usage.dart';
 import 'package:provider/provider.dart';
 
+/// Send Screen
+///
+/// {@category Screens}
+/// {@category Send Screen}
 class SendScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -36,34 +45,6 @@ class _SendScreen extends State<SendScreen> {
   double capacityUsageStats;
   String capacityUsage;
   LoadingState uploadingState;
-
-  Future<void> showAlert(String warningMsg) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Whoops, something went wrong :('),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('Error message: '),
-                Text(warningMsg),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   Future<void> randomImageFromWeb() async {
     setState(() {
@@ -89,7 +70,7 @@ class _SendScreen extends State<SendScreen> {
           this.imageByteSize = response.imageByteSize;
         });
       } catch (err) {
-        await showAlert(err.toString());
+        await showAlert(err.toString(), context);
         setState(() {
           uploadingState = LoadingState.ERROR;
         });
@@ -182,6 +163,7 @@ class _SendScreen extends State<SendScreen> {
     } else {
       double usage = await calculateCapacityUsageAsync(
           CapacityUsageRequest(msg, this.imageByteSize));
+      usage = min(usage, 0.99);
       String strUsage = (usage * 100.0).toString();
       if (strUsage.length > 5) {
         strUsage = strUsage.substring(1, 6);
@@ -220,7 +202,6 @@ class _SendScreen extends State<SendScreen> {
                 Navigator.pop(context);
               }),
         ),
-        // resizeToAvoidBottomInset: false,
         body: ScreenAdapter(
           child: Container(
             padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
@@ -230,78 +211,27 @@ class _SendScreen extends State<SendScreen> {
                 SizedBox(
                   height: 5.0,
                 ),
-                Container(
-                    constraints: BoxConstraints(
-                      minHeight: 200,
-                      maxHeight: 600,
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: this.image,
-                    )),
+                SendScreenImageReview(this.image),
                 SizedBox(
                   height: 5.0,
                 ),
-                Container(
-                  child: RaisedButton(
-                    onPressed: this.randomImageFromWeb,
-                    child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          ButtonLogoWithLoadingAndError(
-                              this.uploadingState, Icons.sync),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          Text(AppLocalizations.of(context).encodeScreenRandomBtnText),
-                        ],
-                      ),
-                    ),
-                  ),
+                SendScreenRandomWebImageBtn(
+                  onFetchHandler: this.randomImageFromWeb,
+                  loadingState: this.uploadingState,
                 ),
                 SizedBox(
                   height: 5.0,
                 ),
-                Container(
-                  child: RaisedButton(
-                    key: Key('encode_pick_image_from_gallery_btn'),
-                    onPressed: this.pickImageFromGallery,
-                    child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          ButtonLogoWithLoadingAndError(
-                              this.uploadingState, Icons.camera),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          Text(AppLocalizations.of(context).encodeScreenGalleryBtnText),
-                        ],
-                      ),
-                    ),
-                  ),
+                SendScreenGalleryImageBtn(
+                  onUploadHandler: this.pickImageFromGallery,
+                  loadingState: this.uploadingState,
                 ),
                 SizedBox(
                   height: 5.0,
                 ),
-                Container(
-                  child: RaisedButton(
-                    onPressed: this.pickImageFromCamera,
-                    child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          ButtonLogoWithLoadingAndError(
-                              this.uploadingState, Icons.camera_alt),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          Text(AppLocalizations.of(context).encodeScreenCameraBtnText),
-                        ],
-                      ),
-                    ),
-                  ),
+                SendScreenCameraImageBtn(
+                  onOpenHandler: this.pickImageFromCamera,
+                  loadingState: this.uploadingState,
                 ),
                 SizedBox(
                   height: 5.0,
@@ -368,7 +298,8 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text(AppLocalizations.of(context).encodeScreenEncodeBtnText),
+                          Text(AppLocalizations.of(context)
+                              .encodeScreenEncodeBtnText),
                         ],
                       ),
                     ),
