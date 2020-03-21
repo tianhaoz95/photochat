@@ -3,9 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as imglib;
-import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/components/token_input_field/token_input_field.dart';
+import 'package:photochatapp/screens/receive/gallery_image_btn.dart';
+import 'package:photochatapp/screens/receive/submit_decode_btn.dart';
 import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
 import 'package:photochatapp/services/i18n/i18n.dart';
@@ -16,6 +17,9 @@ import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:photochatapp/services/states/loading_states.dart';
 import 'package:provider/provider.dart';
 
+/// Receive Screen
+/// 
+/// {@category Screens}
 class ReceiveScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -109,25 +113,9 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                 SizedBox(
                   height: 5.0,
                 ),
-                Container(
-                  child: RaisedButton(
-                    key: Key('decode_pick_image_from_gallery_btn'),
-                    onPressed: this.pickImageFromGallery,
-                    child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          ButtonLogoWithLoadingAndError(
-                              this.uploadingState, Icons.camera),
-                          SizedBox(
-                            width: 15.0,
-                          ),
-                          Text(AppLocalizations.of(context)
-                              .decodeScreenGalleryBtnText),
-                        ],
-                      ),
-                    ),
-                  ),
+                ReceiveScreenGallertyImageBtn(
+                  onUploadHandler: this.pickImageFromGallery,
+                  loadingState: this.uploadingState,
                 ),
                 SizedBox(
                   height: 5.0,
@@ -161,24 +149,9 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                 SizedBox(
                   height: 5.0,
                 ),
-                Container(
-                    child: RaisedButton(
-                  key: Key('decode_screen_decode_btn'),
-                  onPressed: this.sendToDecode,
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.drafts),
-                        SizedBox(
-                          width: 15.0,
-                        ),
-                        Text(AppLocalizations.of(context)
-                            .decodeScreenDecodeBtnText),
-                      ],
-                    ),
-                  ),
-                )),
+                ReceiveScreenSubmitDecodeBtn(
+                  onSubmitDecodeHandler: this.sendToDecode,
+                ),
               ],
             ),
           ),

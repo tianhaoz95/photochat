@@ -9,6 +9,9 @@ dartdoc:
     "Send Screen":
       name: "Send Screen"
       markdown: lib/screens/send/README.md
+    "Receive Screen":
+      name: "Receive Screen"
+      markdown: lib/screens/receive/README.md
     "i18n":
       name: "i18n"
       markdown: lib/services/i18n/README.md
