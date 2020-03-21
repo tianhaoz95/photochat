@@ -1,17 +1,23 @@
 dartdoc:
   categories:
+    "Screens":
+      name: "Screens"
+      markdown: lib/screens/README.md
     "Home Screen":
       name: "Home Screen"
       markdown: lib/screens/home/README.md
+    "Send Screen":
+      name: "Send Screen"
+      markdown: lib/screens/send/README.md
     "i18n":
       name: "i18n"
       markdown: lib/services/i18n/README.md
     "i18n Messages":
       name: "i18n Messages"
       markdown: lib/services/i18n/messages/README.md
-    categoryOrder: [
-      "Home Screen",
-      "i18n",
-      "i18n Messages"
-    ]
-    showUndocumentedCategories: false
+  categoryOrder: ["Screens", "Home Screen", "Send Screen", "i18n", "i18n Messages"]
+  showUndocumentedCategories: false
+  favicon: assets/favicons/favicon.ico
+  linkToSource:
+    root: '.'
+    uriTemplate: "https://github.com/tianhaoz95/photochat/blob/master/photochatapp/%f%#L%l%"

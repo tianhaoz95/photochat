@@ -8,7 +8,7 @@ import 'package:photochatapp/screens/home/logos/message_logo.dart';
 import 'package:photochatapp/services/i18n/i18n.dart';
 
 /// Home Screen
-/// 
+///
 /// {@category Home Screen}
 class HomeScreen extends StatelessWidget {
   @override

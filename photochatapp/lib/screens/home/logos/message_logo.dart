@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Message Logo
-/// 
+///
 /// {@category Home Screen}
 class HomeScreenMessageLogo extends StatelessWidget {
   @override

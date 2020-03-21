@@ -122,7 +122,8 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text(AppLocalizations.of(context).decodeScreenGalleryBtnText),
+                          Text(AppLocalizations.of(context)
+                              .decodeScreenGalleryBtnText),
                         ],
                       ),
                     ),
@@ -142,7 +143,8 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                               this.decrypt = nextVal;
                             });
                           }),
-                      Text(AppLocalizations.of(context).decodeScreenDecryptCheckboxText),
+                      Text(AppLocalizations.of(context)
+                          .decodeScreenDecryptCheckboxText),
                     ],
                   ),
                 ),
@@ -171,7 +173,8 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                         SizedBox(
                           width: 15.0,
                         ),
-                        Text(AppLocalizations.of(context).decodeScreenDecodeBtnText),
+                        Text(AppLocalizations.of(context)
+                            .decodeScreenDecodeBtnText),
                       ],
                     ),
                   ),

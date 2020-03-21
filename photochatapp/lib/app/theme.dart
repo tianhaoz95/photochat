@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ThemeData theme = ThemeData(
   primarySwatch: Colors.amber,
-  scaffoldBackgroundColor: Colors.amber[100],
+  scaffoldBackgroundColor: Colors.amber[50],
   inputDecorationTheme: InputDecorationTheme(
       contentPadding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
       border: OutlineInputBorder(

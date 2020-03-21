@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:photochatapp/services/i18n/i18n.dart';
 
 /// Home Screen Start Decode Button
-/// 
+///
 /// {@category Home Screen}
 class HomeScreenStartDecodeBtn extends StatelessWidget {
   @override

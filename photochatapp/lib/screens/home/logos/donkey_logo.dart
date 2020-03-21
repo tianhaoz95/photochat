@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Mini Donkey Logo
-/// 
+///
 /// {@category Home Screen}
 class HomeScreenDonkeyLogo extends StatelessWidget {
   @override

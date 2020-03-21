@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:photochatapp/services/i18n/i18n.dart';
 
 /// Home Screen Contribute Button
-/// 
+///
 /// {@category Home Screen}
 class HomeScreenContribBtn extends StatelessWidget {
   @override
