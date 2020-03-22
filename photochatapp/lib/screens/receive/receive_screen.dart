@@ -18,8 +18,9 @@ import 'package:photochatapp/services/states/loading_states.dart';
 import 'package:provider/provider.dart';
 
 /// Receive Screen
-/// 
+///
 /// {@category Screens}
+/// {@category Screens: Receive}
 class ReceiveScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

@@ -3,7 +3,7 @@ import 'package:photochatapp/services/i18n/i18n.dart';
 
 /// Home Screen Contribute Button
 ///
-/// {@category Home Screen}
+/// {@category Screens: Home}
 class HomeScreenContribBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

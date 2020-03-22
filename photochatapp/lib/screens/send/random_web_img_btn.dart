@@ -7,7 +7,7 @@ typedef Future<void> OnFetchHandler();
 
 /// Random Image Generator Button
 ///
-/// {@category Send Screen}
+/// {@category Screens: Send}
 class SendScreenRandomWebImageBtn extends StatelessWidget {
   /// The function that gets called when the fetch random
   /// image button is pressed.

@@ -3,7 +3,7 @@ import 'package:photochatapp/services/i18n/i18n.dart';
 
 /// Home Screen Start Decode Button
 ///
-/// {@category Home Screen}
+/// {@category Screens: Home}
 class HomeScreenStartDecodeBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

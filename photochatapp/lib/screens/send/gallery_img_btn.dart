@@ -7,7 +7,7 @@ typedef Future<void> OnUploadHandler();
 
 /// Gallery Image Picker Button
 ///
-/// {@category Send Screen}
+/// {@category Screens: Send}
 class SendScreenGalleryImageBtn extends StatelessWidget {
   /// The function that gets called when the pick image
   /// from gallery button is clicked.

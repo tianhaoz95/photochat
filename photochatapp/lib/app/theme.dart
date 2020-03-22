@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+/// App Theme
+///
+/// {@category App Config}
 ThemeData theme = ThemeData(
   primarySwatch: Colors.amber,
   scaffoldBackgroundColor: Colors.amber[50],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// Image Previewer
 ///
-/// {@category Send Screen}
+/// {@category Screens: Send}
 class SendScreenImageReview extends StatelessWidget {
   final Image image;
   const SendScreenImageReview(this.image);

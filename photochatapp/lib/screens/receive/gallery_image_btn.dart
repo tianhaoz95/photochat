@@ -5,6 +5,9 @@ import 'package:photochatapp/services/states/loading_states.dart';
 
 typedef Future<void> OnUploadHandler();
 
+/// Receive Screen Pick From Gallery Button
+///
+/// {@category Screens: Receive}
 class ReceiveScreenGallertyImageBtn extends StatelessWidget {
   final OnUploadHandler onUploadHandler;
   final LoadingState loadingState;

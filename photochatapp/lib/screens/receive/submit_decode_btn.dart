@@ -3,6 +3,9 @@ import 'package:photochatapp/services/i18n/i18n.dart';
 
 typedef void OnSubmitDecodeHandler();
 
+/// Receive Screen Send to Decode Button
+///
+/// {@category Screens: Receive}
 class ReceiveScreenSubmitDecodeBtn extends StatelessWidget {
   final OnSubmitDecodeHandler onSubmitDecodeHandler;
   const ReceiveScreenSubmitDecodeBtn({@required this.onSubmitDecodeHandler});

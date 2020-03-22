@@ -7,7 +7,7 @@ typedef Future<void> OnOpenHandler();
 
 /// Camera Image Picker Button
 ///
-/// {@category Send Screen}
+/// {@category Screens: Send}
 class SendScreenCameraImageBtn extends StatelessWidget {
   /// The function that gets called when the take photo
   /// with camera button is clicked

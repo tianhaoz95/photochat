@@ -3,6 +3,9 @@ import 'dart:typed_data';
 import 'package:flutter/widgets.dart';
 import 'package:photochatapp/services/states/encode_result_states.dart';
 
+/// Decode Result Screen Render Request
+/// 
+/// {@category Services: Requests}
 class DecodeResultScreenRenderRequest {
   Image encodedImage;
   Uint8List encodedByteImage;

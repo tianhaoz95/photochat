@@ -25,7 +25,7 @@ import 'package:provider/provider.dart';
 /// Send Screen
 ///
 /// {@category Screens}
-/// {@category Send Screen}
+/// {@category Screens: Send}
 class SendScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

@@ -15,6 +15,10 @@ import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:photochatapp/services/states/encode_result_states.dart';
 import 'package:photochatapp/services/states/loading_states.dart';
 
+/// Encode Result Screen
+/// 
+/// {@category Screens}
+/// {@category Screens: Encode Result}
 class EncodingResultScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
