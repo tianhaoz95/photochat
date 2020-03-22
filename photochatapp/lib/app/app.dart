@@ -12,6 +12,9 @@ import 'package:photochatapp/services/states/app_running_states.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+/// Top level app
+///
+/// {@category App Config}
 class PhotoChatApp extends StatelessWidget {
   final AppRunningState appRunningState;
   const PhotoChatApp(this.appRunningState);

@@ -5,6 +5,10 @@ import 'package:photochatapp/services/i18n/i18n.dart';
 import 'package:photochatapp/services/requests/decode_request.dart';
 import 'package:photochatapp/services/responses/decode_response.dart';
 
+/// Decode Result Screen
+///
+/// {@category Screens}
+/// {@category Screens: Decode Result}
 class DecodingResultScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {

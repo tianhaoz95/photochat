@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 
+/// Contribute Screen
+///
+/// {@category Screens}
+/// {@category Screens: Contribute}
 class ContributeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

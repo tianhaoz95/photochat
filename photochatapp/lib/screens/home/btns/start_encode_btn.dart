@@ -3,7 +3,7 @@ import 'package:photochatapp/services/i18n/i18n.dart';
 
 /// Home Screen Start Encode Button
 ///
-/// {@category Home Screen}
+/// {@category Screens: Home}
 class HomeScreenStartEncodeBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

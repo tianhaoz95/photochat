@@ -5,18 +5,13 @@ import 'package:photochatapp/services/states/loading_states.dart';
 
 typedef Future<void> OnUploadHandler();
 
-/// Gallery Image Picker Button
+/// Receive Screen Pick From Gallery Button
 ///
-/// {@category Screens: Send}
-class SendScreenGalleryImageBtn extends StatelessWidget {
-  /// The function that gets called when the pick image
-  /// from gallery button is clicked.
+/// {@category Screens: Receive}
+class ReceiveScreenGallertyImageBtn extends StatelessWidget {
   final OnUploadHandler onUploadHandler;
-
-  /// The [LoadingState] that corresponding to
-  /// the progress of the random image fetching.
   final LoadingState loadingState;
-  const SendScreenGalleryImageBtn({
+  const ReceiveScreenGallertyImageBtn({
     @required this.onUploadHandler,
     @required this.loadingState,
   });
@@ -24,7 +19,7 @@ class SendScreenGalleryImageBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: RaisedButton(
-        key: Key('encode_pick_image_from_gallery_btn'),
+        key: Key('decode_pick_image_from_gallery_btn'),
         onPressed: this.onUploadHandler,
         child: Container(
           child: Row(
@@ -34,7 +29,7 @@ class SendScreenGalleryImageBtn extends StatelessWidget {
               SizedBox(
                 width: 15.0,
               ),
-              Text(AppLocalizations.of(context).encodeScreenGalleryBtnText),
+              Text(AppLocalizations.of(context).decodeScreenGalleryBtnText),
             ],
           ),
         ),

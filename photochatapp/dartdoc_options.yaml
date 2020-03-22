@@ -1,21 +1,36 @@
 dartdoc:
   categories:
     "Screens":
-      name: "Screens"
       markdown: lib/screens/README.md
-    "Home Screen":
-      name: "Home Screen"
+    "Screens: Home":
       markdown: lib/screens/home/README.md
-    "Send Screen":
-      name: "Send Screen"
+    "Screens: Send":
       markdown: lib/screens/send/README.md
+    "Screens: Receive":
+      markdown: lib/screens/receive/README.md
+    "Screens: Encode Result":
+      markdown: lib/screens/encoded/README.md
+    "Screens: Decode Result":
+      markdown: lib/screens/decoded/README.md
+    "Screens: Contribute":
+      markdown: lib/screens/contribute/README.md
+    "Serivces: Requests":
+      markdown: lib/services/requests/README.md
+    "Services: Responses":
+      markdown: lib/services/responses/README.md
+    "Services: States":
+      markdown: lib/services/states/README.md
+    "App Config":
+      markdown: lib/app/README.md
+    "Components":
+      markdown: lib/components/README.md
+    "Services":
+      markdown: lib/services/README.md
     "i18n":
-      name: "i18n"
       markdown: lib/services/i18n/README.md
-    "i18n Messages":
-      name: "i18n Messages"
+    "i18n: Messages":
       markdown: lib/services/i18n/messages/README.md
-  categoryOrder: ["Screens", "Home Screen", "Send Screen", "i18n", "i18n Messages"]
+  categoryOrder: ["App Config", "Screens", "Components", "Services", "Screens: Home", "Screens: Send", "Screens: Receive", "Screens: Encode Result", "Screens: Decode Result", "Screens: Contribute", "Serivces: Requests", "Services: Responses", "Services: States", "i18n", "i18n: Messages"]
   showUndocumentedCategories: false
   favicon: assets/favicons/favicon.ico
   linkToSource:

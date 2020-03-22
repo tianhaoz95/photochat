@@ -9,7 +9,8 @@ import 'package:photochatapp/services/i18n/i18n.dart';
 
 /// Home Screen
 ///
-/// {@category Home Screen}
+/// {@category Screens}
+/// {@category Screens: Home}
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
