@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:photochatapp/components/alerts/dialog.dart';
 import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
 import 'package:photochatapp/services/encoder.dart';
@@ -87,8 +88,12 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   }
 
   Future<void> shareImage(List<int> imageData) async {
-    await Share.file('encoded image', 'encoded.png', imageData, 'image/png',
+    try {
+      await Share.file('encoded image', 'encoded.png', imageData, 'image/png',
         text: 'This is the encoded image.');
+    } catch (err) {
+      showAlert(err.toString(), context);
+    }
   }
 
   @override
