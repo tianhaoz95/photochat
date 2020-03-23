@@ -56,6 +56,53 @@ jobs:
           git remote add origin https://github.com/MiniDonkey/app-doc.git
           echo "machine github.com login tianhaoz95 password $GITHUB_TOKEN" > ~/.netrc
           git push -u -f origin master
+  release-ios:
+    name: release ios app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: check triggering event type
+        env:
+          TRIGGER_EVENT_NAME: ${{ github.event_name }}
+          TRIGGER_EVENT: ${{ toJson(github.event) }}
+          TRIGGER_EVENT_IS_PRERELEASE: ${{ github.event.release.prerelease }}
+          TRIGGER_EVENT_IS_DRAFT: ${{ github.event.release.draft }}
+        run: |
+          echo "triggering event type: $TRIGGER_EVENT_NAME"
+          echo "is prerelease: $TRIGGER_EVENT_IS_PRERELEASE"
+          echo "is draft: $TRIGGER_EVENT_IS_DRAFT"
+          echo "full event: $TRIGGER_EVENT"
+          - uses: actions/setup-java@v1
+          with:
+            java-version: '12.x'
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.12.13+hotfix.5'
+          channel: 'stable'
+      - name: upgrade flutter
+        run: |
+          flutter channel stable
+          flutter upgrade
+      - name: install gem packages
+        run: |
+          cd photochatapp/ios
+          gem install bundler:1.17.3
+          bundle install
+      - name: build verification
+        run: |
+          cd photochatapp
+          flutter build ios --release --no-codesign
+      - name: upload to testfight
+        env:
+          CODE_SIGN_STYLE: 'Manual'
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MY_GITHUB_TOKEN }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.IOS_APP_SPECIFIC_PWD }}
+        run: |
+          cd photochatapp/ios
+          fastlane alpha
   release-android:
     name: release android app
     runs-on: ubuntu-latest

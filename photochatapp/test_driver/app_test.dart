@@ -1,6 +1,6 @@
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
-import 'routines/home_to_contribute.dart';
+// import 'routines/home_to_contribute.dart';
 import 'routines/home_to_decode.dart';
 import 'routines/home_to_encode.dart';
 import 'routines/init.dart';
@@ -27,7 +27,8 @@ void main() {
     test('smoke test', () async {
       await prepareScreenshotArea();
       await initHome(driver);
-      await checkHomeToContribute(driver);
+      // TODO(tianhaoz95): re-enable this once iOS supports contribution.
+      // await checkHomeToContribute(driver);
       await checkHomeToEncode(driver);
       await checkHomeToDecode(driver);
     }, timeout: Timeout(Duration(minutes: 5)));
