@@ -31,14 +31,51 @@ class AppContext extends ChangeNotifier {
     } else {
       this.appRunningState = appRunningStateOverride;
     }
+    configContext();
+  }
+
+  /// Initializes [AppContext] with production config
+  void configProdContext() {
     loadingState = LoadingState.PENDING;
     platformState = PlatformState.GENERIC;
+  }
+
+  /// Initializes [AppContext] with unit test config
+  void configUnittestContext() {
+    loadingState = LoadingState.SUCCESS;
+    platformState = PlatformState.GENERIC;
+  }
+
+  /// Initializes [AppContext] in ctor with the input
+  /// arguments.
+  void configContext() {
+    switch (this.appRunningState) {
+      case AppRunningState.UNIT_TEST:
+        configUnittestContext();
+        break;
+      case AppRunningState.PRODUCTION:
+        configProdContext();
+        break;
+      default:
+        configProdContext();
+    }
+  }
+
+  /// Returns true if [AppContext] has not been initialized
+  /// 
+  /// This method should be called within [initializeContext], please
+  /// double check if needed if called externally.
+  bool shouInitialize() {
+    if (loadingState == LoadingState.SUCCESS) {
+      return false;
+    }
+    return true;
   }
 
   /// Initializes the entire [AppContext]
   /// with all async initializers.
   Future<void> initializeContext() async {
-    if (loadingState == LoadingState.SUCCESS) {
+    if (!shouInitialize()) {
       return;
     }
     loadingState = LoadingState.LOADING;
