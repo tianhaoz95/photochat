@@ -167,7 +167,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fastlane
+  fastlane (= 2.143.0)
 
 BUNDLED WITH
    1.17.3
