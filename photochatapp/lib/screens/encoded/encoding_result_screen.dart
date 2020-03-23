@@ -6,6 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:photochatapp/components/alerts/dialog.dart';
 import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
 import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
+import 'package:photochatapp/screens/encoded/share_btn.dart';
 import 'package:photochatapp/services/encoder.dart';
 import 'package:photochatapp/services/i18n/i18n.dart';
 import 'package:photochatapp/services/requests/encode_request.dart';
@@ -152,23 +153,10 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                         SizedBox(
                           height: 5.0,
                         ),
-                        Container(
-                          child: RaisedButton(
-                            onPressed: () {
-                              this.shareImage(snapshot.data.encodedByteImage);
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(Icons.share),
-                                SizedBox(
-                                  width: 20.0,
-                                ),
-                                Text(AppLocalizations.of(context)
-                                    .encodeResultScreenShareBtnText),
-                              ],
-                            ),
-                          ),
+                        EncodeResultScreenShareBtn(
+                          onShareHandler: () {
+                            this.shareImage(snapshot.data.encodedByteImage);
+                          },
                         ),
                         SizedBox(
                           height: 30.0,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:photochatapp/services/context/app_context.dart';
 import 'package:photochatapp/services/i18n/i18n.dart';
+import 'package:provider/provider.dart';
 
 /// Home Screen Contribute Button
 ///
@@ -7,10 +9,15 @@ import 'package:photochatapp/services/i18n/i18n.dart';
 class HomeScreenContribBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    if (Provider.of<AppContext>(context).isIos()) {
+      return Container();
+    }
     return RaisedButton(
-      onPressed: () {
-        Navigator.pushNamed(context, '/contribute');
-      },
+      onPressed: Provider.of<AppContext>(context).isReady()
+          ? () {
+              Navigator.pushNamed(context, '/contribute');
+            }
+          : null,
       key: Key('home_screen_contribute_btn'),
       color: Colors.pinkAccent,
       child: Container(

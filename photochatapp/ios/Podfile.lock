@@ -1,4 +1,6 @@
 PODS:
+  - device_info (0.0.1):
+    - Flutter
   - esys_flutter_share (0.0.1):
     - Flutter
   - Flutter (1.0.0)
@@ -14,6 +16,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - device_info (from `.symlinks/plugins/device_info/ios`)
   - esys_flutter_share (from `.symlinks/plugins/esys_flutter_share/ios`)
   - Flutter (from `Flutter`)
   - flutter_plugin_android_lifecycle (from `.symlinks/plugins/flutter_plugin_android_lifecycle/ios`)
@@ -23,6 +26,8 @@ DEPENDENCIES:
   - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
 
 EXTERNAL SOURCES:
+  device_info:
+    :path: ".symlinks/plugins/device_info/ios"
   esys_flutter_share:
     :path: ".symlinks/plugins/esys_flutter_share/ios"
   Flutter:
@@ -39,6 +44,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler/ios"
 
 SPEC CHECKSUMS:
+  device_info: cbf09d2ec12aa7110e0b09fabe54b5bd6c8efe74
   esys_flutter_share: 403498dab005b36ce1f8d7aff377e81f0621b0b4
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   flutter_plugin_android_lifecycle: 47de533a02850f070f5696a623995e93eddcdb9b
