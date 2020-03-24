@@ -58,7 +58,7 @@ jobs:
           git push -u -f origin master
   release-ios:
     name: release ios app
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
       - name: check triggering event type
