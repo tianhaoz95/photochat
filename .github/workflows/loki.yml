@@ -103,9 +103,8 @@ jobs:
         env:
           CODE_SIGN_STYLE: 'Manual'
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MY_GITHUB_TOKEN_ENCODED }}
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.IOS_APP_SPECIFIC_PWD }}
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD_ENCODED }}
         run: |
           cd photochatapp/ios
           fastlane alpha
