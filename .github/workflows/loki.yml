@@ -13,8 +13,12 @@ on:
       - "photochatapp/pubspec.yaml"
       - "photochatapp/android/fastlane/Fastfile"
       - ".github/workflows/loki.yml"
+      - "photochatapp/android/fastlane/*"
       - "photochatapp/android/Gemfile"
       - "photochatapp/android/Gemfile.lock"
+      - "photochatapp/ios/fastlane/*"
+      - "photochatapp/ios/Gemfile"
+      - "photochatapp/ios/Gemfile.lock"
 jobs:
   release-docs:
     name: release app docs
