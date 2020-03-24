@@ -106,7 +106,6 @@ jobs:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.IOS_APP_SPECIFIC_PWD }}
         run: |
           cd photochatapp/ios
-          echo "machine github.com login tianhaoz95 password $MATCH_GIT_BASIC_AUTHORIZATION" > ~/.netrc
           fastlane alpha
   release-android:
     name: release android app
