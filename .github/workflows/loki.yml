@@ -102,6 +102,7 @@ jobs:
       - name: upload to testfight
         env:
           CODE_SIGN_STYLE: 'Manual'
+          MATCH_PASSWORD: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MY_GITHUB_TOKEN_ENCODED }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APP_SPECIFIC_PASSWORD }}
