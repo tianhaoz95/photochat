@@ -22,7 +22,7 @@ platform :ios do
       sync_code_signing(type: "appstore")
       build_app(workspace: "Runner.xcworkspace", scheme: "Runner")
       upload_to_testflight(
-        skip_waiting_for_build_processing: false,
+        skip_waiting_for_build_processing: true,
         apple_id: "1503962871"
       )
     end

@@ -108,7 +108,7 @@ jobs:
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APP_SPECIFIC_PASSWORD }}
         run: |
           cd photochatapp/ios
-          fastlane alpha
+          bundle exec fastlane alpha
   release-android:
     name: release android app
     runs-on: ubuntu-latest
