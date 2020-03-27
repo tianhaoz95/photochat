@@ -7,7 +7,7 @@ platform :android do
       gradle(task: 'bundle', build_type: 'Release')
       upload_to_play_store(
         track: 'internal',
-        version_code: flutter_version()["version_name"],
+        version_code: flutter_version()["version_code"],
         aab: '../build/app/outputs/bundle/release/app-release.aab',
         skip_upload_screenshots: true,
         skip_upload_images: true
@@ -24,7 +24,7 @@ platform :android do
       gradle(task: 'bundle', build_type: 'Release')
       upload_to_play_store(
         track: 'internal',
-        version_code: flutter_version()["version_name"],
+        version_code: flutter_version()["version_code"],
         track_promote_to: 'alpha',
         skip_upload_aab: true,
         skip_upload_screenshots: true,
@@ -39,7 +39,7 @@ platform :android do
       gradle(task: 'bundle', build_type: 'Release')
       upload_to_play_store(
         track: 'internal',
-        version_code: flutter_version()["version_name"],
+        version_code: flutter_version()["version_code"],
         track_promote_to: 'beta',
         skip_upload_aab: true,
         skip_upload_screenshots: true,
@@ -54,7 +54,7 @@ platform :android do
       gradle(task: 'bundle', build_type: 'Release')
       upload_to_play_store(
         track: 'alpha',
-        version_code: flutter_version()["version_name"],
+        version_code: flutter_version()["version_code"],
         track_promote_to: 'production',
         skip_upload_aab: true,
         skip_upload_screenshots: true,
