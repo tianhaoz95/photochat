@@ -8,7 +8,9 @@ on:
   push:
     branches:
       - "master"
-      - "actions/release_android__*"
+      - "actions/release-android__*"
+      - "actions/release-web__*"
+      - "actions/release-docs__*"
     paths:
       - "photochatapp/pubspec.yaml"
       - "photochatapp/android/fastlane/Fastfile"
@@ -23,6 +25,7 @@ jobs:
   release-docs:
     name: release app docs
     runs-on: ubuntu-latest
+    if: contains(github.ref,'master')||contains(github.ref,'actions/release-docs__')
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
@@ -60,6 +63,43 @@ jobs:
           git remote add origin https://github.com/MiniDonkey/app-doc.git
           echo "machine github.com login tianhaoz95 password $GITHUB_TOKEN" > ~/.netrc
           git push -u -f origin master
+  release-web:
+    name: release web app
+    runs-on: ubuntu-latest
+    if: contains(github.ref,'master')||contains(github.ref,'actions/release-web__')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.12.13+hotfix.5'
+          channel: 'stable'
+      - name: confirm triggering event
+        env:
+          TRIGGER_REF: ${{ github.ref }}
+        run: echo "triggering from ref $TRIGGER_REF"
+      - name: upgrade flutter
+        run: |
+          flutter channel master
+          flutter config --enable-web
+          flutter upgrade
+      - name: install firebase cli
+        run: npm install -g firebase-tools
+      - name: build web app
+        run: |
+          cd ./photochatapp
+          flutter build web
+      - name: deploy to firebase
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_HOSTING_TOKEN }}
+        run: |
+          cd ./photochatapp
+          firebase deploy --token "$FIREBASE_TOKEN"
   release-ios:
     name: release ios app
     runs-on: macos-latest
@@ -117,6 +157,7 @@ jobs:
   release-android:
     name: release android app
     runs-on: ubuntu-latest
+    if: contains(github.ref,'master')||contains(github.ref,'actions/release-android__')
     steps:
       - uses: actions/checkout@v1
       - name: check triggering event type

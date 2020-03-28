@@ -46,3 +46,6 @@ lib/generated_plugin_registrant.dart
 
 # Docs
 /doc
+
+# Firebase
+.firebase/hosting.*.cache
