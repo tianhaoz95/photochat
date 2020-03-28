@@ -63,6 +63,7 @@ jobs:
   release-ios:
     name: release ios app
     runs-on: macos-latest
+    if: contains(github.event_name,'release')&&(!github.event.release.prerelease)
     steps:
       - uses: actions/checkout@v2
       - name: check triggering event type

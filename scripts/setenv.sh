@@ -49,6 +49,21 @@ else
   fi
 fi
 
+if [ -z "$REFRESH_IOS_CREDENTIAL" ]
+then
+  echo "REFRESH_IOS_CREDENTIAL not found, proceed..."
+else
+  echo "REFRESH_IOS_CREDENTIAL detected, refreshing iOS credentials..."
+  cd $PROJ_ROOT/photochatapp/ios/fastlane
+  bundle exec fastlane spaceauth -u emzak208@gmail.com
+  rm -rf $PROJ/$SECRET_REPO/$PROJ_NAME/cookie
+  cp ~/.fastlane/spaceship/emzak208\@gmail.com/cookie $PROJ/$SECRET_REPO/$PROJ_NAME/cookie
+  cd $PROJ/$SECRET_REPO
+  git add -A
+  git commit -m "update: iOS session cookie"
+  git push
+fi
+
 # Create the keystore for signing the Android app.
 rm -f $PROJ_ROOT/$APP_NAME/android/key.properties
 echo "storePassword=$ANDROID_SIGN_PWD" >> $PROJ_ROOT/$APP_NAME/android/key.properties
