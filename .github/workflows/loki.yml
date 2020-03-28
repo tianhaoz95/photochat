@@ -10,6 +10,7 @@ on:
       - "master"
       - "actions/release-android__*"
       - "actions/release-web__*"
+      - "actions/release-docs__*"
     paths:
       - "photochatapp/pubspec.yaml"
       - "photochatapp/android/fastlane/Fastfile"
@@ -24,6 +25,7 @@ jobs:
   release-docs:
     name: release app docs
     runs-on: ubuntu-latest
+    if: contains(github.ref,'master')||contains(github.ref,'actions/release-docs__')
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
