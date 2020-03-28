@@ -140,9 +140,12 @@ jobs:
           flutter channel stable
           flutter upgrade
       - name: install gem packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         run: |
           cd photochatapp/android
           gem install bundler:1.17.3
+          bundle config rubygems.pkg.github.com tianhaoz95:$GITHUB_TOKEN
           bundle install
           bundle exec fastlane install_plugins
           bundle exec fastlane update_plugins
