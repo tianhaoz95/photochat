@@ -102,12 +102,16 @@ jobs:
           flutter build ios --release --no-codesign
       - name: upload to testfight
         env:
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           CODE_SIGN_STYLE: 'Manual'
           MATCH_PASSWORD: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MY_GITHUB_TOKEN_ENCODED }}
           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ secrets.FASTLANE_APP_SPECIFIC_PASSWORD }}
         run: |
+          ./scripts/setenv.sh
           cd photochatapp/ios
           bundle exec fastlane alpha
   release-android:

@@ -64,6 +64,16 @@ else
   git push
 fi
 
+# Create the session cookie for iOS code signing
+if [ -f "~/.fastlane/spaceship/emzak208\@gmail.com/cookie" ]
+then
+  echo "Session cookie file already exist, skipping..."
+else
+  echo "Copying session cookie from secret repository to local..."
+  mkdir -p ~/.fastlane/spaceship/emzak208\@gmail.com
+  cp $PROJ/$SECRET_REPO/$PROJ_NAME/cookie ~/.fastlane/spaceship/emzak208\@gmail.com/cookie
+fi
+
 # Create the keystore for signing the Android app.
 rm -f $PROJ_ROOT/$APP_NAME/android/key.properties
 echo "storePassword=$ANDROID_SIGN_PWD" >> $PROJ_ROOT/$APP_NAME/android/key.properties
