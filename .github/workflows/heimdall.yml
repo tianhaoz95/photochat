@@ -50,10 +50,6 @@ jobs:
         run: |
           cd ./photochatapp
           flutter test
-      - name: clean up stable flutter build artifacts
-        run: |
-          cd ./photochatapp
-          flutter clean --verbose
       - name: upgrade flutter to the bleeding edge version
         run: |
           flutter channel master
