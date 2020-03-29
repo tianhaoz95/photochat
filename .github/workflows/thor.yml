@@ -56,7 +56,7 @@ jobs:
   ios-integration-test:
     name: run integration test on iOS emulator
     runs-on: macos-latest
-    if: contains(github.ref,'master')||contains(github.ref,'actions/ios-integration-test__')
+    if: contains(github.event_name,'pull_request')||contains(github.ref,'master')||contains(github.ref,'actions/ios-integration-test__')
     strategy:
       matrix:
         device:
