@@ -1,3 +1,3 @@
 source "https://rubygems.pkg.github.com/tianhaoz95" do
-  gem "fastlane-plugin-flutter_version", "0.1.5"
+  gem "fastlane-plugin-flutter_version", "0.1.6"
 end
