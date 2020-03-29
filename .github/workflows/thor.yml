@@ -5,7 +5,8 @@ on:
       - .github/workflows/thor.yml
     branches: 
       - "master"
-      - "ci/thor__*"
+      - "actions/android-integration-test__*"
+      - "actions/ios-integration-test__*"
   pull_request:
     branches:
       - "master"
@@ -37,7 +38,7 @@ jobs:
           flutter --version
       - name: run tests
         timeout-minutes: 30
-        uses: reactivecircus/android-emulator-runner@v2
+        uses: reactivecircus/android-emulator-runner@v2.6.0
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
