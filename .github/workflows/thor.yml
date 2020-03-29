@@ -5,7 +5,9 @@ on:
       - .github/workflows/thor.yml
     branches: 
       - "master"
-      - "ci/thor__*"
+      - "actions/android-integration-test__*"
+      - "actions/ios-integration-test__*"
+      - "integration/android__*"
   pull_request:
     branches:
       - "master"
@@ -15,10 +17,10 @@ jobs:
   android-integration-test:
     name: run integration test on Android emulator
     runs-on: macos-latest
+    if: (!contains(github.event_name,'pull_request'))&&(contains(github.ref,'integration/android__')||contains(github.ref,'actions/android-integration-test__'))
     strategy:
       matrix:
         device:
-          - "pixel"
           - "pixel_xl"
       fail-fast: false
     steps:
@@ -37,13 +39,13 @@ jobs:
           flutter --version
       - name: run tests
         timeout-minutes: 30
-        uses: reactivecircus/android-emulator-runner@v2
+        uses: reactivecircus/android-emulator-runner@v2.6.0
         env:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
-          api-level: 29
+          api-level: 28
           profile: ${{ matrix.device }}
           script: /Users/runner/Library/Android/sdk/tools/bin/avdmanager list && sleep 20 && ./scripts/setenv.sh && cd ./photochatapp && flutter doctor -v && flutter pub get && flutter drive --target=test_driver/app.dart
       - name: upload screenshot
@@ -54,6 +56,7 @@ jobs:
   ios-integration-test:
     name: run integration test on iOS emulator
     runs-on: macos-latest
+    if: contains(github.event_name,'pull_request')||contains(github.ref,'master')||contains(github.ref,'actions/ios-integration-test__')
     strategy:
       matrix:
         device:
