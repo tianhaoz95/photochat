@@ -93,8 +93,8 @@ jobs:
       - name: upload artifects
         uses: actions/upload-artifact@v1
         with:
-          name: macos-app
-          path: photochatapp/build/macos/Build/Products/Release/photochatapp.app
+          name: MiniDonkeyMacOS
+          path: photochatapp/build/macos/Build/Products/Release
   release-web:
     name: release web app
     runs-on: ubuntu-latest
