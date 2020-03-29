@@ -7,6 +7,7 @@ on:
       - "master"
       - "actions/android-integration-test__*"
       - "actions/ios-integration-test__*"
+      - "integration/android__*"
   pull_request:
     branches:
       - "master"
@@ -16,7 +17,7 @@ jobs:
   android-integration-test:
     name: run integration test on Android emulator
     runs-on: macos-latest
-    if: contains(github.ref,'master')||contains(github.ref,'actions/android-integration-test__')
+    if: contains(github.ref,'integration/android__')||contains(github.ref,'actions/android-integration-test__')
     strategy:
       matrix:
         device:
