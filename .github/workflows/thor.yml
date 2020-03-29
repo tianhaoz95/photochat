@@ -15,7 +15,7 @@ on:
 jobs:
   android-integration-test:
     name: run integration test on Android emulator
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     if: contains(github.ref,'master')||contains(github.ref,'actions/android-integration-test__')
     strategy:
       matrix:
@@ -45,7 +45,7 @@ jobs:
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
-          api-level: 29
+          api-level: 28
           profile: ${{ matrix.device }}
           script: /Users/runner/Library/Android/sdk/tools/bin/avdmanager list && sleep 20 && ./scripts/setenv.sh && cd ./photochatapp && flutter doctor -v && flutter pub get && flutter drive --target=test_driver/app.dart
       - name: upload screenshot
