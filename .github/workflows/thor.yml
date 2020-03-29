@@ -15,7 +15,7 @@ on:
 jobs:
   android-integration-test:
     name: run integration test on Android emulator
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     if: contains(github.ref,'master')||contains(github.ref,'actions/android-integration-test__')
     strategy:
       matrix:
