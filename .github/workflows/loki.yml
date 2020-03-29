@@ -11,6 +11,7 @@ on:
       - "actions/release-android__*"
       - "actions/release-web__*"
       - "actions/release-docs__*"
+      - "actions/release-macos__*"
     paths:
       - "photochatapp/pubspec.yaml"
       - "photochatapp/android/fastlane/Fastfile"
@@ -63,6 +64,36 @@ jobs:
           git remote add origin https://github.com/MiniDonkey/app-doc.git
           echo "machine github.com login tianhaoz95 password $GITHUB_TOKEN" > ~/.netrc
           git push -u -f origin master
+  release-macos:
+    name: release macos desktop app
+    runs-on: macos-latest
+    if: contains(github.ref,'master')||contains(github.ref,'actions/release-macos__')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '1.12.13+hotfix.5'
+          channel: 'stable'
+      - name: upgrade flutter
+        run: |
+          flutter channel master
+          flutter config --enable-macos-desktop
+          flutter upgrade
+      - name: build macos desktop app
+        run: |
+          cd ./photochatapp
+          flutter build macOS
+      - name: upload artifects
+        uses: actions/upload-artifact@v1
+        with:
+          name: macos-app
+          path: photochatapp/build/macos/Build/Products/Release/photochatapp.app
   release-web:
     name: release web app
     runs-on: ubuntu-latest
@@ -79,10 +110,6 @@ jobs:
         with:
           flutter-version: '1.12.13+hotfix.5'
           channel: 'stable'
-      - name: confirm triggering event
-        env:
-          TRIGGER_REF: ${{ github.ref }}
-        run: echo "triggering from ref $TRIGGER_REF"
       - name: upgrade flutter
         run: |
           flutter channel master
