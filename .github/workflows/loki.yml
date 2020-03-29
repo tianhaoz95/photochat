@@ -88,7 +88,7 @@ jobs:
       - name: build macos desktop app
         run: |
           cd ./photochatapp
-          flutter build macOS
+          flutter build macos
       - name: upload artifects
         uses: actions/upload-artifact@v1
         with:
