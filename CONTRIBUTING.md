@@ -1,5 +1,13 @@
 # How to Contribute
 
+Mini Donkey aims to protect our critical privacy on all social networks.
+
+For the purpose of transparency, Mini Donkey is completely open-source.
+
+All kinds of contribution are appreciated!
+
+Let's make our privacy secure again!
+
 ## Workflow
 
 * Open an issue
