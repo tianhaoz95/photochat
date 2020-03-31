@@ -8,7 +8,7 @@ All kinds of contribution are appreciated!
 
 Let's make our privacy secure again!
 
-## Code Contributor Workflow
+## Code & Docs Contributor Workflow
 
 * Open an issue
 * Comment on the issue to claim ownership
