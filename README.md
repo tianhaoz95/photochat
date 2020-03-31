@@ -14,11 +14,11 @@
 
 | Task ID | Description | Status @ [master](https://github.com/tianhaoz95/photochat) | Reference Links |
 |:----:|:-----------:|:------:|:----:|
-| Heimdall | Static analysis, lint and unit tests | ![heimdall](https://github.com/tianhaoz95/photochat/workflows/heimdall/badge.svg?branch=master) | [check heimdall status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aheimdall+branch%3Amaster) |
-| Thor | End to end tests | ![thor](https://github.com/tianhaoz95/photochat/workflows/thor/badge.svg?branch=master) |  [check thor status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Athor+branch%3Amaster) |
-| Loki | App release | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) |  [check loki status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aloki+branch%3Amaster) |
-|Gitpod | Prebuilt workspace | ![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod) | [open workspace](https://gitpod.io/#https://github.com/tianhaoz95/photochat) |
-| Docs | Generate documentation | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) | [check docs site](https://minidonkey.github.io/app-doc/) |
+| Heimdall | Static analysis, lint and unit tests | ![heimdall](https://github.com/tianhaoz95/photochat/workflows/heimdall/badge.svg?branch=master) | [check the heimdall status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aheimdall+branch%3Amaster) |
+| Thor | End to end tests | ![thor](https://github.com/tianhaoz95/photochat/workflows/thor/badge.svg?branch=master) |  [check the thor status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Athor+branch%3Amaster) |
+| Loki | App release | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) |  [check the loki status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aloki+branch%3Amaster) |
+|Gitpod | Prebuilt workspace | ![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod) | [open a workspace](https://gitpod.io/#https://github.com/tianhaoz95/photochat) |
+| Docs | Generate documentation | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) | [check the docs](https://minidonkey.github.io/app-doc/) |
 
 ## Getting Started
 
