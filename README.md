@@ -25,9 +25,9 @@
 | Platform | Download | Alternative Source |
 |:--------:|:--------:|:------------------:|
 | Android | [![get it on play store](assets/post/google_play_store_logo.png)](https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp) | Sign up for: [bleeding edge version](https://play.google.com/apps/internaltest/4698816689834074582), [alpha version](https://play.google.com/apps/testing/com.jacksonz.photochatapp) |
-| iOS | In review ... | Coming soon ... |
-| Web | https://mini-donkey-app.web.app | Not Applicable |
-| MacOS | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
+| iOS | In review ... | Sign up for [beta](https://docs.google.com/forms/d/e/1FAIpQLSeUlDyz2dM8XOeFcJ1iYkjIFc1UGr0z1QklEXEDYWd0zrTHKw/viewform) |
+| Web | <https://mini-donkey-app.web.app> | Not Applicable |
+| MacOS | Coming soon ... | Not Applicable |
 | Windows | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | Linux | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 
@@ -37,7 +37,7 @@
 
 ![decoding flow](./assets/post/decoding_flow.png)
 
-## Let's Make It Better Together!
+## Let's Make It Better, Together ✨
 
 To ensure the transparency of the implementation (so that no privacy message get stolen secretly), Mini Donkey is completely open-source. All kinds of contribution are appreciated. Please see [the contribution guideline](./CONTRIBUTING.md) for more details.
 

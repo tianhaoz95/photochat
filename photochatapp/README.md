@@ -10,6 +10,12 @@ Mini Donkey is a app to protect privacy on social media with encrypted steganogr
 
 ## Getting Started
 
+To get the code:
+
+```bash
+git clone https://github.com/tianhaoz95/photochat.git
+```
+
 To start the app:
 
 1. Start an Android/iOS emulator, check with `flutter devices`
@@ -51,6 +57,8 @@ The dependencies are tracked in `pubspec.yaml` as Flutter convention.
 ### Upgrade a dependency
 
 To upgrade a dependency, change the exact version number in `pubspec.yaml` and then run `flutter pub get` to install the upgraded version.
+
+To upgrade all dependencies, use `flutter pub upgrade`. Note that, as some Flutter package has not yet reach a stable state, doing so can result in crashes.
 
 ## Automation
 

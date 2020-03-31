@@ -1,5 +1,7 @@
 dartdoc:
   categories:
+    "App":
+      markdown: lib/README.md
     "Screens":
       markdown: lib/screens/README.md
     "Screens: Home":
@@ -30,7 +32,7 @@ dartdoc:
       markdown: lib/services/i18n/README.md
     "i18n: Messages":
       markdown: lib/services/i18n/messages/README.md
-  categoryOrder: ["App Config", "Screens", "Components", "Services", "Screens: Home", "Screens: Send", "Screens: Receive", "Screens: Encode Result", "Screens: Decode Result", "Screens: Contribute", "Serivces: Requests", "Services: Responses", "Services: States", "i18n", "i18n: Messages"]
+  categoryOrder: ["App", "App Config", "Screens", "Components", "Services", "Screens: Home", "Screens: Send", "Screens: Receive", "Screens: Encode Result", "Screens: Decode Result", "Screens: Contribute", "Serivces: Requests", "Services: Responses", "Services: States", "i18n", "i18n: Messages"]
   showUndocumentedCategories: false
   favicon: assets/favicons/favicon.ico
   linkToSource:
