@@ -7,4 +7,5 @@ assignees: ''
 
 ---
 
+<!-- TODO(#74): add pointers to useful information to maintain social media presence -->
 
