@@ -4,5 +4,5 @@ import 'package:photochatapp/services/states/app_running_states.dart';
 
 /// Entry Point
 /// 
-/// {@category App Config}
+/// {@category App}
 void main() => runApp(PhotoChatApp(AppRunningState.PRODUCTION));
