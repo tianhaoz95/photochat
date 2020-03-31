@@ -1,9 +1,9 @@
 ---
 name: Design Doc Draft
 about: Provides a minimal design doc structure to get started
-title: '[Design Doc Draft]'
+title: ''
 labels: 'design doc draft'
-assignees: 'tianhaoz95'
+assignees: ''
 
 ---
 
