@@ -25,7 +25,7 @@
 | Platform | Download | Alternative Source |
 |:--------:|:--------:|:------------------:|
 | Android | [![get it on play store](assets/post/google_play_store_logo.png)](https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp) | Sign up for: [bleeding edge version](https://play.google.com/apps/internaltest/4698816689834074582), [alpha version](https://play.google.com/apps/testing/com.jacksonz.photochatapp) |
-| iOS | In review... | Coming soon ... |
+| iOS | In review ... | Coming soon ... |
 | Web | https://mini-donkey-app.web.app | Not planned (pending on Flutter support) |
 | MacOS | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | Windows | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
