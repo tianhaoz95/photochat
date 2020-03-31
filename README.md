@@ -14,19 +14,19 @@
 
 | Task ID | Description | Status @ [master](https://github.com/tianhaoz95/photochat) | Reference Links |
 |:----:|:-----------:|:------:|:----:|
-| Heimdall | Static analysis, lint and unit tests | ![heimdall](https://github.com/tianhaoz95/photochat/workflows/heimdall/badge.svg?branch=master) | [check heimdall status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aheimdall+branch%3Amaster) |
-| Thor | End to end tests | ![thor](https://github.com/tianhaoz95/photochat/workflows/thor/badge.svg?branch=master) |  [check thor status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Athor+branch%3Amaster) |
-| Loki | App release | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) |  [check loki status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aloki+branch%3Amaster) |
-|Gitpod | Prebuilt workspace | ![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod) | [open workspace](https://gitpod.io/#https://github.com/tianhaoz95/photochat) |
-| Docs | Generate documentation | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) | [check docs site](https://minidonkey.github.io/app-doc/) |
+| Heimdall | Static analysis, lint and unit tests | ![heimdall](https://github.com/tianhaoz95/photochat/workflows/heimdall/badge.svg?branch=master) | [check the heimdall status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aheimdall+branch%3Amaster) |
+| Thor | End to end tests | ![thor](https://github.com/tianhaoz95/photochat/workflows/thor/badge.svg?branch=master) |  [check the thor status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Athor+branch%3Amaster) |
+| Loki | App release | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) |  [check the loki status](https://github.com/tianhaoz95/photochat/actions?query=workflow%3Aloki+branch%3Amaster) |
+|Gitpod | Prebuilt workspace | ![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod) | [open a workspace](https://gitpod.io/#https://github.com/tianhaoz95/photochat) |
+| Docs | Generate documentation | ![loki](https://github.com/tianhaoz95/photochat/workflows/loki/badge.svg?branch=master) | [check the docs](https://minidonkey.github.io/app-doc/) |
 
 ## Getting Started
 
 | Platform | Download | Alternative Source |
 |:--------:|:--------:|:------------------:|
 | Android | [![get it on play store](assets/post/google_play_store_logo.png)](https://play.google.com/store/apps/details?id=com.jacksonz.photochatapp) | Sign up for: [bleeding edge version](https://play.google.com/apps/internaltest/4698816689834074582), [alpha version](https://play.google.com/apps/testing/com.jacksonz.photochatapp) |
-| iOS | Coming soon... (too poor to buy the $99/year Apple developer account) | Coming soon ... |
-| Web | https://mini-donkey-app.web.app | Not planned (pending on Flutter support) |
+| iOS | In review ... | Coming soon ... |
+| Web | https://mini-donkey-app.web.app | Not Applicable |
 | MacOS | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | Windows | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | Linux | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
@@ -39,7 +39,7 @@
 
 ## Let's Make It Better Together!
 
-To ensure the transparency of the implementation (so that no privacy message get stolen secretly), Mini Donkey is completely open source. All kinds of contribution including but not limited to pull requests, feature requests, bug reports, sponsorship, etc, are welcome.
+To ensure the transparency of the implementation (so that no privacy message get stolen secretly), Mini Donkey is completely open-source. All kinds of contribution are appreciated. Please see [the contribution guideline](./CONTRIBUTING.md) for more details.
 
 ## Contributors ✨
 
