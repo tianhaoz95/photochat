@@ -21,6 +21,8 @@ To start the app:
 1. Start an Android/iOS emulator, check with `flutter devices`
 2. Use `flutter run`
 
+note: to run debug build on Android, do `export ANDROID_DEBUG=true` before `flutter run`. Otherwise, it will fail due to missing Android code signing credentials.
+
 To run unit tests: `flutter test`
 
 To run integration tests: `flutter drive test_driver/app.dart`
