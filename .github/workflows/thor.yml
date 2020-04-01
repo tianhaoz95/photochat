@@ -24,7 +24,7 @@ jobs:
           - "pixel_xl"
       fail-fast: false
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
           java-version: '8.x'
@@ -65,7 +65,7 @@ jobs:
           - "iPhone 8 Plus (13.3)"
       fail-fast: false
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'

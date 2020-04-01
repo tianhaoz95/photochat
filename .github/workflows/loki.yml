@@ -187,7 +187,7 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.ref,'master')||contains(github.ref,'actions/release-android__')
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: check triggering event type
         env:
           TRIGGER_EVENT_NAME: ${{ github.event_name }}
