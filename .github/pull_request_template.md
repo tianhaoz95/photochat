@@ -1,8 +1,1 @@
----
-name: Pull Request Template
-about: Create a pull request
-title: ''
-labels: ''
-assignees: ''
-
----
+<!-- Please make sure to read CONTRIBUTING.md first -->
