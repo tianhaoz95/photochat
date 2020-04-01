@@ -1,0 +1,23 @@
+{
+  "name": "mini-donkey-design-docs",
+  "version": "1.0.0",
+  "description": "A site too host Mini Donkey design docs for easy access.",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tianhaoz95/photochat.git"
+  },
+  "author": "Tianhao Zhou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tianhaoz95/photochat/issues"
+  },
+  "homepage": "https://github.com/tianhaoz95/photochat#readme",
+  "devDependencies": {
+    "vuepress": "^1.4.0"
+  }
+}
