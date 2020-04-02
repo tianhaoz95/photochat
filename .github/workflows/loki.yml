@@ -10,8 +10,9 @@ on:
       - "master"
       - "actions/release-android__*"
       - "actions/release-web__*"
-      - "actions/release-docs__*"
+      - "actions/release-app-docs__*"
       - "actions/release-macos__*"
+      - "actions/release-design-docs__*"
     paths:
       - "photochatapp/pubspec.yaml"
       - "photochatapp/android/fastlane/Fastfile"
@@ -23,10 +24,22 @@ on:
       - "photochatapp/ios/Gemfile"
       - "photochatapp/ios/Gemfile.lock"
 jobs:
+  release-design-docs:
+    name: release design docs
+    runs-on: ubuntu-latest
+    if: contains(github.ref,'master')||contains(github.ref,'actions/release-design-docs__')
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: compile design docs
+        working-directory: design
+        run: yarn docs:build
   release-docs:
     name: release app docs
     runs-on: ubuntu-latest
-    if: contains(github.ref,'master')||contains(github.ref,'actions/release-docs__')
+    if: contains(github.ref,'master')||contains(github.ref,'actions/release-app-docs__')
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
