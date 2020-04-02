@@ -31,6 +31,14 @@
 | Windows | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 | Linux | Not planned (pending on Flutter support) | Not planned (pending on Flutter support) |
 
+## Useful References
+
+| Description | Link |
+|:-----------:|:----:|
+| Design Docs | <https://minidonkey.github.io/design-docs> |
+| App Docs | <https://minidonkey.github.io/app-doc> |
+| Blogs | <https://medium.com/minidonkey101> |
+
 ## Design
 
 ![encoding flow](./assets/post/encoding_flow.png)
