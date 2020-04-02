@@ -60,6 +60,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="http://tianhaoz.com"><img src="https://avatars3.githubusercontent.com/u/16887772?v=4" width="100px;" alt=""/><br /><sub><b>Tianhao Zhou</b></sub></a><br /><a href="https://github.com/tianhaoz95/photochat/commits?author=tianhaoz95" title="Code">💻</a> <a href="#blog-tianhaoz95" title="Blogposts">📝</a></td>
     <td align="center"><a href="https://github.com/emzak208"><img src="https://avatars3.githubusercontent.com/u/27669432?v=4" width="100px;" alt=""/><br /><sub><b>mihap</b></sub></a><br /><a href="#design-emzak208" title="Design">🎨</a></td>
+    <td align="center"><a href="https://www.shunkakinoki.com/"><img src="https://avatars0.githubusercontent.com/u/39187513?v=4" width="100px;" alt=""/><br /><sub><b>Shun Kakinoki</b></sub></a><br /><a href="https://github.com/tianhaoz95/photochat/commits?author=shunkakinoki" title="Code">💻</a></td>
   </tr>
 </table>
 
