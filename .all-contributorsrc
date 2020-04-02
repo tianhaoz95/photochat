@@ -23,6 +23,15 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "shunkakinoki",
+      "name": "Shun Kakinoki",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/39187513?v=4",
+      "profile": "https://www.shunkakinoki.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
