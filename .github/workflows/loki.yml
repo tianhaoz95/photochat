@@ -33,6 +33,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
+      - name: install dependencies
+        working-directory: design
+        run: yarn install
       - name: compile design docs
         working-directory: design
         run: yarn docs:build
