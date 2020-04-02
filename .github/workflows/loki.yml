@@ -35,7 +35,7 @@ jobs:
           node-version: '12.x'
       - name: install dependencies
         working-directory: design
-        run: yarn install
+        run: yarn
       - name: compile design docs
         working-directory: design
         run: yarn docs:build
