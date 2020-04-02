@@ -1,5 +1,12 @@
 version: 1
 update_configs:
+  - package_manager: "javascript"
+    directory: "design"
+    update_schedule: "live"
+    default_reviewers:
+      - "tianhaoz95"
+    default_labels:
+      - "design dependency update"
   - package_manager: "ruby:bundler"
     directory: "photochatapp/ios"
     update_schedule: "live"
