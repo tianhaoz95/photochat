@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/design-docs/',
   locales: {
     '/': {
       lang: 'en-US',
