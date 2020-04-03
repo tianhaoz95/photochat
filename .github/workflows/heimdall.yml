@@ -6,11 +6,13 @@ on:
       - "dev/*"
       - "feature/*"
       - "release/*"
+      - "chore/*"
       - "fix/*"
       - "refactor/*"
-      - "ci/heimdall__*"
+      - "actions/heimdall__*"
     paths:
-      - "photochatapp/**"
+      - "design/*"
+      - "photochatapp/*"
       - ".github/workflows/heimdall.yml"
   pull_request:
     branches:
@@ -18,8 +20,25 @@ on:
   schedule:
     - cron: 0 2 * * *
 jobs:
-  test:
-    name: run heimdall on ${{ matrix.os }}
+  test-design-docs:
+    name: run design docs tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: install dependencies
+        working-directory: design
+        run: yarn install
+      - name: compile design docs
+        working-directory: design
+        run: yarn docs:lint
+      - name: compile design docs
+        working-directory: design
+        run: yarn docs:build
+  test-app:
+    name: run app tests on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
