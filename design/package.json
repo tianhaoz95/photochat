@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "docs:format": "prettier --write .",
+    "docs:lint": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,7 @@
   },
   "homepage": "https://github.com/tianhaoz95/photochat#readme",
   "devDependencies": {
+    "prettier": "2.0.2",
     "vuepress": "^1.4.0"
   }
 }
