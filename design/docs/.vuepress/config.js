@@ -13,11 +13,12 @@ module.exports = {
     },
   },
   themeConfig: {
-    logo: "donkey_logo_512_rounded.png",
+    logo: "/donkey_logo_512_rounded.png",
     locales: {
       "/": {
         selectText: "Languages",
         label: "English",
+        sidebar: "auto",
       },
       "/zh/": {
         selectText: "选择语言",
