@@ -23,6 +23,7 @@ on:
       - "photochatapp/ios/fastlane/*"
       - "photochatapp/ios/Gemfile"
       - "photochatapp/ios/Gemfile.lock"
+      - "design/*"
 jobs:
   release-design-docs:
     name: release design docs
