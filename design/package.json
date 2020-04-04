@@ -6,6 +6,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
+    "docs:serve": "http-server docs/.vuepress/dist",
     "docs:format": "prettier --write .",
     "docs:lint": "prettier --check ."
   },
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/tianhaoz95/photochat#readme",
   "devDependencies": {
+    "http-server": "^0.12.1",
     "prettier": "2.0.2",
     "vuepress": "^1.4.0"
   }
