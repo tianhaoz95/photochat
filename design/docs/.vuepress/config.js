@@ -1,5 +1,6 @@
 module.exports = {
   base: "/design-docs/",
+  plugins: ["@vuepress/medium-zoom"],
   locales: {
     "/": {
       lang: "en-US",
@@ -14,15 +15,21 @@ module.exports = {
   },
   themeConfig: {
     logo: "/donkey_logo_512_rounded.png",
+    repo: "tianhaoz95/photochat",
+    editLinks: true,
+    sidebar: "auto",
     locales: {
       "/": {
         selectText: "Languages",
         label: "English",
-        sidebar: "auto",
+        editLinkText: "Edit this page on GitHub",
+        lastUpdated: "Last Updated",
       },
       "/zh/": {
         selectText: "选择语言",
         label: "简体中文",
+        editLinkText: "在GitHub上编辑此页面",
+        lastUpdated: "最后更新",
       },
     },
   },
