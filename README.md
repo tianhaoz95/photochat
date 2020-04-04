@@ -1,6 +1,6 @@
 # Mini Donkey
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 [![Flutter](https://img.shields.io/badge/built%20with-Flutter-brightgreen)](https://flutter.dev/docs)
 [![Issues](https://img.shields.io/github/issues/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/issues)
 [![Pull requests](https://img.shields.io/github/issues-pr/tianhaoz95/photochat)](https://github.com/tianhaoz95/photochat/pulls)
