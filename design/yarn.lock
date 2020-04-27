@@ -3832,10 +3832,10 @@ http-proxy@^1.17.0, http-proxy@^1.18.0:
     follow-redirects "^1.0.0"
     requires-port "^1.0.0"
 
-http-server@^0.12.2:
-  version "0.12.2"
-  resolved "https://registry.yarnpkg.com/http-server/-/http-server-0.12.2.tgz#22cd199d5abd4b030827ef11034e598470dd75fa"
-  integrity sha512-Sl9KjhBrb/3hW9IWYy4lydFTzmcJtfozaPsOjxdTSO/S8lglFznYzRtntwP1ME0smoHZzawvpcK8NNE5Q/esuw==
+http-server@^0.12.3:
+  version "0.12.3"
+  resolved "https://registry.yarnpkg.com/http-server/-/http-server-0.12.3.tgz#ba0471d0ecc425886616cb35c4faf279140a0d37"
+  integrity sha512-be0dKG6pni92bRjq0kvExtj/NrrAd28/8fCXkaI/4piTwQMSDSLMhWyW0NI1V+DBI3aa1HMlQu46/HjVLfmugA==
   dependencies:
     basic-auth "^1.0.3"
     colors "^1.4.0"
