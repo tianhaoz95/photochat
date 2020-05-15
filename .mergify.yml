@@ -1,20 +1,20 @@
 pull_request_rules:
   - name: auto merge for the owners
     conditions:
-      - "author=tianhaoz95"
+      - author=tianhaoz95
     actions:
       merge:
         method: squash
         strict: smart
   - name: auto merge for dependabot
     conditions:
-      - "author~=^dependabot(|-preview)\[bot\]$"
+      - author~=^dependabot(|-preview)\[bot\]$
     actions:
       merge:
         method: squash
   - name: auto merge on approval
     conditions:
-      - "author~=^(?!dependabot)"
+      - author~=^(?!dependabot)
       - "#approved-reviews-by>=1"
     actions:
       merge:
