@@ -1,5 +1,5 @@
 /// Loading State
-/// 
+///
 /// {@category Services: States}
 enum LoadingState {
   LOADING,

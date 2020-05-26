@@ -1,7 +1,7 @@
 import 'package:image/image.dart' as imglib;
 
 /// Decode Request
-/// 
+///
 /// {@category Services: Requests}
 class DecodeRequest {
   imglib.Image original;
