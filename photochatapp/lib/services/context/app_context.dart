@@ -62,7 +62,7 @@ class AppContext extends ChangeNotifier {
   }
 
   /// Returns true if [AppContext] has not been initialized
-  /// 
+  ///
   /// This method should be called within [initializeContext], please
   /// double check if needed if called externally.
   bool shouInitialize() {

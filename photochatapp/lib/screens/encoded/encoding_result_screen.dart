@@ -18,7 +18,7 @@ import 'package:photochatapp/services/states/encode_result_states.dart';
 import 'package:photochatapp/services/states/loading_states.dart';
 
 /// Encode Result Screen
-/// 
+///
 /// {@category Screens}
 /// {@category Screens: Encode Result}
 class EncodingResultScreen extends StatefulWidget {
@@ -91,7 +91,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   Future<void> shareImage(List<int> imageData) async {
     try {
       await Share.file('encoded image', 'encoded.png', imageData, 'image/png',
-        text: 'This is the encoded image.');
+          text: 'This is the encoded image.');
     } catch (err) {
       showAlert(err.toString(), context);
     }

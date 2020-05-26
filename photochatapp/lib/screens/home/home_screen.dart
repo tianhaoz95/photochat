@@ -26,6 +26,7 @@ class _HomeScreen extends State<HomeScreen> {
     super.didChangeDependencies();
     Provider.of<AppContext>(context, listen: false).initializeContext();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +35,13 @@ class _HomeScreen extends State<HomeScreen> {
           AppLocalizations.of(context).title,
           key: Key('home_screen_title'),
         ),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                Navigator.pushNamed(context, '/settings');
+              }),
+        ],
       ),
       resizeToAvoidBottomInset: false,
       body: ScreenAdapter(
