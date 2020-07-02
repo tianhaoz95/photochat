@@ -29,7 +29,7 @@ GEM
       highline (~> 1.7.2)
     declarative (0.0.20)
     declarative-option (0.1.0)
-    digest-crc (0.5.1)
+    digest-crc (0.6.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.5)
@@ -43,7 +43,7 @@ GEM
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
     fastimage (2.1.7)
-    fastlane (2.150.0)
+    fastlane (2.150.1)
       CFPropertyList (>= 2.3, < 4.0.0)
       addressable (>= 2.3, < 3.0.0)
       aws-sdk-s3 (~> 1.0)
@@ -172,7 +172,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fastlane (= 2.150.0)
+  fastlane (= 2.150.1)
 
 BUNDLED WITH
    1.17.3
