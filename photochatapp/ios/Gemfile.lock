@@ -44,7 +44,7 @@ GEM
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
     fastimage (2.1.7)
-    fastlane (2.150.2)
+    fastlane (2.150.3)
       CFPropertyList (>= 2.3, < 4.0.0)
       addressable (>= 2.3, < 3.0.0)
       aws-sdk-s3 (~> 1.0)
@@ -174,7 +174,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  fastlane (= 2.150.2)
+  fastlane (= 2.150.3)
 
 BUNDLED WITH
    1.17.3
