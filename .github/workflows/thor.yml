@@ -34,7 +34,7 @@ jobs:
           channel: 'stable'
       - name: upgrade flutter to dev latest
         run: |
-          flutter channel stable
+          flutter channel master
           flutter upgrade
           flutter --version
       - name: run tests
@@ -74,7 +74,7 @@ jobs:
           channel: 'stable'
       - name: upgrade flutter
         run: |
-          flutter channel dev
+          flutter channel master
           flutter upgrade
       - name: list all simulators
         run: xcrun instruments -s
