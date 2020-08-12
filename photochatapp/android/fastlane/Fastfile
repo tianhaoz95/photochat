@@ -13,7 +13,7 @@ platform :android do
         skip_upload_images: true
       )
     rescue => exception
-      raise exception unless exception.message.include?('apkNotificationMessageKeyUpgradeVersionConflict')
+      raise exception unless exception.message.include?('APK specifies a version code that has already been used.')
       puts 'Current version already present on the Play Store. Omitting this upload.'
     end
   end
