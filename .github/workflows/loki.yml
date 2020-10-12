@@ -1,8 +1,8 @@
 name: loki
 on:
-  release:	
-    types:	
-      - "published"	
+  release:
+    types:
+      - "published"
       - "edited"
       - "prereleased"
   push:
@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: '12.x'
+          node-version: "12.x"
       - name: install dependencies
         working-directory: design
         run: yarn install
@@ -65,8 +65,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.5'
-          channel: 'stable'
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
       - name: install dart sdk
         run: |
           sudo apt update -y
@@ -106,14 +106,14 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
+          node-version: "10.x"
       - uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
+          java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.5'
-          channel: 'stable'
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
       - name: upgrade flutter
         run: |
           flutter channel master
@@ -137,14 +137,14 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: '10.x'
+          node-version: "10.x"
       - uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
+          java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.5'
-          channel: 'stable'
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
       - name: upgrade flutter
         run: |
           flutter channel master
@@ -181,14 +181,14 @@ jobs:
           echo "full event: $TRIGGER_EVENT"
       - uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
+          java-version: "12.x"
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.x'
+          ruby-version: "2.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.5'
-          channel: 'stable'
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
       - name: upgrade flutter
         run: |
           flutter channel stable
@@ -207,7 +207,7 @@ jobs:
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
-          CODE_SIGN_STYLE: 'Manual'
+          CODE_SIGN_STYLE: "Manual"
           MATCH_PASSWORD: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
           FASTLANE_PASSWORD: ${{ secrets.FASTLANE_PASSWORD }}
           MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MY_GITHUB_TOKEN_ENCODED }}
@@ -235,14 +235,14 @@ jobs:
           echo "full event: $TRIGGER_EVENT"
       - uses: actions/setup-java@v1
         with:
-          java-version: '12.x'
+          java-version: "12.x"
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: '2.x'
+          ruby-version: "2.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.12.13+hotfix.5'
-          channel: 'stable'
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
       - name: upgrade flutter
         run: |
           flutter channel stable
