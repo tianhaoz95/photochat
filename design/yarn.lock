@@ -1033,10 +1033,10 @@
   dependencies:
     cross-spawn "^6.0.5"
 
-"@vuepress/plugin-medium-zoom@^1.5.4":
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-1.5.4.tgz#4d47a1adc788f26aca6f60d4d5d573e272266115"
-  integrity sha512-4lK6HmdjyBbWAyYKKGYgIjW7cM8xu/OMTsPwJZQPj/fY1QVVZzy/4FhxSvQDm47JSru6NMQaCQv7DJIdBNA7VQ==
+"@vuepress/plugin-medium-zoom@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-1.6.0.tgz#766d8e535ed8f89ae13423bb39b96f2abeacc28a"
+  integrity sha512-oYos6FMNzcA8l6oFos6TVcY4h33swW1oJrTzk0TPezweAphb8ezhJPpN3ajWYCA27SQkvwu5t/li6IRNKE+Hzg==
   dependencies:
     medium-zoom "^1.0.4"
 
