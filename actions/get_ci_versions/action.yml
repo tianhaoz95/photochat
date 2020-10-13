@@ -9,5 +9,5 @@ outputs:
   flutter_channel:
     description: 'The preferred Flutter channel to be used.'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'node12'
+  main: 'index.js'
