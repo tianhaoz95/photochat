@@ -1,0 +1,13 @@
+name: 'Get CI Version'
+description: 'Get the preferred SDK versions to use in CI.'
+branding:
+  icon: check-square
+  color: green
+outputs:
+  flutter_version:
+    description: 'The preferred Flutter version to be used.'
+  flutter_channel:
+    description: 'The preferred Flutter channel to be used.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

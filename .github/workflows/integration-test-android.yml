@@ -5,6 +5,7 @@ on:
       - "master"
     paths:
       - "photochatapp/*"
+      - ".github/workflows/integration-test-android.yml"
   schedule:
     - cron: 0 2 * * *
 jobs:
@@ -21,10 +22,12 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '8.x'
+      - uses: actions/get_ci_versions
+        id: get_ci_versions
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.22.1'
-          channel: 'stable'
+          flutter-version: ${{ steps.get_ci_versions.outputs.flutter_version }}
+          channel: ${{ steps.get_ci_versions.outputs.flutter_channel }}
       - name: upgrade flutter to dev latest
         run: |
           flutter channel master
