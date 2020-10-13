@@ -19,20 +19,17 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: Monorepo-Actions/config-for-actions@main
+        id: get_action_configs
         with:
-          node-version: "12.x"
-      - name: install local actions
-        run: bash ./scripts/install_action_dependencies.sh
+          config_files: ./configs/actions_config.json
       - uses: actions/setup-java@v1
         with:
           java-version: '8.x'
-      - uses: ./actions/get_ci_versions
-        id: get_ci_versions
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: ${{ steps.get_ci_versions.outputs.flutter_version }}
-          channel: ${{ steps.get_ci_versions.outputs.flutter_channel }}
+          flutter-version: ${{ steps.get_action_configs.outputs.flutter_version }}
+          channel: ${{ steps.get_action_configs.outputs.flutter_channel }}
       - name: upgrade flutter to dev latest
         run: |
           flutter channel master
@@ -45,6 +42,7 @@ jobs:
           ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          ANDROID_DEBUG: true
         with:
           api-level: 28
           profile: ${{ matrix.device }}
