@@ -1,43 +1,15 @@
-name: heimdall
+name: Unit Test App
 on:
   push:
-    branches:
-      - "master"
-      - "dev/*"
-      - "feature/*"
-      - "release/*"
-      - "chore/*"
-      - "fix/*"
-      - "refactor/*"
-      - "actions/heimdall__*"
     paths:
-      - "design/*"
       - "photochatapp/*"
-      - ".github/workflows/heimdall.yml"
   pull_request:
     branches:
       - "master"
   schedule:
     - cron: 0 2 * * *
 jobs:
-  test-design-docs:
-    name: run design docs tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-      - name: install dependencies
-        working-directory: design
-        run: yarn install
-      - name: compile design docs
-        working-directory: design
-        run: yarn docs:lint
-      - name: compile design docs
-        working-directory: design
-        run: yarn docs:build
-  test-app:
+  unit-test-app:
     name: run app tests on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:

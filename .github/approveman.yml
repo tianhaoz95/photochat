@@ -1,0 +1,9 @@
+ownership_rules:
+  allow_dot_github: true
+  directory_matching_rules:
+    - name: personal projects in experimental
+      path: playground/{{username}}/**/*
+    - name: personal documentation
+      path: docs/personal/{{username}}/**/*
+    - name: continuous integration for experimental projects
+      path: .github/workflows/{{username}}__* 

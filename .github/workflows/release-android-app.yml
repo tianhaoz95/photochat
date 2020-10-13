@@ -1,0 +1,89 @@
+name: Release Android app
+on:
+  push:
+    branches:
+      - "master"
+    tags:
+      - "v*"
+jobs:
+  release-android:
+    name: release android app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "2.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
+      - name: upgrade flutter
+        run: |
+          flutter channel stable
+          flutter upgrade
+      - name: install gem packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          cd photochatapp/android
+          gem install bundler:1.17.3
+          bundle config rubygems.pkg.github.com tianhaoz95:$GITHUB_TOKEN
+          bundle install
+          bundle exec fastlane install_plugins
+          bundle exec fastlane update_plugins
+      - name: build apk and app bundle package
+        env:
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          ./scripts/setenv.sh
+          cd ./photochatapp
+          flutter pub get
+          flutter test
+          flutter build appbundle
+          flutter build apk
+      - name: upload artifects
+        uses: actions/upload-artifact@v1
+        with:
+          name: MiniDonkeyAndroidApk
+          path: photochatapp/build/app/outputs/apk/release/app-release.apk
+      - name: upload to Google Play Store
+        env:
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          ./scripts/setenv.sh
+          cd ./photochatapp/android
+          bundle exec fastlane internal
+          sleep 5
+      - name: promote to alpha
+        env:
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+          TRIGGER_EVENT: ${{ github.event_name }}
+        run: |
+          cd ./photochatapp/android
+          bundle exec fastlane alpha
+      - name: promote to beta
+        env:
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          cd ./photochatapp/android
+          bundle exec fastlane beta
+      - name: promote to production
+        env:
+          ANDROID_SIGN_PWD: ${{ secrets.ANDROID_SIGN_PWD }}
+          SECRET_REPO: ${{ secrets.SECRET_REPO }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          cd ./photochatapp/android
+          bundle exec fastlane production

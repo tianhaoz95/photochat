@@ -1,0 +1,39 @@
+name: Release Design Docs
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - "design/*"
+jobs:
+  release-design-docs:
+    name: release design docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: install dependencies
+        working-directory: design
+        run: yarn install
+      - name: compile design docs
+        working-directory: design
+        run: yarn docs:build
+      - name: upload design docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          cd design
+          mkdir -p ~/upload
+          cp -r docs/.vuepress/dist ~/upload/design
+          cd ~/upload/design
+          touch .nojekyll
+          git config --global user.email "tianhaoz@umich.edu"
+          git config --global user.name "Tianhao Zhou"
+          git init
+          git add -A
+          git commit -m "docs: update"
+          git remote add origin https://github.com/MiniDonkey/design-docs.git
+          echo "machine github.com login tianhaoz95 password $GITHUB_TOKEN" > ~/.netrc
+          git push -u -f origin master

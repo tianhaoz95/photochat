@@ -1,0 +1,38 @@
+name: Release MacOS App
+on:
+  push:
+    branches:
+      - "master"
+    tags:
+      - "v*"
+jobs:
+  release-macos:
+    name: release macos desktop app
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
+      - name: upgrade flutter
+        run: |
+          flutter channel master
+          flutter config --enable-macos-desktop
+          flutter upgrade
+      - name: build macos desktop app
+        run: |
+          cd ./photochatapp
+          flutter pub get
+          flutter build macos
+      - name: upload artifects
+        uses: actions/upload-artifact@v1
+        with:
+          name: MiniDonkeyMacOS
+          path: photochatapp/build/macos/Build/Products/Release

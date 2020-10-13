@@ -1,0 +1,40 @@
+name: Release Web App
+on:
+  push:
+    branches:
+      - "master"
+    tags:
+      - "v*"
+jobs:
+  release-web:
+    name: release web app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
+      - name: upgrade flutter
+        run: |
+          flutter channel master
+          flutter config --enable-web
+          flutter upgrade
+      - name: install firebase cli
+        run: npm install -g firebase-tools
+      - name: build web app
+        run: |
+          cd ./photochatapp
+          flutter build web
+      - name: deploy to firebase
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_HOSTING_TOKEN }}
+        run: |
+          cd ./photochatapp
+          firebase deploy --token "$FIREBASE_TOKEN"

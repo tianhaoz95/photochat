@@ -1,0 +1,28 @@
+name: Build Design Docs
+on:
+  push:
+    paths:
+      - "design/*"
+  pull_request:
+    branches:
+      - "master"
+  schedule:
+    - cron: 0 2 * * *
+jobs:
+  build-design-docs:
+    name: run design docs tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: install dependencies
+        working-directory: design
+        run: yarn install
+      - name: compile design docs
+        working-directory: design
+        run: yarn docs:lint
+      - name: compile design docs
+        working-directory: design
+        run: yarn docs:build

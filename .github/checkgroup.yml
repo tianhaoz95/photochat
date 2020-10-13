@@ -1,0 +1,11 @@
+subprojects:
+  - id: app source
+    paths:
+      - "photochatapp/**/*.dart"
+    checks:
+      - "test-app"
+  - id: design docs
+    paths:
+      - "docs/**"
+    checks:
+      - "test-design-docs"

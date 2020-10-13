@@ -1,0 +1,48 @@
+name: Release Docs
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - "photochatapp/*"
+jobs:
+  release-docs:
+    name: release docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/flutter-action@v1
+        with:
+          flutter-version: "1.12.13+hotfix.5"
+          channel: "stable"
+      - name: install dart sdk
+        run: |
+          sudo apt update -y
+          sudo apt install -y apt-transport-https
+          sudo sh -c 'wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+          sudo sh -c 'wget -qO- https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+          sudo apt update -y
+          sudo apt install -y dart
+      - name: generate docs
+        working-directory: ./photochatapp
+        run: |
+          export PATH="$PATH:/usr/lib/dart/bin"
+          flutter pub get
+          dartdoc --exclude 'dart:async,dart:collection,dart:convert,dart:core,dart:developer,dart:io,dart:isolate,dart:math,dart:typed_data,dart:ui,dart:ffi,dart:html,dart:js,dart:js_util'
+      - name: upload docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+        run: |
+          cd photochatapp
+          mkdir -p ~/upload
+          cp -r doc/api ~/upload/docs
+          cd ~/upload/docs
+          touch .nojekyll
+          git config --global user.email "tianhaoz@umich.edu"
+          git config --global user.name "Tianhao Zhou"
+          git init
+          git add -A
+          git commit -m "docs: update"
+          git remote add origin https://github.com/MiniDonkey/app-doc.git
+          echo "machine github.com login tianhaoz95 password $GITHUB_TOKEN" > ~/.netrc
+          git push -u -f origin master
