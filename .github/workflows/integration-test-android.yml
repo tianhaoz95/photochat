@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '8.x'
-      - uses: actions/get_ci_versions
+      - uses: ./actions/get_ci_versions
         id: get_ci_versions
       - uses: subosito/flutter-action@v1
         with:
