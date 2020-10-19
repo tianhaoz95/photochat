@@ -24,6 +24,6 @@
     "@vuepress/plugin-medium-zoom": "^1.7.1",
     "http-server": "^0.12.3",
     "prettier": "2.1.2",
-    "vuepress": "^1.7.0"
+    "vuepress": "^1.7.1"
   }
 }
