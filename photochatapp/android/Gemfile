@@ -1,5 +1,5 @@
 source "https://rubygems.org"
 
-gem "fastlane", "2.164.0"
+gem "fastlane", "2.165.0"
 
 eval_gemfile('fastlane/Pluginfile') if File.exist?('fastlane/Pluginfile')
