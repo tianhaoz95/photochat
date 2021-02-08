@@ -4,9 +4,9 @@ import 'package:image/image.dart' as imglib;
 ///
 /// {@category Services: Requests}
 class EncodeRequest {
-  imglib.Image original;
+  imglib.Image? original;
   String msg;
-  String token;
+  String? token;
 
   EncodeRequest(this.original, this.msg, {this.token});
 

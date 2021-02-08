@@ -2,17 +2,17 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/context/app_context.dart';
-import 'package:photochatapp/services/converters/pad_cryption_key.dart';
-import 'package:photochatapp/services/requests/encode_request.dart';
-import 'package:photochatapp/services/responses/encode_response.dart';
-import 'package:photochatapp/services/states/app_running_states.dart';
-import 'package:photochatapp/services/utilities/config.dart';
+import 'package:minidonkey/services/context/app_context.dart';
+import 'package:minidonkey/services/converters/pad_cryption_key.dart';
+import 'package:minidonkey/services/requests/encode_request.dart';
+import 'package:minidonkey/services/responses/encode_response.dart';
+import 'package:minidonkey/services/states/app_running_states.dart';
+import 'package:minidonkey/services/utilities/config.dart';
 import 'package:image/image.dart' as imglib;
 import 'package:encrypt/encrypt.dart' as crypto;
-import 'package:photochatapp/services/utilities/get_capacity.dart';
-import 'package:photochatapp/services/utilities/load_asset.dart';
-import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
+import 'package:minidonkey/services/utilities/get_capacity.dart';
+import 'package:minidonkey/services/utilities/load_asset.dart';
+import 'package:minidonkey/services/utilities/msg_bytes_converter.dart';
 import 'package:provider/provider.dart';
 
 int getMsgSize(String msg) {
@@ -50,12 +50,12 @@ Uint16List expandMsg(Uint16List msg) {
   return expanded;
 }
 
-EncodeResponse encodeMessageIntoImage(EncodeRequest req) {
-  Uint16List img = Uint16List.fromList(req.original.getBytes().toList());
+EncodeResponse encodeMessageIntoImage(EncodeRequest? req) {
+  Uint16List img = Uint16List.fromList(req!.original!.getBytes().toList());
   String msg = req.msg;
-  String token = req.token;
+  String? token = req.token;
   if (req.shouldEncrypt()) {
-    crypto.Key key = crypto.Key.fromUtf8(padCryptionKey(token));
+    crypto.Key key = crypto.Key.fromUtf8(padCryptionKey(token!));
     crypto.IV iv = crypto.IV.fromLength(16);
     crypto.Encrypter encrypter = crypto.Encrypter(crypto.AES(key));
     crypto.Encrypted encrypted = encrypter.encrypt(msg, iv: iv);
@@ -74,9 +74,9 @@ EncodeResponse encodeMessageIntoImage(EncodeRequest req) {
     encodedImg[i] = encodeOnePixel(img[i], paddedMsg[i]);
   }
   imglib.Image editableImage = imglib.Image.fromBytes(
-      req.original.width, req.original.height, encodedImg.toList());
+      req.original!.width, req.original!.height, encodedImg.toList());
   Image displayableImage =
-      Image.memory(imglib.encodePng(editableImage), fit: BoxFit.fitWidth);
+      Image.memory(imglib.encodePng(editableImage) as Uint8List, fit: BoxFit.fitWidth);
   Uint8List data = Uint8List.fromList(imglib.encodePng(editableImage));
   EncodeResponse response =
       EncodeResponse(editableImage, displayableImage, data);
@@ -89,16 +89,16 @@ Future<EncodeResponse> getMockedEncodeResult() async {
   imglib.Image mockedEditableImage =
       imglib.decodeImage(mockedEncodedImageData.toList());
   Image mockedDisplayableImage =
-      Image.memory(imglib.encodePng(mockedEditableImage), fit: BoxFit.fitWidth);
+      Image.memory(imglib.encodePng(mockedEditableImage) as Uint8List, fit: BoxFit.fitWidth);
   EncodeResponse mockedResponse = EncodeResponse(
       mockedEditableImage, mockedDisplayableImage, mockedEncodedImageData);
   return mockedResponse;
 }
 
-Future<EncodeResponse> encodeMessageIntoImageAsync(EncodeRequest req,
-    {BuildContext context}) async {
+Future<EncodeResponse> encodeMessageIntoImageAsync(EncodeRequest? req,
+    {BuildContext? context}) async {
   if (context != null) {
-    AppRunningState appRunningState =
+    AppRunningState? appRunningState =
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       EncodeResponse mockedResponse = await getMockedEncodeResult();

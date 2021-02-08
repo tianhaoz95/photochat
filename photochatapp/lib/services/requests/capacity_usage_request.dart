@@ -2,7 +2,7 @@
 ///
 /// {@category Services: Requests}
 class CapacityUsageRequest {
-  int imgBytes;
+  int? imgBytes;
   String msg;
   CapacityUsageRequest(this.msg, this.imgBytes);
 }

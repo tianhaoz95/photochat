@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/screens/settings/theme_settings/custom_theme_selector.dart';
-import 'package:photochatapp/screens/settings/theme_settings/system_setting_toggle.dart';
+import 'package:minidonkey/screens/settings/theme_settings/custom_theme_selector.dart';
+import 'package:minidonkey/screens/settings/theme_settings/system_setting_toggle.dart';
 
 class ThemeSettings extends StatelessWidget {
   @override

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
 
 class TokenInputField extends StatefulWidget {
-  final TextEditingController ctrl;
-  final bool enable;
-  final String keyVal;
+  final TextEditingController? ctrl;
+  final bool? enable;
+  final String? keyVal;
   const TokenInputField(this.enable, this.ctrl, {this.keyVal});
   @override
   State<StatefulWidget> createState() {
@@ -13,7 +13,7 @@ class TokenInputField extends StatefulWidget {
 }
 
 class _TokenInputField extends State<TokenInputField> {
-  bool visible;
+  bool? visible;
   @override
   void initState() {
     super.initState();
@@ -22,7 +22,7 @@ class _TokenInputField extends State<TokenInputField> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.enable) {
+    if (widget.enable!) {
       return Container(
         child: Column(
           children: <Widget>[
@@ -32,21 +32,21 @@ class _TokenInputField extends State<TokenInputField> {
                   Container(
                     child: Checkbox(
                         value: this.visible,
-                        onChanged: (bool nextVal) {
+                        onChanged: (bool? nextVal) {
                           setState(() {
                             this.visible = nextVal;
                           });
                         }),
                   ),
-                  Text(AppLocalizations.of(context).showTokenCheckboxText),
+                  Text(AppLocalizations.of(context)!.showTokenCheckboxText),
                 ],
               ),
             ),
             Container(
               child: TextField(
-                key: Key(widget.keyVal),
+                key: Key(widget.keyVal!),
                 controller: widget.ctrl,
-                obscureText: !this.visible,
+                obscureText: !this.visible!,
                 decoration: InputDecoration(
                   labelText: 'Secret Token',
                 ),

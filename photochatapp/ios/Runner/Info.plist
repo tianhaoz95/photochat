@@ -10,11 +10,6 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-	<key>CFBundleLocalizations</key>
-	<array>
-		<string>zh_CN</string>
-		<string>en</string>
-	</array>
 	<key>CFBundleName</key>
 	<string>photochatapp</string>
 	<key>CFBundlePackageType</key>
@@ -27,14 +22,6 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>Need to take photo for encoding/decoding.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Need to take photo for encoding/decoding.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Need save output to gallery.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Need to load the photo for encoding/decoding.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

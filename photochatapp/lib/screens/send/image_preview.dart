@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 ///
 /// {@category Screens: Send}
 class SendScreenImageReview extends StatelessWidget {
-  final Image image;
+  final Image? image;
   const SendScreenImageReview(this.image);
   @override
   Widget build(BuildContext context) {

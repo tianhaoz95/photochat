@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:photochatapp/services/i18n/wrappers/messages_all.dart';
+import 'package:minidonkey/services/i18n/wrappers/messages_all.dart';
 
 /// {@category i18n}
 /// {@category i18n: Messages}
@@ -11,7 +11,7 @@ class AppLocalizations {
     String name = locale.toString();
     if (locale != null &&
         locale.countryCode != null &&
-        locale.countryCode.isNotEmpty) {
+        locale.countryCode!.isNotEmpty) {
       name = locale.languageCode;
     }
     String localeName = Intl.canonicalizedLocale(name);
@@ -20,7 +20,7 @@ class AppLocalizations {
     });
   }
 
-  static AppLocalizations of(BuildContext context) {
+  static AppLocalizations? of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
