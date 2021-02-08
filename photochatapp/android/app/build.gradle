@@ -43,10 +43,10 @@ android {
 
     signingConfigs {
        release {
-           keyAlias System.getenv('ANDROID_DEBUG') ? null : keystoreProperties['keyAlias']
-           keyPassword System.getenv('ANDROID_DEBUG') ? null : keystoreProperties['keyPassword']
-           storeFile System.getenv('ANDROID_DEBUG') ? null : file(keystoreProperties['storeFile'])
-           storePassword System.getenv('ANDROID_DEBUG') ? null : keystoreProperties['storePassword']
+           keyAlias System.getenv('ANDROID_DEBUG') ? null : localProperties['keyAlias']
+           keyPassword System.getenv('ANDROID_DEBUG') ? null : localProperties['keyPassword']
+           storeFile System.getenv('ANDROID_DEBUG') ? null : file(localProperties['storeFile'])
+           storePassword System.getenv('ANDROID_DEBUG') ? null : localProperties['storePassword']
        }
     }
 
