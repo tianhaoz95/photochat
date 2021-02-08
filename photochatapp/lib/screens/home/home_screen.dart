@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
-import 'package:photochatapp/screens/home/btns/contrib_btn.dart';
-import 'package:photochatapp/screens/home/btns/start_decode_btn.dart';
-import 'package:photochatapp/screens/home/btns/start_encode_btn.dart';
-import 'package:photochatapp/screens/home/logos/donkey_logo.dart';
-import 'package:photochatapp/screens/home/logos/message_logo.dart';
-import 'package:photochatapp/services/context/app_context.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
+import 'package:minidonkey/components/screen_adapter/screen_adapter.dart';
+import 'package:minidonkey/screens/home/btns/contrib_btn.dart';
+import 'package:minidonkey/screens/home/btns/start_decode_btn.dart';
+import 'package:minidonkey/screens/home/btns/start_encode_btn.dart';
+import 'package:minidonkey/screens/home/logos/donkey_logo.dart';
+import 'package:minidonkey/screens/home/logos/message_logo.dart';
+import 'package:minidonkey/services/context/app_context.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
 import 'package:provider/provider.dart';
 
 /// Home Screen
@@ -32,7 +32,7 @@ class _HomeScreen extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context).title,
+          AppLocalizations.of(context)!.title,
           key: Key('home_screen_title'),
         ),
         actions: [

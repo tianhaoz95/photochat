@@ -1,5 +1,5 @@
 class Logger {
-  void info(String msg, {String name}) {
+  void info(String msg, {String? name}) {
     String logNamespace = 'unknown';
     if (name != null) {
       logNamespace = name;

@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
-import 'package:photochatapp/services/states/encode_result_states.dart';
+import 'package:minidonkey/services/states/encode_result_states.dart';
 
 /// Decode Result Screen Render Request
 ///

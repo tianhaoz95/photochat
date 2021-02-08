@@ -2,24 +2,24 @@ import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:photochatapp/components/alerts/dialog.dart';
-import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
-import 'package:photochatapp/components/token_input_field/token_input_field.dart';
-import 'package:photochatapp/screens/send/camera_img_btn.dart';
-import 'package:photochatapp/screens/send/gallery_img_btn.dart';
-import 'package:photochatapp/screens/send/image_preview.dart';
-import 'package:photochatapp/screens/send/random_web_img_btn.dart';
-import 'package:photochatapp/services/context/app_context.dart';
-import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
-import 'package:photochatapp/services/requests/capacity_usage_request.dart';
-import 'package:photochatapp/services/requests/encode_request.dart';
+import 'package:minidonkey/components/alerts/dialog.dart';
+import 'package:minidonkey/components/screen_adapter/screen_adapter.dart';
+import 'package:minidonkey/components/token_input_field/token_input_field.dart';
+import 'package:minidonkey/screens/send/camera_img_btn.dart';
+import 'package:minidonkey/screens/send/gallery_img_btn.dart';
+import 'package:minidonkey/screens/send/image_preview.dart';
+import 'package:minidonkey/screens/send/random_web_img_btn.dart';
+import 'package:minidonkey/services/context/app_context.dart';
+import 'package:minidonkey/services/converters/uploaded_img_to_data.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
+import 'package:minidonkey/services/requests/capacity_usage_request.dart';
+import 'package:minidonkey/services/requests/encode_request.dart';
 import 'package:image/image.dart' as imglib;
-import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
-import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
-import 'package:photochatapp/services/states/app_running_states.dart';
-import 'package:photochatapp/services/states/loading_states.dart';
-import 'package:photochatapp/services/utilities/capacity_usage.dart';
+import 'package:minidonkey/services/requests/uploaded_img_conversion_request.dart';
+import 'package:minidonkey/services/responses/uploaded_img_conversion_response.dart';
+import 'package:minidonkey/services/states/app_running_states.dart';
+import 'package:minidonkey/services/states/loading_states.dart';
+import 'package:minidonkey/services/utilities/capacity_usage.dart';
 import 'package:provider/provider.dart';
 
 /// Send Screen
@@ -34,23 +34,23 @@ class SendScreen extends StatefulWidget {
 }
 
 class _SendScreen extends State<SendScreen> {
-  File imageFile;
-  imglib.Image editableImage;
-  Image image;
-  int imageByteSize;
-  TextEditingController msgCtrl;
-  TextEditingController tokenCtrl;
-  bool encrypt;
-  bool pickedImg;
-  double capacityUsageStats;
-  String capacityUsage;
-  LoadingState uploadingState;
+  File? imageFile;
+  imglib.Image? editableImage;
+  Image? image;
+  int? imageByteSize;
+  TextEditingController? msgCtrl;
+  TextEditingController? tokenCtrl;
+  bool? encrypt;
+  late bool pickedImg;
+  double? capacityUsageStats;
+  late String capacityUsage;
+  LoadingState? uploadingState;
 
   Future<void> randomImageFromWeb() async {
     setState(() {
       uploadingState = LoadingState.LOADING;
     });
-    AppRunningState appRunningState =
+    AppRunningState? appRunningState =
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
@@ -86,7 +86,7 @@ class _SendScreen extends State<SendScreen> {
     setState(() {
       uploadingState = LoadingState.LOADING;
     });
-    AppRunningState appRunningState =
+    AppRunningState? appRunningState =
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
@@ -118,7 +118,7 @@ class _SendScreen extends State<SendScreen> {
     setState(() {
       this.uploadingState = LoadingState.LOADING;
     });
-    AppRunningState appRunningState =
+    AppRunningState? appRunningState =
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
@@ -146,8 +146,8 @@ class _SendScreen extends State<SendScreen> {
   }
 
   Future<void> sendToEncode() async {
-    EncodeRequest req = EncodeRequest(this.editableImage, msgCtrl.text,
-        token: this.tokenCtrl.text);
+    EncodeRequest req = EncodeRequest(this.editableImage, msgCtrl!.text,
+        token: this.tokenCtrl!.text);
     Navigator.pushNamed(context, '/encoded', arguments: req);
   }
 
@@ -194,7 +194,7 @@ class _SendScreen extends State<SendScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context).encodeScreenTitle),
+          title: Text(AppLocalizations.of(context)!.encodeScreenTitle),
           leading: IconButton(
               key: Key('send_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),
@@ -269,7 +269,7 @@ class _SendScreen extends State<SendScreen> {
                       Checkbox(
                           key: Key('encode_screen_token_checkbox'),
                           value: this.encrypt,
-                          onChanged: (bool nextVal) {
+                          onChanged: (bool? nextVal) {
                             setState(() {
                               this.encrypt = nextVal;
                             });
@@ -298,7 +298,7 @@ class _SendScreen extends State<SendScreen> {
                           SizedBox(
                             width: 15.0,
                           ),
-                          Text(AppLocalizations.of(context)
+                          Text(AppLocalizations.of(context)!
                               .encodeScreenEncodeBtnText),
                         ],
                       ),

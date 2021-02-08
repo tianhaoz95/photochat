@@ -1,12 +1,12 @@
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:photochatapp/services/theme/backend_types.dart';
-import 'package:photochatapp/services/theme/base_theme_service.dart';
-import 'package:photochatapp/services/theme/theme_types.dart';
+import 'package:minidonkey/services/theme/backend_types.dart';
+import 'package:minidonkey/services/theme/base_theme_service.dart';
+import 'package:minidonkey/services/theme/theme_types.dart';
 
 class ProdAppTheme extends AppTheme {
   /// Opens a port to the local Hive storage
-  Box themeDb;
+  late Box themeDb;
 
   Map<ThemeType, String> themeTypeNameLookup = {
     ThemeType.LIGHT: 'light',
@@ -28,8 +28,8 @@ class ProdAppTheme extends AppTheme {
     await Hive.initFlutter();
     themeDb = await Hive.openBox('theme');
     try {
-      String themeTypeName = themeDb.get('type');
-      themeType = themeTypeLookup[themeTypeName];
+      String? themeTypeName = themeDb.get('type');
+      themeType = themeTypeLookup[themeTypeName!];
       useSystem = themeDb.get('system').toLowerCase() == 'true';
       notifyListeners();
     } catch (err) {
@@ -41,7 +41,7 @@ class ProdAppTheme extends AppTheme {
   @override
   Future<void> saveSettings() async {
     themeDb = await Hive.openBox('theme');
-    themeDb.put('type', themeTypeNameLookup[themeType]);
+    themeDb.put('type', themeTypeNameLookup[themeType!]);
     themeDb.put('system', useSystem.toString());
   }
 }

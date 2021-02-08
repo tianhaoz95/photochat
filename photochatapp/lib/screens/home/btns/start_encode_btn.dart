@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/context/app_context.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
+import 'package:minidonkey/services/context/app_context.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
 import 'package:provider/provider.dart';
 
 /// Home Screen Start Encode Button
@@ -24,7 +24,7 @@ class HomeScreenStartEncodeBtn extends StatelessWidget {
             SizedBox(
               width: 15.0,
             ),
-            Text(AppLocalizations.of(context).encodeBtnText),
+            Text(AppLocalizations.of(context)!.encodeBtnText),
           ],
         ),
       ),

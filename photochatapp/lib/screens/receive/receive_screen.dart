@@ -3,18 +3,18 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as imglib;
-import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
-import 'package:photochatapp/components/token_input_field/token_input_field.dart';
-import 'package:photochatapp/screens/receive/gallery_image_btn.dart';
-import 'package:photochatapp/screens/receive/submit_decode_btn.dart';
-import 'package:photochatapp/services/context/app_context.dart';
-import 'package:photochatapp/services/converters/uploaded_img_to_data.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
-import 'package:photochatapp/services/requests/decode_request.dart';
-import 'package:photochatapp/services/requests/uploaded_img_conversion_request.dart';
-import 'package:photochatapp/services/responses/uploaded_img_conversion_response.dart';
-import 'package:photochatapp/services/states/app_running_states.dart';
-import 'package:photochatapp/services/states/loading_states.dart';
+import 'package:minidonkey/components/screen_adapter/screen_adapter.dart';
+import 'package:minidonkey/components/token_input_field/token_input_field.dart';
+import 'package:minidonkey/screens/receive/gallery_image_btn.dart';
+import 'package:minidonkey/screens/receive/submit_decode_btn.dart';
+import 'package:minidonkey/services/context/app_context.dart';
+import 'package:minidonkey/services/converters/uploaded_img_to_data.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
+import 'package:minidonkey/services/requests/decode_request.dart';
+import 'package:minidonkey/services/requests/uploaded_img_conversion_request.dart';
+import 'package:minidonkey/services/responses/uploaded_img_conversion_response.dart';
+import 'package:minidonkey/services/states/app_running_states.dart';
+import 'package:minidonkey/services/states/loading_states.dart';
 import 'package:provider/provider.dart';
 
 /// Receive Screen
@@ -29,12 +29,12 @@ class ReceiveScreen extends StatefulWidget {
 }
 
 class _ReceiveScreen extends State<ReceiveScreen> {
-  Image image;
-  imglib.Image editableImage;
-  File imageFile;
-  LoadingState uploadingState;
-  TextEditingController tokenCtrl;
-  bool decrypt;
+  Image? image;
+  imglib.Image? editableImage;
+  File? imageFile;
+  LoadingState? uploadingState;
+  TextEditingController? tokenCtrl;
+  bool? decrypt;
 
   @override
   void initState() {
@@ -49,7 +49,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
     setState(() {
       uploadingState = LoadingState.LOADING;
     });
-    AppRunningState appRunningState =
+    AppRunningState? appRunningState =
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       setState(() {
@@ -76,7 +76,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
 
   void sendToDecode() {
     DecodeRequest req =
-        DecodeRequest(this.editableImage, token: this.tokenCtrl.text);
+        DecodeRequest(this.editableImage, token: this.tokenCtrl!.text);
     Navigator.pushNamed(context, '/decoded', arguments: req);
   }
 
@@ -84,7 +84,7 @@ class _ReceiveScreen extends State<ReceiveScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context).decodeScreenTitleText),
+          title: Text(AppLocalizations.of(context)!.decodeScreenTitleText),
           leading: IconButton(
               key: Key('receive_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),
@@ -127,12 +127,12 @@ class _ReceiveScreen extends State<ReceiveScreen> {
                       Checkbox(
                           key: Key('decode_encrypt_checkbox'),
                           value: this.decrypt,
-                          onChanged: (bool nextVal) {
+                          onChanged: (bool? nextVal) {
                             setState(() {
                               this.decrypt = nextVal;
                             });
                           }),
-                      Text(AppLocalizations.of(context)
+                      Text(AppLocalizations.of(context)!
                           .decodeScreenDecryptCheckboxText),
                     ],
                   ),

@@ -3,19 +3,19 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:photochatapp/components/alerts/dialog.dart';
-import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
-import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
-import 'package:photochatapp/screens/encoded/share_btn.dart';
-import 'package:photochatapp/services/encoder.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
-import 'package:photochatapp/services/requests/encode_request.dart';
-import 'package:photochatapp/services/requests/encode_result_screen_render_request.dart';
-import 'package:photochatapp/services/responses/encode_response.dart';
+import 'package:minidonkey/components/alerts/dialog.dart';
+import 'package:minidonkey/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:minidonkey/components/screen_adapter/screen_adapter.dart';
+import 'package:minidonkey/screens/encoded/share_btn.dart';
+import 'package:minidonkey/services/encoder.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
+import 'package:minidonkey/services/requests/encode_request.dart';
+import 'package:minidonkey/services/requests/encode_result_screen_render_request.dart';
+import 'package:minidonkey/services/responses/encode_response.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:esys_flutter_share/esys_flutter_share.dart';
-import 'package:photochatapp/services/states/encode_result_states.dart';
-import 'package:photochatapp/services/states/loading_states.dart';
+import 'package:minidonkey/services/states/encode_result_states.dart';
+import 'package:minidonkey/services/states/loading_states.dart';
 
 /// Encode Result Screen
 ///
@@ -29,8 +29,8 @@ class EncodingResultScreen extends StatefulWidget {
 }
 
 class _EncodingResultScreen extends State<EncodingResultScreen> {
-  Future<DecodeResultScreenRenderRequest> renderRequest;
-  LoadingState savingState;
+  Future<DecodeResultScreenRenderRequest>? renderRequest;
+  LoadingState? savingState;
 
   @override
   void initState() {
@@ -41,14 +41,14 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (ModalRoute.of(context).settings.arguments != null) {
-      EncodeRequest encodeReq = ModalRoute.of(context).settings.arguments;
+    if (ModalRoute.of(context)!.settings.arguments != null) {
+      EncodeRequest? encodeReq = ModalRoute.of(context)!.settings.arguments as EncodeRequest?;
       renderRequest = requestEncodeImage(encodeReq);
     }
   }
 
   Future<DecodeResultScreenRenderRequest> requestEncodeImage(
-      EncodeRequest req) async {
+      EncodeRequest? req) async {
     EncodeResponse response =
         await encodeMessageIntoImageAsync(req, context: context);
     return DecodeResultScreenRenderRequest(
@@ -101,7 +101,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context).encodeResultScreenTitleText),
+          title: Text(AppLocalizations.of(context)!.encodeResultScreenTitleText),
           leading: IconButton(
               key: Key('encoded_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),
@@ -126,7 +126,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                         Container(
                             child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
-                          child: snapshot.data.encodedImage,
+                          child: snapshot.data!.encodedImage,
                         )),
                         SizedBox(
                           height: 5.0,
@@ -134,7 +134,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                         Container(
                           child: RaisedButton(
                             onPressed: () {
-                              this.saveImage(snapshot.data.encodedByteImage);
+                              this.saveImage(snapshot.data!.encodedByteImage);
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -144,7 +144,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                                 SizedBox(
                                   width: 20.0,
                                 ),
-                                Text(AppLocalizations.of(context)
+                                Text(AppLocalizations.of(context)!
                                     .encodeResultScreenSaveBtnText),
                               ],
                             ),
@@ -155,7 +155,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                         ),
                         EncodeResultScreenShareBtn(
                           onShareHandler: () {
-                            this.shareImage(snapshot.data.encodedByteImage);
+                            this.shareImage(snapshot.data!.encodedByteImage);
                           },
                         ),
                         SizedBox(

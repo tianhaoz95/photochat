@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/screens/settings/theme_settings/theme_settings.dart';
+import 'package:minidonkey/screens/settings/theme_settings/theme_settings.dart';
 
 class SettingsScreen extends StatelessWidget {
   @override

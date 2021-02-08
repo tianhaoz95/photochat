@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:photochatapp/services/utilities/config.dart';
+import 'package:minidonkey/services/utilities/config.dart';
 
 Uint16List padToBytes(Uint16List msg) {
   int padSize = dataLength - msg.length % dataLength;

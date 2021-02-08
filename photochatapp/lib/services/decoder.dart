@@ -2,14 +2,14 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/context/app_context.dart';
-import 'package:photochatapp/services/converters/pad_cryption_key.dart';
-import 'package:photochatapp/services/requests/decode_request.dart';
-import 'package:photochatapp/services/responses/decode_response.dart';
-import 'package:photochatapp/services/states/app_running_states.dart';
-import 'package:photochatapp/services/utilities/config.dart';
-import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
-import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
+import 'package:minidonkey/services/context/app_context.dart';
+import 'package:minidonkey/services/converters/pad_cryption_key.dart';
+import 'package:minidonkey/services/requests/decode_request.dart';
+import 'package:minidonkey/services/responses/decode_response.dart';
+import 'package:minidonkey/services/states/app_running_states.dart';
+import 'package:minidonkey/services/utilities/config.dart';
+import 'package:minidonkey/services/utilities/msg_bytes_converter.dart';
+import 'package:minidonkey/services/utilities/pad_to_bytes.dart';
 import 'package:encrypt/encrypt.dart' as crypto;
 import 'package:provider/provider.dart';
 
@@ -66,16 +66,16 @@ Uint16List sanitizePaddingZeros(Uint16List msg) {
   return sanitized;
 }
 
-DecodeResponse decodeMessageFromImage(DecodeRequest req) {
-  Uint16List img = Uint16List.fromList(req.original.getBytes().toList());
+DecodeResponse decodeMessageFromImage(DecodeRequest? req) {
+  Uint16List img = Uint16List.fromList(req!.original!.getBytes().toList());
   Uint16List extracted = extractBitsFromImg(img);
   Uint16List padded = padToBytes(extracted);
   Uint16List byteMsg = bits2bytes(padded);
   Uint16List sanitized = sanitizePaddingZeros(byteMsg);
   String msg = bytes2msg(sanitized);
-  String token = req.token;
+  String? token = req.token;
   if (req.shouldDecrypt()) {
-    crypto.Key key = crypto.Key.fromUtf8(padCryptionKey(token));
+    crypto.Key key = crypto.Key.fromUtf8(padCryptionKey(token!));
     crypto.IV iv = crypto.IV.fromLength(16);
     crypto.Encrypter encrypter = crypto.Encrypter(crypto.AES(key));
     crypto.Encrypted encryptedMsg = crypto.Encrypted.fromBase64(msg);
@@ -91,10 +91,10 @@ DecodeResponse getMockedDecodeResult() {
   return response;
 }
 
-Future<DecodeResponse> decodeMessageFromImageAsync(DecodeRequest req,
-    {BuildContext context}) async {
+Future<DecodeResponse> decodeMessageFromImageAsync(DecodeRequest? req,
+    {BuildContext? context}) async {
   if (context != null) {
-    AppRunningState appRunningState =
+    AppRunningState? appRunningState =
         Provider.of<AppContext>(context, listen: false).getAppRunningState();
     if (appRunningState == AppRunningState.INTEGRATION_TEST) {
       return getMockedDecodeResult();
