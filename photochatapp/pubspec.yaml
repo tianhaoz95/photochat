@@ -58,6 +58,7 @@ dependency_overrides:
   typed_data: ^1.3.0
   intl_translation: ^0.17.10
   crypto: ^3.0.0
+  clock: ^1.1.0
   collection: ^1.14.13
   archive: ^3.0.0
 
