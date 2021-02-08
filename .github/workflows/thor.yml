@@ -50,9 +50,8 @@ jobs:
             /Users/runner/Library/Android/sdk/tools/bin/avdmanager list
             sleep 20
             ./scripts/setenv.sh
-            export ANDROID_DEBUG=true
             flutter doctor -v
-            cd ./photochatapp && flutter pub get && flutter drive --target=test_driver/app.dart
+            cd ./photochatapp && export ANDROID_DEBUG=true && flutter pub get && flutter drive --target=test_driver/app.dart
       - name: upload screenshot
         uses: actions/upload-artifact@master
         with:
