@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/theme/backend_types.dart';
-import 'package:photochatapp/services/theme/theme_data/dark_theme.dart';
-import 'package:photochatapp/services/theme/theme_data/light_theme.dart';
-import 'package:photochatapp/services/theme/theme_types.dart';
+import 'package:minidonkey/services/theme/backend_types.dart';
+import 'package:minidonkey/services/theme/theme_data/dark_theme.dart';
+import 'package:minidonkey/services/theme/theme_data/light_theme.dart';
+import 'package:minidonkey/services/theme/theme_types.dart';
 
 /// App Theme
 ///
@@ -17,7 +17,7 @@ import 'package:photochatapp/services/theme/theme_types.dart';
 /// it is used in the production application.
 abstract class AppTheme extends ChangeNotifier {
   /// A flag to indicate the currently select theme.
-  ThemeType themeType;
+  ThemeType? themeType;
 
   /// A flag to indicate whether to honor system theme
   /// settings over the user-defined theme settings.

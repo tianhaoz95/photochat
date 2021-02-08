@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
-import 'package:photochatapp/services/decoder.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
-import 'package:photochatapp/services/requests/decode_request.dart';
-import 'package:photochatapp/services/responses/decode_response.dart';
+import 'package:minidonkey/components/screen_adapter/screen_adapter.dart';
+import 'package:minidonkey/services/decoder.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
+import 'package:minidonkey/services/requests/decode_request.dart';
+import 'package:minidonkey/services/responses/decode_response.dart';
 
 /// Decode Result Screen
 ///
@@ -17,18 +17,18 @@ class DecodingResultScreen extends StatefulWidget {
 }
 
 class _DecodingResultScreen extends State<DecodingResultScreen> {
-  Future<String> decodedMsg;
+  Future<String>? decodedMsg;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if (ModalRoute.of(context).settings.arguments != null) {
-      DecodeRequest req = ModalRoute.of(context).settings.arguments;
+    if (ModalRoute.of(context)!.settings.arguments != null) {
+      DecodeRequest? req = ModalRoute.of(context)!.settings.arguments as DecodeRequest?;
       decodedMsg = this.decodeMsg(req);
     }
   }
 
-  Future<String> decodeMsg(DecodeRequest req) async {
+  Future<String> decodeMsg(DecodeRequest? req) async {
     DecodeResponse response =
         await decodeMessageFromImageAsync(req, context: context);
     String msg = response.decodedMsg;
@@ -39,7 +39,7 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context).decodeResultScreenTitle),
+          title: Text(AppLocalizations.of(context)!.decodeResultScreenTitle),
           leading: IconButton(
               key: Key('decoded_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),
@@ -72,7 +72,7 @@ class _DecodingResultScreen extends State<DecodingResultScreen> {
                         Container(
                           child: Center(
                             child: Text(
-                              snapshot.data,
+                              snapshot.data!,
                               style: TextStyle(fontSize: 20.0),
                             ),
                           ),

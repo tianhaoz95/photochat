@@ -9,28 +9,30 @@ import 'utilities/screenshot.dart';
 
 void main() {
   group('real device smoke test', () {
-    FlutterDriver driver;
-    IsolatesWorkaround workaround;
+    FlutterDriver? driver;
+
+    /// TODO(tianhaoz95): evaluate if this hack is still needed, remove if not.
+    // IsolatesWorkaround workaround;
     setUpAll(() async {
       driver = await FlutterDriver.connect();
       // This is a workaround to prevent flutter driver from pausing isolates
-      workaround = IsolatesWorkaround(driver);
-      await workaround.resumeIsolates();
+      // workaround = IsolatesWorkaround(driver);
+      // await workaround.resumeIsolates();
     });
     tearDownAll(() async {
       if (driver != null) {
-        await driver.close();
+        await driver!.close();
         // This is a workaround to prevent flutter driver from pausing isolates
-        await workaround.tearDown();
+        // await workaround.tearDown();
       }
     });
     test('smoke test', () async {
       await prepareScreenshotArea();
-      await initHome(driver);
+      await initHome(driver!);
       // TODO(tianhaoz95): re-enable this once iOS supports contribution.
       // await checkHomeToContribute(driver);
-      await checkHomeToEncode(driver);
-      await checkHomeToDecode(driver);
+      await checkHomeToEncode(driver!);
+      await checkHomeToDecode(driver!);
     }, timeout: Timeout(Duration(minutes: 5)));
   });
 }

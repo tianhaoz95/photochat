@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
-import 'package:photochatapp/services/states/loading_states.dart';
+import 'package:minidonkey/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
+import 'package:minidonkey/services/states/loading_states.dart';
 
 typedef Future<void> OnUploadHandler();
 
@@ -10,10 +10,10 @@ typedef Future<void> OnUploadHandler();
 /// {@category Screens: Receive}
 class ReceiveScreenGallertyImageBtn extends StatelessWidget {
   final OnUploadHandler onUploadHandler;
-  final LoadingState loadingState;
+  final LoadingState? loadingState;
   const ReceiveScreenGallertyImageBtn({
-    @required this.onUploadHandler,
-    @required this.loadingState,
+    required this.onUploadHandler,
+    required this.loadingState,
   });
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class ReceiveScreenGallertyImageBtn extends StatelessWidget {
               SizedBox(
                 width: 15.0,
               ),
-              Text(AppLocalizations.of(context).decodeScreenGalleryBtnText),
+              Text(AppLocalizations.of(context)!.decodeScreenGalleryBtnText),
             ],
           ),
         ),

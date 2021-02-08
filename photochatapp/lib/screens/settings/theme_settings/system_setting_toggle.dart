@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/theme/base_theme_service.dart';
+import 'package:minidonkey/services/theme/base_theme_service.dart';
 import 'package:provider/provider.dart';
 
 class SystemSettingToggle extends StatelessWidget {
