@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/theme/base_theme_service.dart';
-import 'package:photochatapp/services/theme/theme_types.dart';
+import 'package:minidonkey/services/theme/base_theme_service.dart';
+import 'package:minidonkey/services/theme/theme_types.dart';
 import 'package:provider/provider.dart';
 
 class CustomThemeSelector extends StatelessWidget {

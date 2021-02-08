@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:photochatapp/services/requests/capacity_usage_request.dart';
+import 'package:minidonkey/services/requests/capacity_usage_request.dart';
 
 double calculateCapacityUsage(CapacityUsageRequest req) {
   String msg = req.msg;
-  double encoderCapacity = req.imgBytes.toDouble();
+  double encoderCapacity = req.imgBytes!.toDouble();
   double msgSize = msg.length.toDouble();
   return msgSize / encoderCapacity;
 }

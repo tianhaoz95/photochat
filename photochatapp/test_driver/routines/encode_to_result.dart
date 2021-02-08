@@ -9,6 +9,8 @@ Future<void> checkEncodeToResult(FlutterDriver driver) async {
       'encode_to_result_integration_test';
   logger.info('try to tap message input',
       name: encodeToResultTestLoggingNamespace);
+  await driver.scrollUntilVisible(find.byValueKey('encode_screen'),
+      find.byValueKey('encode_screen_msg_input'));
   await driver.tap(find.byValueKey('encode_screen_msg_input'));
   logger.info('try to type in message',
       name: encodeToResultTestLoggingNamespace);

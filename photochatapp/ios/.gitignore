@@ -30,10 +30,3 @@ Runner/GeneratedPluginRegistrant.*
 !default.mode2v3
 !default.pbxuser
 !default.perspectivev3
-
-## Xcode build artifacts
-*.ipa
-Runner.app.*.zip
-
-## Fastlane
-fastlane/report.xml

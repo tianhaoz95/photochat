@@ -1,6 +1,6 @@
-import 'dart:async';
+// import 'dart:async';
 
-import 'package:flutter_driver/flutter_driver.dart';
+// import 'package:flutter_driver/flutter_driver.dart';
 
 /// Workaround for bug: https://github.com/flutter/flutter/issues/24703
 ///
@@ -23,6 +23,9 @@ import 'package:flutter_driver/flutter_driver.dart';
 ///   }
 /// });
 /// ```
+
+/// Comment out for now until which update broke this impl.
+/*
 class IsolatesWorkaround {
   IsolatesWorkaround(this._driver, {this.log = false});
   final FlutterDriver _driver;
@@ -65,3 +68,4 @@ class IsolatesWorkaround {
     }
   }
 }
+*/
