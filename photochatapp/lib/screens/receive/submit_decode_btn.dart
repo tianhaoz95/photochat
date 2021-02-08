@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/i18n/i18n.dart';
+import 'package:minidonkey/services/i18n/i18n.dart';
 
 typedef void OnSubmitDecodeHandler();
 
@@ -8,7 +8,7 @@ typedef void OnSubmitDecodeHandler();
 /// {@category Screens: Receive}
 class ReceiveScreenSubmitDecodeBtn extends StatelessWidget {
   final OnSubmitDecodeHandler onSubmitDecodeHandler;
-  const ReceiveScreenSubmitDecodeBtn({@required this.onSubmitDecodeHandler});
+  const ReceiveScreenSubmitDecodeBtn({required this.onSubmitDecodeHandler});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +23,7 @@ class ReceiveScreenSubmitDecodeBtn extends StatelessWidget {
             SizedBox(
               width: 15.0,
             ),
-            Text(AppLocalizations.of(context).decodeScreenDecodeBtnText),
+            Text(AppLocalizations.of(context)!.decodeScreenDecodeBtnText),
           ],
         ),
       ),

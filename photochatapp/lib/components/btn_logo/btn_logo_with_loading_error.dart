@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/services/states/loading_states.dart';
+import 'package:minidonkey/services/states/loading_states.dart';
 
 class ButtonLogoWithLoadingAndError extends StatelessWidget {
-  final LoadingState loadingState;
+  final LoadingState? loadingState;
   final IconData pendingIcon;
   const ButtonLogoWithLoadingAndError(this.loadingState, this.pendingIcon);
   @override

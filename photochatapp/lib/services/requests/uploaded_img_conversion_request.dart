@@ -4,6 +4,6 @@ import 'dart:io';
 ///
 /// {@category Services: Requests}
 class UploadedImageConversionRequest {
-  File file;
+  File? file;
   UploadedImageConversionRequest(this.file);
 }
