@@ -1,5 +1,5 @@
-import 'package:photochatapp/services/theme/backend_types.dart';
-import 'package:photochatapp/services/theme/base_theme_service.dart';
+import 'package:minidonkey/services/theme/backend_types.dart';
+import 'package:minidonkey/services/theme/base_theme_service.dart';
 
 class MockAppTheme extends AppTheme {
   @override

@@ -1,8 +1,8 @@
 import 'package:device_info/device_info.dart';
 import 'package:flutter/widgets.dart';
-import 'package:photochatapp/services/states/app_running_states.dart';
-import 'package:photochatapp/services/states/loading_states.dart';
-import 'package:photochatapp/services/states/platform_states.dart';
+import 'package:minidonkey/services/states/app_running_states.dart';
+import 'package:minidonkey/services/states/loading_states.dart';
+import 'package:minidonkey/services/states/platform_states.dart';
 
 /// App Context
 ///
@@ -18,14 +18,14 @@ class AppContext extends ChangeNotifier {
   /// integration test or production which should never
   /// change while the app is running.
   /// TODO(#54): change it to final and required.
-  AppRunningState appRunningState;
+  AppRunningState? appRunningState;
 
   /// The platform the app is running on.
-  PlatformState platformState;
+  PlatformState? platformState;
 
   /// The state of the app context
-  LoadingState loadingState;
-  AppContext({AppRunningState appRunningStateOverride}) {
+  LoadingState? loadingState;
+  AppContext({AppRunningState? appRunningStateOverride}) {
     if (appRunningStateOverride == null) {
       this.appRunningState = AppRunningState.PRODUCTION;
     } else {
@@ -131,7 +131,7 @@ class AppContext extends ChangeNotifier {
     return false;
   }
 
-  AppRunningState getAppRunningState() {
+  AppRunningState? getAppRunningState() {
     return appRunningState;
   }
 }

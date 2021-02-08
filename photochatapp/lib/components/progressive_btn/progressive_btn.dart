@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/components/btn_logo/btn_logo_with_loading_error.dart';
-import 'package:photochatapp/services/states/loading_states.dart';
+import 'package:minidonkey/components/btn_logo/btn_logo_with_loading_error.dart';
+import 'package:minidonkey/services/states/loading_states.dart';
 
 typedef Future<void> HandlerFunction();
 

@@ -3,14 +3,14 @@ import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:photochatapp/services/decoder.dart';
-import 'package:photochatapp/services/encoder.dart';
-import 'package:photochatapp/services/requests/decode_request.dart';
-import 'package:photochatapp/services/requests/encode_request.dart';
-import 'package:photochatapp/services/responses/decode_response.dart';
-import 'package:photochatapp/services/responses/encode_response.dart';
-import 'package:photochatapp/services/utilities/msg_bytes_converter.dart';
-import 'package:photochatapp/services/utilities/pad_to_bytes.dart';
+import 'package:minidonkey/services/decoder.dart';
+import 'package:minidonkey/services/encoder.dart';
+import 'package:minidonkey/services/requests/decode_request.dart';
+import 'package:minidonkey/services/requests/encode_request.dart';
+import 'package:minidonkey/services/responses/decode_response.dart';
+import 'package:minidonkey/services/responses/encode_response.dart';
+import 'package:minidonkey/services/utilities/msg_bytes_converter.dart';
+import 'package:minidonkey/services/utilities/pad_to_bytes.dart';
 import 'package:image/image.dart' as imglib;
 
 import '../utilities/image_file_loader.dart';

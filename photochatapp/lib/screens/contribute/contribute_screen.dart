@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photochatapp/components/screen_adapter/screen_adapter.dart';
+import 'package:minidonkey/components/screen_adapter/screen_adapter.dart';
 
 /// Contribute Screen
 ///
