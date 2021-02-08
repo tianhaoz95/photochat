@@ -53,6 +53,10 @@ jobs:
         with:
           flutter-version: '1.22.6'
           channel: 'stable'
+      - name: update Flutter SDK
+        run: |
+          flutter channel master
+          flutter upgrade
       - name: check flutter status
         run: |
           flutter --version
@@ -60,7 +64,7 @@ jobs:
       - name: install flutter dependencies for stable flutter
         run: |
           cd ./photochatapp
-          flutter pub get
+          dart pub get
       - name: static analyze code with stable flutter
         run: |
           cd ./photochatapp
