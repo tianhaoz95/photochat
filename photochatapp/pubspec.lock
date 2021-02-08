@@ -128,7 +128,7 @@ packages:
     source: hosted
     version: "1.0.2"
   clock:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: clock
       url: "https://pub.dartlang.org"
