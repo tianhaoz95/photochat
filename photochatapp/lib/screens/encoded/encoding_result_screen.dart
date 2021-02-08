@@ -42,7 +42,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (ModalRoute.of(context)!.settings.arguments != null) {
-      EncodeRequest? encodeReq = ModalRoute.of(context)!.settings.arguments as EncodeRequest?;
+      EncodeRequest? encodeReq =
+          ModalRoute.of(context)!.settings.arguments as EncodeRequest?;
       renderRequest = requestEncodeImage(encodeReq);
     }
   }
@@ -101,7 +102,8 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.encodeResultScreenTitleText),
+          title:
+              Text(AppLocalizations.of(context)!.encodeResultScreenTitleText),
           leading: IconButton(
               key: Key('encoded_screen_back_btn'),
               icon: Icon(Icons.arrow_back_ios),
@@ -119,6 +121,7 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
                   return Container(
                     padding: EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
                     child: ListView(
+                      key: Key('encode_screen'),
                       children: <Widget>[
                         SizedBox(
                           height: 5.0,
