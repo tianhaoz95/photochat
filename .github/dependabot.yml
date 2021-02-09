@@ -1,0 +1,35 @@
+version: 2
+updates:
+- package-ecosystem: bundler
+  directory: "/photochatapp/android"
+  schedule:
+    interval: daily
+    time: "01:00"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 10
+  reviewers:
+  - tianhaoz95
+  labels:
+  - fastlane dependency update
+- package-ecosystem: bundler
+  directory: "/photochatapp/ios"
+  schedule:
+    interval: daily
+    time: "01:00"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 10
+  reviewers:
+  - tianhaoz95
+  labels:
+  - fastlane dependency update
+- package-ecosystem: npm
+  directory: "/design"
+  schedule:
+    interval: daily
+    time: "01:00"
+    timezone: America/Los_Angeles
+  open-pull-requests-limit: 10
+  reviewers:
+  - tianhaoz95
+  labels:
+  - design dependency update
