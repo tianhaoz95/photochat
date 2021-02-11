@@ -58,16 +58,9 @@ class _EncodingResultScreen extends State<EncodingResultScreen> {
 
   Future<void> saveImage(Uint8List imageData) async {
     if (Platform.isAndroid) {
-      PermissionStatus permissionStorage = await PermissionHandler()
-          .checkPermissionStatus(PermissionGroup.storage);
-      if (permissionStorage != PermissionStatus.granted) {
-        Map<PermissionGroup, PermissionStatus> permissionStatus =
-            await PermissionHandler()
-                .requestPermissions([PermissionGroup.storage]);
-        permissionStorage = permissionStatus[PermissionGroup.storage] ??
-            PermissionStatus.unknown;
-
-        if (permissionStorage != PermissionStatus.granted) {
+      PermissionStatus status = await Permission.storage.status;
+      if (!status.isGranted) {
+        if (!await Permission.storage.request().isGranted) {
           print('no storage permission to save image');
           return;
         }
