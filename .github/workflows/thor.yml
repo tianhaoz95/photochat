@@ -39,7 +39,7 @@ jobs:
           SECRET_REPO: ${{ secrets.SECRET_REPO }}
           GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
-          api-level: 28
+          api-level: 30
           profile: ${{ matrix.device }}
           script: |
             /Users/runner/Library/Android/sdk/tools/bin/avdmanager list
