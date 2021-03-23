@@ -46,7 +46,7 @@ jobs:
             sleep 20
             ./scripts/setenv.sh
             flutter doctor -v
-            cd ./photochatapp && export ANDROID_DEBUG=true && flutter pub get && flutter drive --target=test_driver/app.dart --no-sound-null-safety
+            cd ./photochatapp && export ANDROID_DEBUG=true && flutter pub get && flutter drive --no-sound-null-safety
       - name: upload screenshot
         uses: actions/upload-artifact@master
         with:
