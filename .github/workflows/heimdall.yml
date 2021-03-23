@@ -38,12 +38,8 @@ jobs:
         working-directory: design
         run: yarn docs:build
   test-app:
-    name: run app tests on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+    name: run app tests
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
@@ -51,16 +47,8 @@ jobs:
           java-version: '12.x'
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: '1.22.6'
+          flutter-version: '2.12.2'
           channel: 'stable'
-      - name: update Flutter SDK
-        run: |
-          flutter channel master
-          flutter upgrade
-      - name: check flutter status
-        run: |
-          flutter --version
-          flutter doctor -v
       - name: install flutter dependencies for stable flutter
         run: |
           cd ./photochatapp
