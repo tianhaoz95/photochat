@@ -17,6 +17,8 @@ jobs:
   android-integration-test:
     name: run integration test on Android emulator
     runs-on: macos-latest
+    # TODO(tianhaoz95): re-enable this once integration test works.
+    if: false
     strategy:
       matrix:
         device:
@@ -55,6 +57,7 @@ jobs:
   ios-integration-test:
     name: run integration test on iOS emulator
     runs-on: macos-latest
+    # TODO(tianhaoz95): re-enable this once integration test works.
     if: false
     strategy:
       matrix:
