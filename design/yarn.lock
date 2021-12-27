@@ -1184,12 +1184,12 @@
     "@vuepress/types" "1.9.5"
     cross-spawn "^6.0.5"
 
-"@vuepress/plugin-medium-zoom@^1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-1.9.3.tgz#f6f72d9e24e80f96a1d3524e53eafed3435acb77"
-  integrity sha512-oaPE7dcxEAQALW0IYEyjs0M1kf3vPKRLUM5+IrA2Kjed2Pr/tolCZpSpDvkkOOAm/ZCFfU+NtWffq98t8qY5DQ==
+"@vuepress/plugin-medium-zoom@^1.9.5":
+  version "1.9.5"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-1.9.5.tgz#71d71312ea4d579883bdfda554ef4ed1c434bac2"
+  integrity sha512-ANHfmsPxF+lDtPHa0RlRlsfM6J5Bg2PWNfWxLGET9UxgN4tFX1cq3QLUk+yxoNIb5XFUtqEA2gR7nRc2i0Kt0Q==
   dependencies:
-    "@vuepress/types" "1.9.3"
+    "@vuepress/types" "1.9.5"
     medium-zoom "^1.0.4"
 
 "@vuepress/plugin-nprogress@1.9.5":
@@ -1245,15 +1245,6 @@
     stylus-loader "^3.0.2"
     vuepress-plugin-container "^2.0.2"
     vuepress-plugin-smooth-scroll "^0.0.3"
-
-"@vuepress/types@1.9.3":
-  version "1.9.3"
-  resolved "https://registry.yarnpkg.com/@vuepress/types/-/types-1.9.3.tgz#7d93829edff4832d75ae165f9d2c976f192b3e0a"
-  integrity sha512-tKQ2LQknaxdyEJv4iAifXmAd1BrbAoLPfgnFIqfQ5ypnZrJc+scVX9m730f+evw2BGzeSYyq/nQbaZpMyjzCDA==
-  dependencies:
-    "@types/markdown-it" "^10.0.0"
-    "@types/webpack-dev-server" "^3"
-    webpack-chain "^6.0.0"
 
 "@vuepress/types@1.9.5":
   version "1.9.5"
