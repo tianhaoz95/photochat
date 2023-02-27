@@ -1184,12 +1184,12 @@
     "@vuepress/types" "1.9.5"
     cross-spawn "^6.0.5"
 
-"@vuepress/plugin-medium-zoom@^1.9.5":
-  version "1.9.5"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-1.9.5.tgz#71d71312ea4d579883bdfda554ef4ed1c434bac2"
-  integrity sha512-ANHfmsPxF+lDtPHa0RlRlsfM6J5Bg2PWNfWxLGET9UxgN4tFX1cq3QLUk+yxoNIb5XFUtqEA2gR7nRc2i0Kt0Q==
+"@vuepress/plugin-medium-zoom@^1.9.9":
+  version "1.9.9"
+  resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-1.9.9.tgz#a6321fb944c5cb3ab840c01b943e23046b37b2dd"
+  integrity sha512-P8UfqUv0l28Td2COhvhVinBMiHyams8KKQVwnr6ZboFcRVG5xOsghtDbO++jn78rnszOz8OsLXilPMoiJ8iECQ==
   dependencies:
-    "@vuepress/types" "1.9.5"
+    "@vuepress/types" "1.9.9"
     medium-zoom "^1.0.4"
 
 "@vuepress/plugin-nprogress@1.9.5":
@@ -1250,6 +1250,15 @@
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/@vuepress/types/-/types-1.9.5.tgz#9fe265fac3236cd5f9c01216553825461d5eca9b"
   integrity sha512-fu1Wyi+cPFyn7nfxNH4MVvU5glYvRB0RMI7besq9kiI/KkZJPb2G1hITopECJOGk+6G/cOU/iSdUDUHH4GQLgA==
+  dependencies:
+    "@types/markdown-it" "^10.0.0"
+    "@types/webpack-dev-server" "^3"
+    webpack-chain "^6.0.0"
+
+"@vuepress/types@1.9.9":
+  version "1.9.9"
+  resolved "https://registry.yarnpkg.com/@vuepress/types/-/types-1.9.9.tgz#7c21e4c91c13e58e2ff303ded9ad7425805cb07d"
+  integrity sha512-ukGW49ILzLhIc7CltHMr+BeIjWKloJNN1mrvbDz3beycp9b9kgH+DXNdRIK9QCKr4fJsy7x08vNMwZr9Nq/PTQ==
   dependencies:
     "@types/markdown-it" "^10.0.0"
     "@types/webpack-dev-server" "^3"
