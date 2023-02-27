@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/tianhaoz95/photochat#readme",
   "devDependencies": {
-    "@vuepress/plugin-medium-zoom": "^1.9.5",
+    "@vuepress/plugin-medium-zoom": "^1.9.9",
     "http-server": "^14.0.0",
     "prettier": "2.5.1",
     "vuepress": "^1.9.5"
